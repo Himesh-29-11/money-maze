@@ -6281,6 +6281,8 @@ p {
   height: 100%;
   object-fit: cover;
   object-position: center 38%;
+  -webkit-mask-image: linear-gradient(to right, transparent 0, #000 16%);
+  mask-image: linear-gradient(to right, transparent 0, #000 16%);
 }
 .hero-content h1 {
   font-family: var(--serif);
