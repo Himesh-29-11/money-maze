@@ -6200,5 +6200,492 @@ p {
 
 
 
+/* ==========================================================================
+   MITALI MEHTA HOME PAGE REPLICATION
+   ========================================================================== */
 
+/* Brand & Header Lockup */
+.brand-logo-lockup {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+}
+.brand-text-wrap {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.25;
+}
+.brand-title {
+  font-family: var(--serif);
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: #133d34;
+}
+.brand-subtitle {
+  font-family: var(--sans);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--gold-dark);
+  text-transform: uppercase;
+}
+.logo-icon-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
+/* Button & Arrow Styles */
+.arrow-icon {
+  margin-left: 4px;
+  transition: transform 0.2s ease;
+  display: inline-block;
+}
+.button:hover .arrow-icon,
+.text-link:hover .arrow-icon {
+  transform: translateX(4px);
+}
+
+/* Hero Section Updates */
+.hero-home {
+  background: radial-gradient(circle at 80% 20%, #fefcf9 0%, #f9f6ef 50%, #eee4d5 100%);
+  padding-bottom: 96px;
+}
+.hero-content h1 {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: clamp(38px, 4.5vw, 56px);
+  line-height: 1.15;
+  color: var(--forest);
+  margin-bottom: 24px;
+}
+.hero-byline {
+  font-family: var(--serif);
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--gold-dark);
+  margin-bottom: 16px;
+}
+.hero-lead {
+  font-family: var(--sans);
+  font-size: 15px;
+  line-height: 1.65;
+  color: #555c56;
+  margin-bottom: 28px;
+}
+.hero-regulatory-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  border: 1px solid rgba(42, 42, 42, 0.12);
+  border-radius: 8px;
+  padding: 14px 16px;
+  margin-top: 32px;
+  max-width: 560px;
+  background: rgba(255, 255, 255, 0.7);
+}
+.hero-regulatory-note p {
+  margin: 0;
+  font-size: 11px;
+  line-height: 1.45;
+  color: #5c625d;
+}
+.hero-regulatory-note .shield-icon {
+  color: var(--forest);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+/* Floating quote frame in Hero */
+.floating-quote-frame {
+  position: absolute;
+  top: 60px;
+  right: 20px;
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid var(--line);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  border-radius: 4px;
+  padding: 16px 20px;
+  max-width: 200px;
+  z-index: 10;
+}
+.floating-quote-frame p {
+  font-family: var(--serif);
+  font-size: 13.5px;
+  line-height: 1.45;
+  color: var(--forest);
+  margin: 0;
+}
+
+/* Services section updates */
+.service-pillars .card-grid-3 {
+  gap: 24px;
+}
+.service-pillars .feature-card {
+  text-align: center;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 40px 30px;
+  background: #fdfcf9;
+  border: 1px solid var(--line);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+}
+.service-pillars .feature-card h3 {
+  font-size: 15px;
+  letter-spacing: 0.05em;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 16px;
+}
+.service-pillars .feature-card p {
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: #555;
+  margin-bottom: 24px;
+}
+.service-pillars .feature-card .icon-disc {
+  margin: 0 auto 20px;
+  background: #204d40;
+  color: #fff;
+  width: 56px;
+  height: 56px;
+}
+
+/* Section Title Divider (Why Work With Me) */
+.section-title-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 48px;
+}
+.section-title-divider h2 {
+  font-family: var(--sans);
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.16em;
+  color: var(--muted);
+  margin: 0;
+  text-transform: uppercase;
+}
+.section-title-divider .divider-line {
+  flex-grow: 0;
+  width: 60px;
+  height: 1px;
+  background-color: var(--line);
+}
+
+/* Why Work With Me columns */
+.why-section .value-grid {
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
+}
+.why-section .value-item {
+  border: 0;
+  padding: 0 10px;
+  text-align: center;
+}
+.why-section .value-icon {
+  margin: 0 auto 16px;
+  color: var(--gold-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.why-section .value-item h3 {
+  font-family: var(--sans);
+  font-weight: 700;
+  font-size: 14px;
+  color: #1a1a1a;
+  margin-bottom: 8px;
+}
+.why-section .value-item p {
+  font-size: 12px;
+  line-height: 1.5;
+  color: #666;
+}
+
+/* Credentials section styling */
+.credentials-box {
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 30px 24px;
+}
+.credentials-title {
+  text-align: center;
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--muted);
+  margin-bottom: 24px;
+  text-transform: uppercase;
+}
+.credential-flex-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 20px;
+}
+.credential-badge-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  max-width: 200px;
+}
+.credential-badge-item .badge-round {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid #99a5ac;
+  display: grid;
+  place-items: center;
+  font-family: var(--serif);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--blue);
+  flex-shrink: 0;
+  background-color: #f6f8f9;
+}
+.credential-badge-item .badge-label {
+  font-size: 11px;
+  line-height: 1.35;
+  color: #4a4a4a;
+  font-weight: 500;
+}
+
+/* Triple grid feature sections */
+.triple-feature .mini-feature {
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 32px 24px;
+  display: flex;
+  flex-direction: column;
+}
+.triple-feature .mini-feature h3,
+.triple-feature .mini-feature .eyebrow {
+  margin-bottom: 12px;
+}
+.mini-desc {
+  font-size: 13px;
+  line-height: 1.5;
+  color: #666;
+  margin-bottom: 20px;
+}
+.insights-row-images {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-bottom: 24px;
+}
+.insights-row-images img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+/* Logo badges for Featured In */
+.logos-badge-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+.logo-box {
+  border: 1px solid #ebdcc5;
+  border-radius: 4px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 8px;
+  background-color: #fdfaf4;
+}
+.box-zee {
+  font-weight: 800;
+  font-size: 13px;
+}
+.zee-orange { color: #f58220; }
+.zee-blue { color: #1f4f9c; margin-left: 2px;}
+.box-zee-24 {
+  font-weight: 800;
+  font-size: 11px;
+}
+.zee-red { color: #e60012; margin-left: 2px; }
+.box-fe {
+  font-weight: 700;
+  font-size: 9px;
+  letter-spacing: -0.02em;
+}
+.fe-red { color: #e60012; font-size: 12px; }
+.fe-text { color: #1f4f9c; }
+.box-chitra {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-weight: bold;
+  font-size: 16px;
+}
+.chitra-text { color: #e60012; }
+
+/* Testimonials */
+.stars-rating {
+  color: #d4af37;
+  font-size: 18px;
+  letter-spacing: 0.1em;
+  margin-bottom: 16px;
+}
+.client-quote-block {
+  margin-bottom: 20px;
+  border-bottom: 1px solid #f2ece3;
+  padding-bottom: 14px;
+}
+.client-quote-block:last-of-type {
+  border-bottom: 0;
+  padding-bottom: 0;
+  margin-bottom: 24px;
+}
+.client-quote-block .quote-text {
+  font-family: var(--serif);
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: #133d34;
+  font-style: italic;
+  margin-bottom: 8px;
+}
+.client-quote-block .quote-author {
+  font-size: 11px;
+  color: var(--muted);
+  font-weight: 600;
+  margin: 0;
+}
+
+/* Conversation Section (Beautiful Cream banner) */
+.conversation-section {
+  margin-bottom: 80px;
+}
+.conversation-banner-card {
+  background: linear-gradient(100deg, #eeddc5, #f8f6f0);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 48px;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+.banner-content {
+  position: relative;
+  z-index: 5;
+  max-width: 600px;
+  margin: 0 auto;
+}
+.banner-content h2 {
+  font-family: var(--serif);
+  font-size: 28px;
+  color: var(--forest);
+  margin-bottom: 12px;
+}
+.banner-content p {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #555e56;
+  margin-bottom: 24px;
+}
+.banner-cta-btn {
+  background-color: var(--forest);
+  color: #fff;
+  border-radius: 999px;
+  padding: 12px 28px;
+  display: inline-flex;
+}
+
+/* Footer updates */
+.site-footer {
+  background-color: #133d34;
+  color: #fff;
+  padding-block: 64px 32px;
+}
+.site-footer p {
+  color: #aec3b0;
+}
+.brand-logo-lockup-footer {
+  margin-bottom: 16px;
+}
+.brand-footer-motto {
+  font-size: 13px;
+  color: #c8a25a !important;
+}
+.site-footer .footer-label {
+  font-family: var(--sans);
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  color: #fff;
+  margin-bottom: 16px;
+  text-transform: uppercase;
+}
+.site-footer .footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.site-footer .footer-links a {
+  font-size: 13px;
+  color: #aec3b0;
+  transition: color 0.2s;
+}
+.site-footer .footer-links a:hover {
+  color: #c8a25a;
+}
+.site-footer .footer-socials {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+.site-footer .footer-socials a {
+  width: 36px;
+  height: 36px;
+  border: 1px solid #aec3b0;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  color: #aec3b0;
+  transition: all 0.2s;
+}
+.site-footer .footer-socials a:hover {
+  border-color: #ffffff;
+  color: #ffffff;
+  background-color: rgba(255,255,255,0.05);
+}
+.footer-disclosure p:not(.footer-label) {
+  font-size: 11px;
+  line-height: 1.5;
+  color: #aec3b0;
+}
+
+/* Responsiveness adjustments */
+@media (max-width: 991px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .floating-quote-frame {
+    top: 20px;
+    right: 20px;
+  }
+  .why-section .value-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .credential-flex-row {
+    flex-direction: column;
+    align-items: center;
+  }
+  .triple-feature {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}
