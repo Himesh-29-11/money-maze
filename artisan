@@ -1,0 +1,11 @@
+#!/usr/bin/env php
+<?php
+
+// This file is the standard Laravel Artisan entry point.
+// Install dependencies with Composer, then run: php artisan serve
+require __DIR__.'/vendor/autoload.php';
+
+$app = require_once __DIR__.'/bootstrap/app.php';
+
+$status = $app->handleCommand(new Symfony\Component\Console\Input\ArgvInput);
+exit($status);
