@@ -2,6 +2,8 @@
 
 A production-structured Laravel 11 website for Money Maze, based on the supplied Website Content document, brand guide, calculator workbooks, checklist documents and the **original** visual mockup set (Home, About, Services, Insights, Media & Features, Books and Resources).
 
+> **Team workflow:** see [WORKFLOW.md](WORKFLOW.md) for how changes flow between `main` and the agent's `arena/019feb5d-money-maze` branch.
+
 ## Included
 
 - Laravel MVC routes, controllers, Blade layouts and reusable Blade components.
