@@ -52,7 +52,8 @@
         </button>
         <nav id="primary-navigation" class="primary-nav" aria-label="Primary navigation">
             @foreach ($links as $link)
-                <a href="{{ $link['href'] }}" class="{{ request()->fullUrlIs($link['href']) || request()->url() === $link['href'] ? 'is-active' : '' }}">{{ $link['label'] }}</a>
+                @php($activeHref = \Illuminate\Support\Str::before($link['href'], '#'))
+                <a href="{{ $link['href'] }}" class="{{ request()->url() === $activeHref ? 'is-active' : '' }}">{{ $link['label'] }}</a>
             @endforeach
             @if ($isHome)
                 <a href="{{ route('contact') }}" class="button button-primary nav-cta">Let's Connect <span aria-hidden="true">→</span></a>

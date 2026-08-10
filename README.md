@@ -7,6 +7,7 @@ A production-structured Laravel 11 website for Money Maze, based on the supplied
 - Laravel MVC routes, controllers, Blade layouts and reusable Blade components.
 - Responsive design system using the supplied forest green, sage, antique gold, warm beige, ivory and charcoal palette.
 - Home, About, Services, Insights, Media & Features, Books, Testimonials, Resources and Contact pages.
+- Insights archive is data-driven (seeded `Article` model with a curated fallback list), with working topic filters, search and per-article detail pages at `/insights/{slug}`.
 - Interactive SIP, Life Insurance, Retirement Corpus and SWP calculators.
 - SQLite-ready contact message model/migration and seeded article model/migration.
 - Downloadable checklist documents from the supplied Drive resources.

@@ -1091,6 +1091,43 @@ p {
 .narrow-content {
   max-width: 840px;
 }
+.insight-detail-meta {
+  margin-top: 14px;
+  font-size: 14px;
+  letter-spacing: 0.04em;
+  color: var(--sage-dark, #5a6f5c);
+  font-weight: 600;
+}
+.insight-detail-body {
+  max-width: 760px;
+  font-size: 17px;
+  line-height: 1.75;
+  color: var(--charcoal);
+}
+.insight-detail-body p + p {
+  margin-top: 18px;
+}
+.insight-detail-lead {
+  font-size: 20px;
+  line-height: 1.6;
+  font-weight: 600;
+  color: var(--sage-dark, #5a6f5c);
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--line);
+}
+.insight-detail-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 28px;
+}
+.insight-detail-note {
+  margin-top: 24px;
+  padding: 18px 22px;
+  background: var(--ivory);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+}
 .about-original-hero {
   background: linear-gradient(100deg, #f5ede2, #e9ddcf);
   border-bottom: 1px solid var(--line);
@@ -4753,6 +4790,12 @@ p {
 .topic-chip-btn:hover {
   background-color: #eee7dd;
   border-color: var(--gold-dark);
+}
+
+.topic-chip-btn.is-selected {
+  background-color: var(--gold-dark);
+  border-color: var(--gold-dark);
+  color: #ffffff;
 }
 
 .chip-icon {

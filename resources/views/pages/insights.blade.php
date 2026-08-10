@@ -22,139 +22,73 @@
 
     <!-- Featured Insights Section -->
     <section class="featured-insights-section container">
+        @php
+            $topicTags = [
+                'Retirement planning' => 'retirement',
+                'Taxation' => 'taxation',
+                'Investing' => 'investing',
+                'IPOs & offerings' => 'ipo',
+                'Insurance' => 'insurance',
+                'Children & money' => 'children',
+            ];
+        @endphp
         <h2 class="section-title-v2">FEATURED INSIGHTS</h2>
         <div class="featured-insights-grid">
-            <!-- Card 1 -->
-            <article class="featured-insight-card">
+            @foreach ($articles as $index => $article)
+            <article class="featured-insight-card" data-topic="{{ strtolower($article['topic']) }}" data-search="{{ strtolower($article['title'].' '.$article['topic'].' '.($article['publication'] ?? '')) }}">
                 <div class="card-thumb">
-                    <img src="{{ asset('assets/crops/insights-1.jpg') }}" alt="Retirement Planning thumbnail">
+                    <img src="{{ asset('assets/crops/insights-'.($index + 1).'.jpg') }}" alt="{{ $article['title'] }} thumbnail">
                 </div>
                 <div class="card-content">
-                    <span class="topic-tag tag-retirement">RETIREMENT PLANNING</span>
-                    <h3>Retirement Planning: Start Early, Stay Financially Secure</h3>
-                    <p class="meta-info">Mumbai Samachar <span>·</span> 12 May 2024</p>
+                    <span class="topic-tag tag-{{ $topicTags[$article['topic']] ?? 'sage' }}">{{ strtoupper($article['topic']) }}</span>
+                    <h3>{{ $article['title'] }}</h3>
+                    <p class="meta-info">{{ $article['publication'] }} <span>·</span> {{ $article['date'] }}</p>
                     <div class="card-links">
-                        <a href="#" class="link-english">Read English Version <span>→</span></a>
-                        <a href="#" class="link-gujarati">View Gujarati Publication <span>→</span></a>
+                        <a href="{{ $article['english_url'] ?? route('insights.show', $article['slug']) }}" class="link-english">Read English Version <span>→</span></a>
+                        <a href="{{ $article['gujarati_url'] ?? route('insights.show', $article['slug']) }}" class="link-gujarati">View Gujarati Publication <span>→</span></a>
                     </div>
                 </div>
             </article>
-
-            <!-- Card 2 -->
-            <article class="featured-insight-card">
-                <div class="card-thumb">
-                    <img src="{{ asset('assets/crops/insights-2.jpg') }}" alt="Taxation thumbnail">
-                </div>
-                <div class="card-content">
-                    <span class="topic-tag tag-taxation">TAXATION</span>
-                    <h3>Understanding ITR Filing for Salaried Individuals</h3>
-                    <p class="meta-info">Business Guardian <span>·</span> 28 Apr 2024</p>
-                    <div class="card-links">
-                        <a href="#" class="link-english">Read English Version <span>→</span></a>
-                        <a href="#" class="link-gujarati">View Gujarati Publication <span>→</span></a>
-                    </div>
-                </div>
-            </article>
-
-            <!-- Card 3 -->
-            <article class="featured-insight-card">
-                <div class="card-thumb">
-                    <img src="{{ asset('assets/crops/insights-3.jpg') }}" alt="Investing thumbnail">
-                </div>
-                <div class="card-content">
-                    <span class="topic-tag tag-investing">INVESTING</span>
-                    <h3>SIP vs Lump-Sum: Which Approach Works Better?</h3>
-                    <p class="meta-info">Mumbai Samachar <span>·</span> 14 Apr 2024</p>
-                    <div class="card-links">
-                        <a href="#" class="link-english">Read English Version <span>→</span></a>
-                        <a href="#" class="link-gujarati">View Gujarati Publication <span>→</span></a>
-                    </div>
-                </div>
-            </article>
-
-            <!-- Card 4 -->
-            <article class="featured-insight-card">
-                <div class="card-thumb">
-                    <img src="{{ asset('assets/crops/insights-4.jpg') }}" alt="IPOs thumbnail">
-                </div>
-                <div class="card-content">
-                    <span class="topic-tag tag-ipo">IPOS &amp; NEW OFFERINGS</span>
-                    <h3>IPO Investing: What Should You Know?</h3>
-                    <p class="meta-info">Capital World <span>·</span> 07 Apr 2024</p>
-                    <div class="card-links">
-                        <a href="#" class="link-english">Read English Version <span>→</span></a>
-                        <a href="#" class="link-gujarati">View Gujarati Publication <span>→</span></a>
-                    </div>
-                </div>
-            </article>
-
-            <!-- Card 5 -->
-            <article class="featured-insight-card">
-                <div class="card-thumb">
-                    <img src="{{ asset('assets/crops/insights-5.jpg') }}" alt="Insurance thumbnail">
-                </div>
-                <div class="card-content">
-                    <span class="topic-tag tag-insurance">INSURANCE</span>
-                    <h3>Why Insurance is an Essential Part of Financial Planning</h3>
-                    <p class="meta-info">Mumbai Samachar <span>·</span> 17 Mar 2024</p>
-                    <div class="card-links">
-                        <a href="#" class="link-english">Read English Version <span>→</span></a>
-                        <a href="#" class="link-gujarati">View Gujarati Publication <span>→</span></a>
-                    </div>
-                </div>
-            </article>
-
-            <!-- Card 6 -->
-            <article class="featured-insight-card">
-                <div class="card-thumb">
-                    <img src="{{ asset('assets/crops/insights-6.jpg') }}" alt="Children thumbnail">
-                </div>
-                <div class="card-content">
-                    <span class="topic-tag tag-children">CHILDREN &amp; MONEY</span>
-                    <h3>How Much Pocket Money Should You Give Your Child?</h3>
-                    <p class="meta-info">Business Guardian <span>·</span> 10 Mar 2024</p>
-                    <div class="card-links">
-                        <a href="#" class="link-english">Read English Version <span>→</span></a>
-                        <a href="#" class="link-gujarati">View Gujarati Publication <span>→</span></a>
-                    </div>
-                </div>
-            </article>
-        </div>
+            @endforeach</div>
     </section>
 
     <!-- Browse Insights by Topic Section -->
     <section class="browse-topics-section container">
         <h2 class="section-title-v2">BROWSE INSIGHTS BY TOPIC</h2>
         <div class="topics-chips-row">
-            <button class="topic-chip-btn">
+            <button class="topic-chip-btn is-selected" data-filter="all">
+                <span class="chip-icon">◈</span>
+                <span class="chip-label">All Topics</span>
+            </button>
+            <button class="topic-chip-btn" data-filter="retirement">
                 <span class="chip-icon">🪑</span>
                 <span class="chip-label">Retirement Planning</span>
             </button>
-            <button class="topic-chip-btn">
+            <button class="topic-chip-btn" data-filter="personal">
                 <span class="chip-icon">👛</span>
                 <span class="chip-label">Personal Finance</span>
             </button>
-            <button class="topic-chip-btn">
+            <button class="topic-chip-btn" data-filter="taxation">
                 <span class="chip-icon">📄</span>
                 <span class="chip-label">Taxation &amp; Compliance</span>
             </button>
-            <button class="topic-chip-btn">
+            <button class="topic-chip-btn" data-filter="investing">
                 <span class="chip-icon">📈</span>
                 <span class="chip-label">Investing &amp; Products</span>
             </button>
-            <button class="topic-chip-btn">
+            <button class="topic-chip-btn" data-filter="ipo">
                 <span class="chip-icon">🆕</span>
                 <span class="chip-label">IPOs &amp; Offerings</span>
             </button>
-            <button class="topic-chip-btn">
+            <button class="topic-chip-btn" data-filter="insurance">
                 <span class="chip-icon">☔</span>
                 <span class="chip-label">Insurance</span>
             </button>
-            <button class="topic-chip-btn">
+            <button class="topic-chip-btn" data-filter="children">
                 <span class="chip-icon">👦</span>
                 <span class="chip-label">Children &amp; Money</span>
             </button>
-            <button class="topic-chip-btn">
+            <button class="topic-chip-btn" data-filter="special">
                 <span class="chip-icon">⭐</span>
                 <span class="chip-label">Special Topics / GIFT City</span>
             </button>
@@ -182,7 +116,7 @@
                 <div class="archive-toolbar-v2">
                     <div class="search-input-wrap">
                         <span class="search-icon">⌕</span>
-                        <input type="text" placeholder="Search articles by title, keyword or topic..." aria-label="Search articles">
+                        <input id="article-search" type="search" placeholder="Search articles by title, keyword or topic..." aria-label="Search articles">
                     </div>
                     <div class="toolbar-dropdowns">
                         <select aria-label="Filter by Topic">
@@ -209,7 +143,7 @@
                         <span>ACTIONS</span>
                     </div>
                     <!-- Row 1 -->
-                    <div class="table-body-row">
+                    <div class="table-body-row" data-topic="taxation" data-search="smart tax planning for salaried individuals key deductions exemptions and strategies to legally reduce your tax liability. taxation mumbai samachar 05 may 2024">
                         <span class="cell-article">
                             <strong>Smart Tax Planning for Salaried Individuals</strong>
                             <small>Key deductions, exemptions and strategies to legally reduce your tax liability.</small>
@@ -223,7 +157,7 @@
                         </span>
                     </div>
                     <!-- Row 2 -->
-                    <div class="table-body-row">
+                    <div class="table-body-row" data-topic="retirement" data-search="retirement corpus: how much is enough? a practical framework to estimate your retirement needs and build a secure corpus. retirement capital world 02 may 2024">
                         <span class="cell-article">
                             <strong>Retirement Corpus: How Much Is Enough?</strong>
                             <small>A practical framework to estimate your retirement needs and build a secure corpus.</small>
@@ -237,7 +171,7 @@
                         </span>
                     </div>
                     <!-- Row 3 -->
-                    <div class="table-body-row">
+                    <div class="table-body-row" data-topic="ipo" data-search="understanding ipos: key things to consider important factors every investor should evaluate before investing in an ipo. ipo business guardian 28 apr 2024">
                         <span class="cell-article">
                             <strong>Understanding IPOs: Key Things to Consider</strong>
                             <small>Important factors every investor should evaluate before investing in an IPO.</small>
@@ -251,7 +185,7 @@
                         </span>
                     </div>
                     <!-- Row 4 -->
-                    <div class="table-body-row">
+                    <div class="table-body-row" data-topic="children" data-search="teaching kids about money: start early simple ways to build money awareness and good financial habits in children. children & money mumbai samachar 21 apr 2024">
                         <span class="cell-article">
                             <strong>Teaching Kids About Money: Start Early</strong>
                             <small>Simple ways to build money awareness and good financial habits in children.</small>

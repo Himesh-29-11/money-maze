@@ -41,8 +41,8 @@ function initNavigation() {
 
 function initInsightFilters() {
     const chips = document.querySelectorAll('[data-filter]');
-    const cards = document.querySelectorAll('.article-card[data-topic]');
-    const rows = document.querySelectorAll('.article-row[data-topic]');
+    const cards = document.querySelectorAll('.article-card[data-topic], .featured-insight-card[data-topic]');
+    const rows = document.querySelectorAll('.article-row[data-topic], .table-body-row[data-topic]');
     const search = document.getElementById('article-search');
     if (!chips.length) return;
 

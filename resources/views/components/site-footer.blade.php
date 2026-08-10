@@ -4,7 +4,7 @@
     <div class="container footer-grid">
         <div class="footer-brand">
             @if ($isHome)
-                <a href="{{ route('home') }}" class="brand-lockup brand-lockup-footer home-brand"><span class="home-brand-mark" aria-hidden="true">MC</span><span class="brand-copy"><strong>Mitali Mehta</strong><small>Personal Finance Professional</small></span></a>
+                <a href="{{ route('home') }}" class="brand-lockup brand-lockup-footer home-brand"><span class="home-brand-mark" aria-hidden="true">MM</span><span class="brand-copy"><strong>Mitali Mehta</strong><small>Personal Finance Professional</small></span></a>
             @else
                 <a href="{{ route('home') }}" class="brand-image-lockup brand-image-lockup-footer"><img src="{{ asset('assets/money-maze-logo.jpg') }}" alt="Money Maze — Paving Your Financial Path"></a>
             @endif

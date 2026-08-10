@@ -174,7 +174,7 @@
     </section>
 
     <!-- Who I Work With Section -->
-    <section class="services-who-section container">
+    <section id="who-i-work-with" class="services-who-section container">
         <h2 class="section-title-v2">Who I Work With</h2>
         <div class="who-badges-grid-v2">
             <!-- Badge 1 -->

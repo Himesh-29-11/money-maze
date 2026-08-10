@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Article;
 use Illuminate\View\View;
 
 class PageController extends Controller
@@ -24,6 +25,38 @@ class PageController extends Controller
     public function insights(): View
     {
         return view('pages.insights', array_merge($this->shared(), ['articles' => $this->articles()]));
+    }
+
+    public function insightDetail(string $slug): View
+    {
+        try {
+            $article = Article::query()->where('slug', $slug)->first();
+        } catch (\Throwable) {
+            // Database not migrated yet — fall back to the curated list below.
+            $article = null;
+        }
+
+        if ($article) {
+            $article = [
+                'title' => $article->title,
+                'slug' => $article->slug,
+                'topic' => $article->topic,
+                'publication' => $article->publication,
+                'date' => $article->published_at?->format('d M Y'),
+                'excerpt' => $article->excerpt,
+                'english_url' => $article->english_url,
+                'gujarati_url' => $article->gujarati_url,
+            ];
+        } else {
+            $article = collect($this->articles())->firstWhere('slug', $slug);
+        }
+
+        abort_unless($article, 404);
+
+        return view('pages.insight-detail', [
+            ...$this->shared(),
+            'article' => $article,
+        ]);
     }
 
     public function media(): View
@@ -127,12 +160,12 @@ class PageController extends Controller
     private function articles(): array
     {
         return [
-            ['title' => 'Retirement Planning: Start Early, Stay Financially Secure', 'topic' => 'Retirement planning', 'publication' => 'Mumbai Samachar', 'date' => '12 May 2024', 'color' => 'sage'],
-            ['title' => 'Understanding ITR Filing for Salaried Individuals', 'topic' => 'Taxation', 'publication' => 'Business Guardian', 'date' => '28 Apr 2024', 'color' => 'gold'],
-            ['title' => 'SIP vs Lump Sum: Which Approach Works Better?', 'topic' => 'Investing', 'publication' => 'Mumbai Samachar', 'date' => '14 Apr 2024', 'color' => 'blue'],
-            ['title' => 'IPO Investing: What Should You Know?', 'topic' => 'IPOs & offerings', 'publication' => 'Capital World', 'date' => '07 Apr 2024', 'color' => 'green'],
-            ['title' => 'Why Insurance Is an Essential Part of Financial Planning', 'topic' => 'Insurance', 'publication' => 'Mumbai Samachar', 'date' => '24 Mar 2024', 'color' => 'lavender'],
-            ['title' => 'How Much Pocket Money Should You Give Your Child?', 'topic' => 'Children & money', 'publication' => 'Business Guardian', 'date' => '10 Mar 2024', 'color' => 'peach'],
+            ['slug' => 'retirement-planning-start-early', 'title' => 'Retirement Planning: Start Early, Stay Financially Secure', 'topic' => 'Retirement planning', 'publication' => 'Mumbai Samachar', 'date' => '12 May 2024', 'color' => 'sage', 'excerpt' => 'Key factors to consider for a comfortable and confident retirement.'],
+            ['slug' => 'understanding-itr-filing', 'title' => 'Understanding ITR Filing for Salaried Individuals', 'topic' => 'Taxation', 'publication' => 'Business Guardian', 'date' => '28 Apr 2024', 'color' => 'gold', 'excerpt' => 'A simple guide to documents, deductions and filing your income tax return.'],
+            ['slug' => 'sip-vs-lump-sum', 'title' => 'SIP vs Lump Sum: Which Approach Works Better?', 'topic' => 'Investing', 'publication' => 'Mumbai Samachar', 'date' => '14 Apr 2024', 'color' => 'blue', 'excerpt' => 'Understanding two familiar approaches to long-term investing.'],
+            ['slug' => 'ipo-investing-basics', 'title' => 'IPO Investing: What Should You Know?', 'topic' => 'IPOs & offerings', 'publication' => 'Capital World', 'date' => '07 Apr 2024', 'color' => 'green', 'excerpt' => 'Key things to evaluate before subscribing to an IPO.'],
+            ['slug' => 'insurance-financial-planning', 'title' => 'Why Insurance Is an Essential Part of Financial Planning', 'topic' => 'Insurance', 'publication' => 'Mumbai Samachar', 'date' => '24 Mar 2024', 'color' => 'lavender', 'excerpt' => 'Protection planning is one part of building a resilient financial life.'],
+            ['slug' => 'pocket-money-children', 'title' => 'How Much Pocket Money Should You Give Your Child?', 'topic' => 'Children & money', 'publication' => 'Business Guardian', 'date' => '10 Mar 2024', 'color' => 'peach', 'excerpt' => 'Simple ways to build money awareness and good financial habits.'],
         ];
     }
 }
