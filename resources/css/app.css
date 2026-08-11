@@ -6593,3 +6593,48 @@ p {
   object-position: center;
   mix-blend-mode: multiply;
 }
+
+/* Money Maze SVG logo lockup */
+.mm-logo-lockup {
+  display: inline-flex;
+  align-items: center;
+  min-width: 190px;
+}
+.mm-logo {
+  height: 50px;
+  width: auto;
+  color: #9c752e;
+  display: block;
+}
+.mm-logo-light {
+  color: #c8a25a;
+  height: 56px;
+}
+.mm-logo-lockup-footer {
+  margin-bottom: 4px;
+}
+
+/* Hero image fades + text alignment refinements */
+.hero-home {
+  background: linear-gradient(115deg, #f8f5ef 0%, #f4efe7 55%, #eae3dc 100%);
+}
+.hero-photo img {
+  -webkit-mask-image: linear-gradient(to right, transparent 0, #000 28%);
+  mask-image: linear-gradient(to right, transparent 0, #000 28%);
+}
+.ab-hero-photo img {
+  -webkit-mask-image: linear-gradient(to right, transparent 0, #000 30%);
+  mask-image: linear-gradient(to right, transparent 0, #000 30%);
+}
+.ab-hero-copy {
+  padding-left: max(30px, calc((100vw - 1180px) / 2));
+}
+.ab-cta-band {
+  padding-inline: max(30px, calc((100vw - 1180px) / 2));
+}
+.page-hero-services .services-hero-art,
+.page-hero-insights .insights-hero-art,
+.page-hero-media .media-hero-art {
+  -webkit-mask-image: linear-gradient(to right, transparent 0, #000 24%);
+  mask-image: linear-gradient(to right, transparent 0, #000 24%);
+}

@@ -2,19 +2,35 @@
 <footer class="site-footer">
     <div class="container footer-grid">
         <div class="footer-brand">
-            <a href="{{ route('home') }}" class="brand-logo-lockup brand-logo-lockup-footer" aria-label="Mitali Mehta Home">
-                <div class="logo-icon-wrap">
-                    <svg viewBox="0 0 100 100" width="46" height="46" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="50" cy="50" r="45" stroke="#ffffff" stroke-width="1.5"/>
-                        <circle cx="50" cy="50" r="40" stroke="#ffffff" stroke-width="0.75" stroke-dasharray="2 1"/>
-                        <text x="50" y="58" font-family="'Playfair Display', Georgia, serif" font-size="34" font-style="italic" fill="#ffffff" text-anchor="middle">M</text>
+            @if (request()->routeIs('home'))
+                <a href="{{ route('home') }}" class="brand-logo-lockup brand-logo-lockup-footer" aria-label="Mitali Mehta Home">
+                    <div class="logo-icon-wrap">
+                        <svg viewBox="0 0 100 100" width="46" height="46" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="50" cy="50" r="45" stroke="#ffffff" stroke-width="1.5"/>
+                            <circle cx="50" cy="50" r="40" stroke="#ffffff" stroke-width="0.75" stroke-dasharray="2 1"/>
+                            <text x="50" y="58" font-family="'Playfair Display', Georgia, serif" font-size="34" font-style="italic" fill="#ffffff" text-anchor="middle">M</text>
+                        </svg>
+                    </div>
+                    <div class="brand-text-wrap">
+                        <span class="brand-title" style="color: #ffffff;">MITALI MEHTA</span>
+                        <span class="brand-subtitle" style="color: #c8a25a;">Personal Finance Professional</span>
+                    </div>
+                </a>
+            @else
+                <a href="{{ route('home') }}" class="mm-logo-lockup mm-logo-lockup-footer" aria-label="Money Maze home">
+                    <svg class="mm-logo mm-logo-light" viewBox="0 0 480 110" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <g stroke="currentColor" stroke-width="5">
+                            <path d="M55 6l44 25v50l-44 25-44-25V31z"/>
+                            <path d="M55 18l33 19v38l-33 19-33-19V37z" stroke-width="3"/>
+                            <path d="M36 76V52l19-11 19 11v24" stroke-width="5"/>
+                            <path d="M45 76V60l10-6 10 6v16" stroke-width="4"/>
+                        </g>
+                        <text x="122" y="56" font-family="Cinzel, Georgia, serif" font-size="34" font-weight="700" letter-spacing="5" fill="currentColor">MONEY MAZE</text>
+                        <rect x="122" y="68" width="330" height="2.5" fill="currentColor"/>
+                        <text x="122" y="95" font-family="Lato, Arial, sans-serif" font-size="18" letter-spacing="2" fill="currentColor" opacity=".85">Paving Your Financial Path</text>
                     </svg>
-                </div>
-                <div class="brand-text-wrap">
-                    <span class="brand-title" style="color: #ffffff;">MITALI MEHTA</span>
-                    <span class="brand-subtitle" style="color: #c8a25a;">Personal Finance Professional</span>
-                </div>
-            </a>
+                </a>
+            @endif
             <p class="brand-footer-motto">Clarity today. Freedom tomorrow.</p>
         </div>
         <div>
