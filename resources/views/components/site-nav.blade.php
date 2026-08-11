@@ -52,17 +52,7 @@
             </a>
         @else
             <a href="{{ route('home') }}" class="mm-logo-lockup" aria-label="Money Maze home">
-                <svg class="mm-logo" viewBox="0 0 480 110" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                    <g stroke="currentColor" stroke-width="5">
-                        <path d="M55 6l44 25v50l-44 25-44-25V31z"/>
-                        <path d="M55 18l33 19v38l-33 19-33-19V37z" stroke-width="3"/>
-                        <path d="M36 76V52l19-11 19 11v24" stroke-width="5"/>
-                        <path d="M45 76V60l10-6 10 6v16" stroke-width="4"/>
-                    </g>
-                    <text x="122" y="56" font-family="Cinzel, Georgia, serif" font-size="34" font-weight="700" letter-spacing="5" fill="currentColor">MONEY MAZE</text>
-                    <rect x="122" y="68" width="330" height="2.5" fill="currentColor"/>
-                    <text x="122" y="95" font-family="Lato, Arial, sans-serif" font-size="18" letter-spacing="2" fill="currentColor" opacity=".85">Paving Your Financial Path</text>
-                </svg>
+                <img class="mm-logo-img" src="{{ asset('assets/money-maze-logo.png') }}" alt="Money Maze — Paving Your Financial Path">
             </a>
         @endif
         <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation" aria-label="Open navigation">
