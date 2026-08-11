@@ -513,3 +513,7 @@ body.about-page .primary-nav > a:not(.button) { color: #4d4a44; }
   .about-v3 .ab-cta-band { grid-template-columns: 1fr; }
   .about-v3 .ab-cta-plant { display: none; }
 }
+
+/* Transparent PNG logo */
+.mm-logo-img { height: 46px; width: auto; display: block; }
+.mm-logo-img-light { height: 52px; filter: brightness(1.15); }
