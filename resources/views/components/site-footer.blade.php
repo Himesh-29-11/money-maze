@@ -23,6 +23,8 @@
                 <a href="{{ route('home') }}">Home</a>
                 <a href="{{ route('about') }}">About Me</a>
                 <a href="{{ route('services') }}">Services</a>
+                <a href="{{ route('insights') }}">Insights</a>
+                <a href="{{ route('media') }}">Media & Features</a>
                 <a href="{{ route('resources') }}">Resources</a>
                 <a href="{{ route('testimonials') }}">Testimonials</a>
                 <a href="{{ route('contact') }}">Contact</a>

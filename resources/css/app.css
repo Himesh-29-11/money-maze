@@ -6250,8 +6250,39 @@ p {
 
 /* Hero Section Updates */
 .hero-home {
-  background: radial-gradient(circle at 80% 20%, #fefcf9 0%, #f9f6ef 50%, #eee4d5 100%);
-  padding-bottom: 96px;
+  background: linear-gradient(115deg, #f8f5ef 0%, #f6f1e8 55%, #efe7da 100%);
+  padding-bottom: 0;
+  border-bottom: 1px solid var(--line);
+}
+.hero-home .hero-grid {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  min-height: 540px;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.08fr);
+  gap: 0;
+  align-items: stretch;
+}
+.hero-home .hero-content {
+  padding: 64px 48px 64px max(32px, calc((100vw - 1180px) / 2));
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.hero-photo {
+  position: relative;
+  min-height: 540px;
+  overflow: hidden;
+}
+.hero-photo img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 38%;
+  -webkit-mask-image: linear-gradient(to right, transparent 0, #000 16%);
+  mask-image: linear-gradient(to right, transparent 0, #000 16%);
 }
 .hero-content h1 {
   font-family: var(--serif);
@@ -6265,7 +6296,7 @@ p {
   font-family: var(--serif);
   font-size: 20px;
   font-weight: 600;
-  color: var(--gold-dark);
+  color: #22302a;
   margin-bottom: 16px;
 }
 .hero-lead {
@@ -6328,7 +6359,7 @@ p {
   align-items: center;
   justify-content: flex-start;
   padding: 40px 30px;
-  background: #fdfcf9;
+  background: #faf6ee;
   border: 1px solid var(--line);
   box-shadow: 0 4px 15px rgba(0,0,0,0.02);
 }
@@ -6338,6 +6369,18 @@ p {
   font-weight: 700;
   color: #1a1a1a;
   margin-bottom: 16px;
+  position: relative;
+  padding-bottom: 14px;
+}
+.service-pillars .feature-card h3::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 0;
+  width: 34px;
+  height: 2px;
+  background: var(--gold);
 }
 .service-pillars .feature-card p {
   font-size: 13.5px;
@@ -6362,13 +6405,17 @@ p {
   margin-bottom: 48px;
 }
 .section-title-divider h2 {
-  font-family: var(--sans);
-  font-weight: 700;
-  font-size: 14px;
-  letter-spacing: 0.16em;
-  color: var(--muted);
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: 17px;
+  letter-spacing: 0.12em;
+  color: #20302a;
   margin: 0;
   text-transform: uppercase;
+}
+.why-section {
+  background: #fdfcf9;
+  border-block: 0;
 }
 .section-title-divider .divider-line {
   flex-grow: 0;
@@ -6408,19 +6455,22 @@ p {
 }
 
 /* Credentials section styling */
+.credentials-section {
+  padding: 26px 0 0;
+}
 .credentials-box {
-  background: #ffffff;
+  background: #f6f1e8;
   border: 1px solid var(--line);
-  border-radius: 8px;
-  padding: 30px 24px;
+  border-radius: 10px;
+  padding: 26px 30px;
 }
 .credentials-title {
   text-align: center;
-  font-family: var(--sans);
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  color: var(--muted);
+  font-family: var(--serif);
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  color: #243428;
   margin-bottom: 24px;
   text-transform: uppercase;
 }
@@ -6453,22 +6503,59 @@ p {
 .credential-badge-item .badge-label {
   font-size: 11px;
   line-height: 1.35;
-  color: #4a4a4a;
-  font-weight: 500;
+  color: #232722;
+  font-weight: 700;
+}
+.credential-badge-item .badge-square {
+  min-width: 40px;
+  height: 40px;
+  border: 1.5px solid #27407c;
+  border-radius: 6px;
+  display: grid;
+  place-items: center;
+  font-weight: 800;
+  font-size: 10px;
+  color: #27407c;
+  background: #fff;
+  letter-spacing: 0.02em;
+  text-align: center;
+  line-height: 1.05;
+  white-space: pre;
+  flex-shrink: 0;
+}
+.credential-badge-item .badge-round svg {
+  color: #27407c;
 }
 
 /* Triple grid feature sections */
 .triple-feature .mini-feature {
-  background: #ffffff;
+  background: #f6f1e8;
   border: 1px solid var(--line);
-  border-radius: 8px;
-  padding: 32px 24px;
+  border-radius: 10px;
+  padding: 28px 24px;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 .triple-feature .mini-feature h3,
 .triple-feature .mini-feature .eyebrow {
   margin-bottom: 12px;
+}
+.mini-feature-title {
+  font-family: var(--serif);
+  font-size: 17px;
+  letter-spacing: 0.08em;
+  color: #243428;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin: 0 0 10px;
+}
+.mini-feature .mini-desc {
+  max-width: 300px;
+}
+.triple-feature .mini-feature .text-link {
+  margin-top: auto;
 }
 .mini-desc {
   font-size: 13px;
@@ -6530,6 +6617,42 @@ p {
   font-size: 16px;
 }
 .chitra-text { color: #e60012; }
+.zee-circle {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #e8c169, #b98a1d);
+  color: #fff;
+  font-weight: 800;
+  font-size: 8px;
+  flex: 0 0 auto;
+}
+.zee-circle-blue {
+  background: radial-gradient(circle at 35% 30%, #4d78d8, #1c3f9e);
+}
+.logo-business {
+  font-weight: 800;
+  font-size: 12px;
+  color: #2b2b2b;
+  letter-spacing: 0.02em;
+}
+.logo-kalak {
+  font-weight: 800;
+  font-size: 11px;
+  color: #1f4f9c;
+}
+.fe-diamond { color: #e60012; font-size: 11px; }
+.fe-name {
+  color: #1f4f9c;
+  font-weight: 800;
+  font-size: 10px;
+  letter-spacing: -0.01em;
+}
+.logo-box {
+  gap: 6px;
+}
 
 /* Testimonials */
 .stars-rating {
@@ -6568,10 +6691,12 @@ p {
   margin-bottom: 80px;
 }
 .conversation-banner-card {
-  background: linear-gradient(100deg, #eeddc5, #f8f6f0);
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  padding: 48px;
+  background-color: #f6f3ee;
+  background-image: url('/assets/crops/home-cta-left.jpg'), url('/assets/crops/home-cta-right.jpg');
+  background-position: left center, right center;
+  background-repeat: no-repeat, no-repeat;
+  background-size: auto 100%, auto 100%;
+  padding: 46px 20px;
   position: relative;
   overflow: hidden;
   text-align: center;
@@ -6628,9 +6753,12 @@ p {
   text-transform: uppercase;
 }
 .site-footer .footer-links {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-auto-flow: column;
+  grid-template-rows: repeat(5, auto);
+  justify-content: start;
+  gap: 10px 32px;
 }
 .site-footer .footer-links a {
   font-size: 13px;
@@ -6670,7 +6798,16 @@ p {
 @media (max-width: 991px) {
   .hero-grid {
     grid-template-columns: 1fr;
-    gap: 40px;
+    gap: 0;
+  }
+  .hero-home .hero-content {
+    padding: 56px 22px;
+  }
+  .hero-photo {
+    min-height: 430px;
+  }
+  .conversation-banner-card {
+    background-image: none;
   }
   .floating-quote-frame {
     top: 20px;
