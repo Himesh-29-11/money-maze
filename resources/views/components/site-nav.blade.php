@@ -1,6 +1,18 @@
 @php
     $isHome = request()->routeIs('home');
-    $links = $isHome
+    $isAbout = request()->routeIs('about');
+    $links = $isAbout
+        ? [
+            ['label' => 'Home', 'href' => route('home')],
+            ['label' => 'About', 'href' => route('about')],
+            ['label' => 'Services', 'href' => route('services')],
+            ['label' => 'Who I Work With', 'href' => route('services') . '#who-i-work-with'],
+            ['label' => 'Media', 'href' => route('media')],
+            ['label' => 'Resources', 'href' => route('resources')],
+            ['label' => 'FAQs', 'href' => '#'],
+            ['label' => 'Contact', 'href' => route('contact')],
+        ]
+        : ($isHome
         ? [
             ['label' => 'Home', 'href' => route('home')],
             ['label' => 'About Me', 'href' => route('about')],
@@ -20,9 +32,9 @@
             ['label' => 'Testimonials', 'href' => route('testimonials')],
             ['label' => 'Resources', 'href' => route('resources')],
             ['label' => 'Contact', 'href' => route('contact')],
-        ];
+        ]);
 @endphp
-<header class="site-header">
+<header class="site-header @if ($isAbout) site-header-overlay @endif">
     <div class="container nav-shell">
         @if ($isHome)
             <a href="{{ route('home') }}" class="brand-logo-lockup" aria-label="Mitali Mehta Home">

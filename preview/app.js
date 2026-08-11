@@ -32,7 +32,8 @@ function nav(current) {
   const contentLinks = [['Home','/'],['About','/about'],['Services','/services'],['Insights','/insights'],['Media & Features','/media-features'],['Books','/books'],['Testimonials','/testimonials'],['Resources','/resources'],['Contact','/contact']];
   const practiceLinks = [['Home','/'],['About','/about'],['Services','/services'],['Who I Work With','/services#who-i-work-with'],['Media','/media-features'],['Resources','/resources'],['FAQs','#'],['Contact','/contact']];
   const homeLinks = [['Home','/'],['About Me','/about'],['Services','/services'],['Insights','/insights'],['Media & Features','/media-features'],['Resources','/resources'],['Testimonials','/testimonials']];
-  const links = isHome ? homeLinks : contentLinks;
+  const aboutLinks = [['Home','/'],['About','/about'],['Services','/services'],['Who I Work With','/services#who-i-work-with'],['Media','/media-features'],['Resources','/resources'],['FAQs','#'],['Contact','/contact']];
+  const links = isHome ? homeLinks : (current === '/about' ? aboutLinks : contentLinks);
   const brand = isHome ? `<a href="/" class="brand-logo-lockup" aria-label="Mitali Mehta home"><span class="logo-icon-wrap"><svg viewBox="0 0 100 100" width="46" height="46" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="45" stroke="#c8a25a" stroke-width="1.5"/><circle cx="50" cy="50" r="40" stroke="#c8a25a" stroke-width="0.75" stroke-dasharray="2 1"/><text x="50" y="60" font-family="'Playfair Display', Georgia, serif" font-size="34" font-style="italic" fill="#133d34" text-anchor="middle">M</text></svg></span><span class="brand-text-wrap"><span class="brand-title">MITALI MEHTA</span><span class="brand-subtitle">Personal Finance Professional</span></span></a>` : `<a href="/" class="mm-logo-lockup" aria-label="Money Maze home">${mmLogo()}</a>`;
   const action = isHome ? `<a href="/contact" class="button button-primary nav-cta">Let's Connect</a>` : '';
   return `<header class="site-header ${isHome?'site-header-home':'site-header-inner'}"><div class="container nav-shell">${brand}<button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation" aria-label="Open navigation"><span></span><span></span><span></span></button><nav id="primary-navigation" class="primary-nav" aria-label="Primary navigation">${links.map(([label,path]) => `<a href="${path}" class="${current===path?'is-active':''}">${label}</a>`).join('')}${action}</nav></div></header>`;
@@ -83,6 +84,7 @@ function initSwp(){const form=document.getElementById('swp-form');const calc=()=
 function render() {
   const raw=window.location.pathname.replace(/\/+$/,'')||'/';
   document.body.classList.toggle('home-original', raw==='/');
+  document.body.classList.toggle('about-page', raw==='/about');
   let current=raw; let content='';
   if(raw==='/') content=home(); else if(raw==='/about') content=about(); else if(raw==='/services') content=services(); else if(raw==='/insights') content=insights(); else if(raw==='/media-features') content=media(); else if(raw==='/books') content=books(); else if(raw==='/resources') content=resources(); else if(raw==='/testimonials') content=testimonials(); else if(raw==='/contact') content=contact(); else if(raw.startsWith('/calculators/')) {content=calculator(raw); current='';} else {content=home(); current='/';}
   document.getElementById('app').innerHTML=nav(current)+`<main id="main-content">${content}</main>`+footer(current);
