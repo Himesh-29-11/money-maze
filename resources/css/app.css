@@ -6740,3 +6740,76 @@ p {
 .reg-shield { color: var(--gold-dark); display: grid; place-items: center; border: 1px solid var(--gold-dark); border-radius: 8px; width: 30px; height: 30px; flex: 0 0 auto; }
 .reg-strip p { margin: 0; font-size: 11px; color: #5c625d; }
 @media (max-width: 900px) { .svc-cta { grid-template-columns: 1fr; } }
+
+/* ============ Services — exact mockup page 3 UI ============ */
+.svch-hero { display: grid; grid-template-columns: minmax(0, 45fr) minmax(0, 55fr); background: linear-gradient(100deg, #faf7f1, #f6f1e8 60%, #f1e9dc); }
+.svch-hero-copy { padding: 74px 40px 74px max(32px, calc((100vw - 1180px) / 2)); }
+.svch-eyebrow { display: inline-block; padding-bottom: 10px; border-bottom: 2px solid var(--gold); margin-bottom: 22px; }
+.svch-hero-copy h1 { font-size: clamp(34px, 3.4vw, 48px); }
+.svch-hero-copy p:not(.eyebrow) { font-size: 13px; color: #4d554e; max-width: 430px; margin-bottom: 14px; }
+.svch-hero-photo { position: relative; min-height: 430px; overflow: hidden; }
+.svch-hero-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; -webkit-mask-image: linear-gradient(to right, transparent 0, #000 22%); mask-image: linear-gradient(to right, transparent 0, #000 22%); }
+.svch-pillars { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; padding: 54px 0 10px; margin-top: 26px; }
+.svch-card { position: relative; background: #fbf9f5; border: 1px solid var(--line); border-radius: 6px; padding: 46px 26px 0; display: flex; flex-direction: column; }
+.svch-icon { width: 56px; height: 56px; border-radius: 50%; display: grid; place-items: center; color: #fff; }
+.svch-card > .svch-icon { position: absolute; top: -28px; left: 24px; }
+.svch-icon.icon-green { background: #55703f; }
+.svch-icon.icon-gold { background: #b8862f; }
+.svch-icon.icon-blue { background: #2f4a6e; }
+.svch-num { font-family: var(--serif); font-size: 20px; color: #6d675c; margin: 0 0 6px; }
+.svch-card h2 { font-size: 21px; position: relative; padding-bottom: 12px; margin-bottom: 14px; }
+.svch-card h2::after { content: ''; position: absolute; left: 0; bottom: 0; width: 40px; height: 2px; background: var(--gold); }
+.svch-desc { font-size: 12.5px; color: #55524b; margin-bottom: 18px; }
+.svch-include { color: var(--gold-dark); font-weight: 700; font-size: 12px; margin-bottom: 10px; }
+.svch-list { list-style: none; margin: 0 0 24px; padding: 0; }
+.svch-list li { position: relative; padding-left: 16px; font-size: 12.5px; color: #4d514d; margin: 7px 0; }
+.svch-list li::before { content: ''; position: absolute; left: 0; top: 6px; width: 6px; height: 6px; border-radius: 50%; background: var(--gold); }
+.svch-card-img { margin: auto -26px 0; height: 110px; overflow: hidden; border-top: 1px solid var(--line); }
+.svch-card-img img { width: 100%; height: 100%; object-fit: cover; }
+.svch-how { padding: 64px 0 30px; }
+.svch-title { text-align: center; font-family: var(--serif); font-size: 24px; color: #243428; position: relative; padding-bottom: 14px; margin: 0 0 44px; }
+.svch-title::after { content: ''; position: absolute; left: 50%; transform: translateX(-50%); bottom: 0; width: 44px; height: 2px; background: var(--gold); }
+.svch-steps { display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px; }
+.svch-step { position: relative; text-align: center; padding: 0 8px; }
+.svch-step:not(:last-child)::after { content: '›'; position: absolute; right: -14px; top: 22px; color: var(--gold-dark); font-size: 18px; }
+.svch-step-icon { width: 56px; height: 56px; margin: 0 auto 14px; border: 1px solid #ddd6c8; border-radius: 50%; background: #fff; display: grid; place-items: center; }
+.c-green { color: #55703f; }
+.c-gold { color: #b8862f; }
+.c-blue { color: #2f4a6e; }
+.c-sage { color: #5a6f5c; }
+.svch-step b { display: block; font-family: var(--serif); color: var(--gold-dark); font-weight: 600; margin-bottom: 6px; }
+.svch-step h3 { font-family: var(--serif); font-size: 15px; color: #243428; margin: 0 0 8px; }
+.svch-step p { font-size: 11.5px; color: #5f655f; margin: 0; }
+.svch-who-sec { padding: 30px 0 40px; }
+.svch-who { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+.svch-who-card { display: grid; grid-template-columns: auto 1fr; gap: 14px; align-items: start; background: #f6f1e8; border: 1px solid var(--line); border-radius: 6px; padding: 20px; }
+.svch-icon.sm { width: 44px; height: 44px; }
+.svch-who-card h3 { font-family: var(--serif); font-size: 14.5px; color: #243428; margin: 0 0 6px; }
+.svch-who-card p { font-size: 11.5px; color: #5f655f; margin: 0; }
+.svch-cta-sec { padding-bottom: 30px; }
+.svch-cta { display: grid; grid-template-columns: auto 1.1fr 1fr auto; gap: 26px; align-items: center; background: #f3ede3; border: 1px solid var(--line); border-radius: 8px; padding: 22px 28px; }
+.svch-cta-icon { width: 52px; height: 52px; border-radius: 50%; background: #204d40; color: #fff; display: grid; place-items: center; }
+.svch-cta h3 { font-size: 19px; margin: 0; }
+.svch-cta p { font-size: 12px; color: #5f655f; margin: 0; }
+.svch-cta-actions { display: grid; gap: 10px; }
+.svch-btn-solid, .svch-btn-outline { display: inline-block; text-align: center; border-radius: 4px; padding: 11px 22px; font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+.svch-btn-solid { background: #204d40; color: #fff; }
+.svch-btn-outline { border: 1px solid #204d40; color: #204d40; background: transparent; }
+.svch-reg { background: #ece5d8; border-top: 1px solid var(--line); padding: 12px 0; }
+.svch-reg-inner { display: flex; align-items: center; gap: 14px; }
+.svch-reg-shield { flex: 0 0 auto; width: 30px; height: 30px; border: 1px solid var(--gold-dark); border-radius: 8px; color: var(--gold-dark); display: grid; place-items: center; }
+.svch-reg p { margin: 0; font-size: 10.5px; color: #5c625d; }
+.svch-reg-mark { margin-left: auto; color: var(--gold-dark); }
+@media (max-width: 1120px) {
+  .svch-steps { grid-template-columns: repeat(3, 1fr); gap: 30px 16px; }
+  .svch-step:not(:last-child)::after { display: none; }
+  .svch-who { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 900px) {
+  .svch-hero { grid-template-columns: 1fr; }
+  .svch-hero-photo { min-height: 320px; }
+  .svch-hero-copy { padding: 56px 22px 40px; }
+  .svch-pillars { grid-template-columns: 1fr; margin-top: 34px; }
+  .svch-cta { grid-template-columns: 1fr; }
+  .svch-who { grid-template-columns: 1fr; }
+}
