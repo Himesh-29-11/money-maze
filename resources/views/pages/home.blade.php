@@ -27,7 +27,7 @@
             </div>
         </div>
         <div class="hero-photo">
-            <img src="{{ asset('assets/mitali-profile.png') }}" alt="Mitali Mehta at her desk — good financial decisions today create freedom tomorrow" style="object-fit: cover; object-position: top center;">
+            <img src="{{ asset('assets/mitali-profile-black.png') }}" alt="Mitali Mehta at her desk — good financial decisions today create freedom tomorrow" style="object-fit: cover; object-position: top center;">
         </div>
     </div>
 </section>
