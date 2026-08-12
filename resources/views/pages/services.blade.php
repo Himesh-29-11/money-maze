@@ -9,7 +9,7 @@
         <div class="container hero-grid-v2">
             <div class="hero-text-col">
                 <p class="eyebrow">SERVICES</p>
-                <h1>A practical approach to investments, <span>taxation</span> and <span>financial organisation</span>.</h1>
+                <h1>A practical approach to <span class="t-sage">investments</span>, <span>taxation</span> and <span>financial organisation</span>.</h1>
                 <div class="hero-body-text">
                     <p>At Money Maze, I offer services across investment solutions, taxation and compliance, and financial organisation support for individuals and professionals.</p>
                     <p>The aim is to make important financial matters easier to manage — whether that involves investing, tax filings, GST-related work, or keeping financial records and information in better order.</p>
@@ -77,7 +77,7 @@
                 <div class="pillar-body-v2">
                     <p class="pillar-desc">Practical support with tax-related responsibilities and compliance requirements, with a focus on keeping the process smooth, timely and easier to manage.</p>
                     <div class="pillar-bullets-wrap">
-                        <h4>Tax includes:</h4>
+                        <h4>This includes:</h4>
                         <ul>
                             <li>Tax Planning</li>
                             <li>Income Tax Return Filing</li>
