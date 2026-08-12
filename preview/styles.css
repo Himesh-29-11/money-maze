@@ -677,3 +677,7 @@ body.about-page .primary-nav > a:not(.button) { color: #4d4a44; }
   .insi-archive { grid-template-columns: 1fr; }
   .insi-cta { grid-template-columns: 1fr; }
 }
+
+/* insights interactivity extras */
+.tag-blue { background: #e2ecf2; color: #355a70; }
+.isi-empty { font-size: 12px; color: var(--muted); text-align: center; padding: 14px 0 4px; }
