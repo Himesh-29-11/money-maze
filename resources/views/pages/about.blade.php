@@ -12,7 +12,7 @@
                 <p>Chartered Accountant, CFP professional, and founder of <strong>Money Maze</strong> — a practice built around thoughtful financial solutions, tax support and organised financial decision-making for individuals and professionals.</p>
             </div>
             <div class="ab-hero-photo">
-                <img src="{{ asset('assets/mitali-profile.png') }}" alt="Mitali Mehta, founder of Money Maze">
+                <img src="{{ asset('assets/crops/about-hero.jpg') }}" alt="Mitali Mehta, founder of Money Maze">
             </div>
         </div>
         <div class="ab-hero-right">
