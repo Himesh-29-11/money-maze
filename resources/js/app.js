@@ -41,28 +41,62 @@ function initNavigation() {
 
 function initInsightFilters() {
     const chips = document.querySelectorAll('[data-filter]');
-    const cards = document.querySelectorAll('.article-card[data-topic], .featured-insight-card[data-topic]');
-    const rows = document.querySelectorAll('.article-row[data-topic], .table-body-row[data-topic]');
+    const cards = document.querySelectorAll('.insi-card[data-topic]');
+    const rows = [...document.querySelectorAll('.article-row[data-topic]')];
     const search = document.getElementById('article-search');
+    const pager = document.getElementById('insi-pager');
+    const empty = document.querySelector('.insi-empty');
     if (!chips.length) return;
 
-    let activeFilter = 'all';
-    const update = () => {
+    const active = new Set();
+    const PAGE = 4;
+    let page = 1;
+
+    const matches = (el) => {
         const query = (search?.value || '').trim().toLowerCase();
-        [...cards, ...rows].forEach((item) => {
-            const topic = item.dataset.topic || '';
-            const text = item.dataset.search || item.textContent.toLowerCase();
-            const visible = (activeFilter === 'all' || topic.includes(activeFilter)) && (!query || text.includes(query));
-            item.classList.toggle('is-hidden', !visible);
-        });
+        const okTopic = active.size === 0 || active.has(el.dataset.topic);
+        const okQuery = !query || ((el.dataset.search || el.textContent.toLowerCase()).includes(query));
+        return okTopic && okQuery;
+    };
+
+    const update = () => {
+        cards.forEach((card) => card.classList.toggle('is-hidden', !matches(card)));
+        const visible = rows.filter(matches);
+        const pages = Math.max(1, Math.ceil(visible.length / PAGE));
+        if (page > pages) page = pages;
+        rows.forEach((row) => row.classList.add('is-hidden'));
+        visible.slice((page - 1) * PAGE, page * PAGE).forEach((row) => row.classList.remove('is-hidden'));
+        empty?.classList.toggle('is-hidden', visible.length > 0);
+        if (pager) {
+            pager.innerHTML = '';
+            for (let i = 1; i <= pages; i += 1) {
+                const button = document.createElement('button');
+                button.type = 'button';
+                button.textContent = i;
+                if (i === page) button.classList.add('is-active');
+                button.addEventListener('click', () => { page = i; update(); });
+                pager.appendChild(button);
+            }
+            if (pages > 1) {
+                const next = document.createElement('button');
+                next.type = 'button';
+                next.className = 'insi-next';
+                next.textContent = 'Next →';
+                next.addEventListener('click', () => { page = page < pages ? page + 1 : 1; update(); });
+                pager.appendChild(next);
+            }
+        }
     };
 
     chips.forEach((chip) => chip.addEventListener('click', () => {
-        activeFilter = chip.dataset.filter || 'all';
-        chips.forEach((item) => item.classList.toggle('is-selected', item === chip));
+        const filter = chip.dataset.filter;
+        if (active.has(filter)) active.delete(filter); else active.add(filter);
+        chip.classList.toggle('is-selected', active.has(filter));
+        page = 1;
         update();
     }));
-    search?.addEventListener('input', update);
+    search?.addEventListener('input', () => { page = 1; update(); });
+    update();
 }
 
 function initCalculator() {
