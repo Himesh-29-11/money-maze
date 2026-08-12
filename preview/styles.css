@@ -685,3 +685,73 @@ body.about-page .primary-nav > a:not(.button) { color: #4d4a44; }
 /* Unified navbar: about hero no longer sits under an overlay header */
 .about-v3 .ab-hero-copy { padding-top: 64px; }
 .about-v3 .ab-little-copy { padding-top: 48px; }
+
+/* ============ Media & Features — exact mockup page 5 UI ============ */
+.medi-hero { display: grid; grid-template-columns: minmax(0, 45fr) minmax(0, 55fr); background: linear-gradient(100deg, #faf7f1, #f6f1e8 60%, #f1e9dc); }
+.medi-hero-copy { padding: 80px 40px 70px max(32px, calc((100vw - 1180px) / 2)); }
+.medi-hero-copy h1 { font-size: clamp(40px, 4.2vw, 60px); margin-bottom: 20px; }
+.medi-lead { font-family: var(--serif); font-size: 17px; color: #3c4a3e; max-width: 440px; }
+.medi-hero-copy p:not(.eyebrow) { font-size: 12.5px; color: #4d554e; max-width: 450px; }
+.medi-hero-photo { position: relative; min-height: 420px; overflow: hidden; }
+.medi-hero-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; -webkit-mask-image: linear-gradient(to right, transparent 0, #000 22%); mask-image: linear-gradient(to right, transparent 0, #000 22%); }
+.medi-sec { padding: 46px 0 6px; }
+.medi-head { display: grid; grid-template-columns: auto auto 1fr auto; gap: 18px; align-items: center; margin-bottom: 26px; }
+.medi-head-icon { width: 44px; height: 44px; border-radius: 50%; background: #e4e9e0; color: #3f5a41; display: grid; place-items: center; }
+.medi-head h2 { font-family: var(--sans); font-size: 15px; font-weight: 700; letter-spacing: .1em; color: #2a3a2e; margin: 0; }
+.medi-head p { font-size: 11.5px; color: #5f655f; margin: 0; max-width: 520px; }
+.medi-view { border: 1px solid var(--line); background: #fff; border-radius: 6px; padding: 10px 16px; font-size: 11.5px; font-weight: 700; color: #2a2a2a; white-space: nowrap; }
+.medi-view span { color: var(--gold-dark); }
+.medi-interviews { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.medi-int-card { display: grid; grid-template-columns: 200px 1fr; gap: 18px; background: #fff; border: 1px solid var(--line); border-radius: 8px; padding: 14px; }
+.medi-int-img { border-radius: 6px; overflow: hidden; min-height: 200px; }
+.medi-int-img img { width: 100%; height: 100%; object-fit: cover; }
+.medi-label { color: var(--gold-dark); font-size: 10px; font-weight: 800; letter-spacing: .1em; margin: 0 0 8px; }
+.medi-int-body h3 { font-size: 16.5px; margin: 0 0 10px; }
+.medi-meta { display: flex; gap: 7px; align-items: center; font-size: 11px; color: #5f655f; margin: 0 0 6px; }
+.medi-desc { font-size: 11.5px; color: #55524b; margin: 8px 0 12px; }
+.medi-btn { display: inline-flex; gap: 8px; align-items: center; border: 1px solid #d9b98a; color: #a4762e; border-radius: 6px; padding: 8px 14px; font-size: 11px; font-weight: 700; background: #fff; }
+.medi-videos { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; }
+.medi-vid-card { background: #fff; border: 1px solid var(--line); border-radius: 8px; padding: 10px 10px 14px; display: flex; flex-direction: column; gap: 8px; }
+.medi-vid-img { border-radius: 5px; overflow: hidden; height: 92px; }
+.medi-vid-img img { width: 100%; height: 100%; object-fit: cover; }
+.medi-vid-card h3 { font-family: var(--sans); font-weight: 700; font-size: 12.5px; color: #232323; margin: 2px 0 0; min-height: 32px; }
+.medi-vid-card p { font-size: 10.5px; color: #6a706a; margin: 0 0 6px; }
+.medi-vid-card .medi-btn { margin-top: auto; align-self: flex-start; }
+.medi-pods { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.medi-pod-card { background: #fff; border: 1px solid var(--line); border-radius: 8px; padding: 14px; display: flex; flex-direction: column; gap: 12px; }
+.medi-pod-top { display: grid; grid-template-columns: 110px 1fr; gap: 14px; }
+.medi-pod-img { border-radius: 6px; overflow: hidden; height: 105px; }
+.medi-pod-img img { width: 100%; height: 100%; object-fit: cover; }
+.medi-pod-card h3 { font-size: 14px; margin: 0 0 6px; }
+.medi-sub { font-size: 10.5px; color: #6a706a; margin: 0 0 6px; }
+.medi-pod-card .medi-btn { align-self: flex-start; }
+.medi-logos { display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; }
+.medi-logo-tile { background: #fff; border: 1px solid var(--line); border-radius: 8px; min-height: 110px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; padding: 14px 8px; text-align: center; }
+.lg-nc { color: #1c3f9e; font-weight: 900; font-size: 13px; line-height: 1.1; }
+.lg-nc-sub { color: #4d78d8; font-weight: 700; font-size: 9px; }
+.lg-ms { font-family: var(--serif); font-size: 15px; color: #1d1d1d; font-weight: 700; }
+.lg-cw { color: #b3261e; font-family: var(--serif); font-weight: 700; font-size: 13px; letter-spacing: .04em; line-height: 1.2; }
+.lg-bg { color: #274b7a; font-family: var(--serif); font-weight: 700; font-size: 13px; line-height: 1.2; }
+.lg-ch { color: #e60012; font-family: var(--serif); font-weight: 800; font-size: 16px; }
+.lg-cap { font-size: 9.5px; color: #5f655f; line-height: 1.4; }
+.medi-cta-sec { padding: 40px 0 70px; }
+.medi-cta { display: grid; grid-template-columns: auto 1fr auto; gap: 26px; align-items: center; background: #efe9df; border-radius: 8px; padding: 24px 30px; }
+.medi-cta-icon { width: 54px; height: 54px; border-radius: 50%; background: #204d40; color: #fff; display: grid; place-items: center; }
+.medi-cta-copy h3 { font-size: 19px; margin: 0 0 6px; }
+.medi-cta-copy p { font-size: 12px; margin: 0; color: #55524b; }
+.medi-cta-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+@media (max-width: 1120px) {
+  .medi-videos { grid-template-columns: repeat(3, 1fr); }
+  .medi-logos { grid-template-columns: repeat(3, 1fr); }
+  .medi-pods { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 900px) {
+  .medi-hero { grid-template-columns: 1fr; }
+  .medi-hero-photo { min-height: 320px; }
+  .medi-hero-copy { padding: 56px 22px 40px; }
+  .medi-head { grid-template-columns: auto 1fr; }
+  .medi-head p, .medi-view { grid-column: 2; }
+  .medi-interviews, .medi-pods, .medi-videos, .medi-logos { grid-template-columns: 1fr; }
+  .medi-int-card { grid-template-columns: 1fr; }
+  .medi-cta { grid-template-columns: 1fr; }
+}
