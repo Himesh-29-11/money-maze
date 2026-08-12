@@ -2,19 +2,25 @@
 <footer class="site-footer">
     <div class="container footer-grid">
         <div class="footer-brand">
-            <a href="{{ route('home') }}" class="brand-logo-lockup brand-logo-lockup-footer" aria-label="Mitali Mehta Home">
-                <div class="logo-icon-wrap">
-                    <svg viewBox="0 0 100 100" width="46" height="46" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="50" cy="50" r="45" stroke="#ffffff" stroke-width="1.5"/>
-                        <circle cx="50" cy="50" r="40" stroke="#ffffff" stroke-width="0.75" stroke-dasharray="2 1"/>
-                        <text x="50" y="58" font-family="'Playfair Display', Georgia, serif" font-size="34" font-style="italic" fill="#ffffff" text-anchor="middle">M</text>
-                    </svg>
-                </div>
-                <div class="brand-text-wrap">
-                    <span class="brand-title" style="color: #ffffff;">MITALI MEHTA</span>
-                    <span class="brand-subtitle" style="color: #c8a25a;">Personal Finance Professional</span>
-                </div>
-            </a>
+            @if (request()->routeIs('home'))
+                <a href="{{ route('home') }}" class="brand-logo-lockup brand-logo-lockup-footer" aria-label="Mitali Mehta Home">
+                    <div class="logo-icon-wrap">
+                        <svg viewBox="0 0 100 100" width="46" height="46" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="50" cy="50" r="45" stroke="#ffffff" stroke-width="1.5"/>
+                            <circle cx="50" cy="50" r="40" stroke="#ffffff" stroke-width="0.75" stroke-dasharray="2 1"/>
+                            <text x="50" y="58" font-family="'Playfair Display', Georgia, serif" font-size="34" font-style="italic" fill="#ffffff" text-anchor="middle">M</text>
+                        </svg>
+                    </div>
+                    <div class="brand-text-wrap">
+                        <span class="brand-title" style="color: #ffffff;">MITALI MEHTA</span>
+                        <span class="brand-subtitle" style="color: #c8a25a;">Personal Finance Professional</span>
+                    </div>
+                </a>
+            @else
+                <a href="{{ route('home') }}" class="mm-logo-lockup mm-logo-lockup-footer" aria-label="Money Maze home">
+                    <img class="mm-logo-img mm-logo-img-light" src="{{ asset('assets/money-maze-logo.png') }}" alt="Money Maze — Paving Your Financial Path">
+                </a>
+            @endif
             <p class="brand-footer-motto">Clarity today. Freedom tomorrow.</p>
         </div>
         <div>
@@ -23,6 +29,8 @@
                 <a href="{{ route('home') }}">Home</a>
                 <a href="{{ route('about') }}">About Me</a>
                 <a href="{{ route('services') }}">Services</a>
+                <a href="{{ route('insights') }}">Insights</a>
+                <a href="{{ route('media') }}">Media & Features</a>
                 <a href="{{ route('resources') }}">Resources</a>
                 <a href="{{ route('testimonials') }}">Testimonials</a>
                 <a href="{{ route('contact') }}">Contact</a>
