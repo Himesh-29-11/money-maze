@@ -7133,3 +7133,6 @@ p {
   .res2-note { grid-template-columns: 1fr; }
   .res2-cta { grid-template-columns: 1fr; }
 }
+
+/* tighten footer gap to main content */
+.site-footer { margin-top: 0; padding-top: 44px; }

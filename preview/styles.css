@@ -926,3 +926,6 @@ body.about-page .primary-nav > a:not(.button) { color: #4d4a44; }
   .res2-note { grid-template-columns: 1fr; }
   .res2-cta { grid-template-columns: 1fr; }
 }
+
+/* tighten footer gap to main content */
+.site-footer { margin-top: 0; padding-top: 44px; }
