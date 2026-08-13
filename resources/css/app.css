@@ -7199,3 +7199,13 @@ p {
   .bok-sample-card img { height: 240px; }
   .res2-hero-copy h1, .insi-hero-copy h1, .medi-hero-copy h1, .bok-hero-copy h1 { font-size: 34px; }
 }
+
+/* Services steps: connecting line + arrow between steps (mockup style) */
+.svch-step:not(:last-child)::before { content: ''; position: absolute; top: 27px; left: calc(50% + 38px); right: calc(-50% + 38px); height: 1px; background: #d9d2c4; }
+.svch-step:not(:last-child)::after { top: 19px; right: calc(-50% + 30px); font-size: 15px; }
+@media (max-width: 1120px) { .svch-step:not(:last-child)::before { left: calc(50% + 34px); right: calc(-50% + 34px); } }
+@media (max-width: 900px) { .svch-step:not(:last-child)::before, .svch-step:not(:last-child)::after { display: none; } }
+
+/* Resources note imagery polish */
+.res2-note-img img { height: 170px; object-fit: cover; box-shadow: 0 8px 20px rgba(60, 45, 24, .12); }
+.res2-plant-img img { height: 150px; object-fit: contain; }
