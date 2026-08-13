@@ -5,6 +5,7 @@
 <div class="card">
 <form method="POST" action="{{ $testimonial ? route('admin.testimonials.update', $testimonial) : route('admin.testimonials.store') }}">
 @csrf
+@if ($testimonial) @method('PUT') @endif
 <label>Quote<textarea name="quote" required>{{ old('quote', $testimonial?->quote) }}</textarea></label>
 <div class="grid2">
     <label>Author<input type="text" name="author" value="{{ old('author', $testimonial?->author) }}" required></label>
