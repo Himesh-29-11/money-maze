@@ -113,8 +113,8 @@ class PageController extends Controller
             'regulatoryNote' => 'Mitali Mehta is a SEBI-registered Mutual Fund Distributor. Mutual fund investments are subject to market risks; please read all scheme-related documents carefully before investing.',
             'sc' => $this->contentMap(),
             'navLinks' => $this->navLinks(),
-            'testimonials' => $this->testimonials(),
-            'books' => $this->books(),
+            'testimonials' => $this->testimonialsData(),
+            'books' => $this->booksData(),
             'mediaEntries' => $this->mediaEntries(),
         ];
     }
@@ -140,7 +140,7 @@ class PageController extends Controller
         }
     }
 
-    private function testimonials(): array
+    private function testimonialsData(): array
     {
         try {
             return \App\Models\Testimonial::query()->orderBy('sort')->get()->map(fn ($t) => [
@@ -151,7 +151,7 @@ class PageController extends Controller
         }
     }
 
-    private function books(): array
+    private function booksData(): array
     {
         try {
             return \App\Models\Book::query()->orderBy('sort')->get()->map(fn ($b) => [
