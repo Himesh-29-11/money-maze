@@ -327,7 +327,7 @@ function initBookModal() {
     document.body.appendChild(modal);
 
     const open = (id) => {
-        const book = bookData[id];
+        const book = Object.assign({}, bookData[id], (window.MM_BOOKS || {})[id]);
         if (!book) return;
         modal.querySelector('img').src = book.img;
         modal.querySelector('img').alt = book.title;

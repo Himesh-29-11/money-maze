@@ -1,5 +1,5 @@
 @php
-    $links = [
+    $defaultLinks = [
         ['label' => 'Home', 'href' => route('home')],
         ['label' => 'About', 'href' => route('about')],
         ['label' => 'Services', 'href' => route('services')],
@@ -10,6 +10,9 @@
         ['label' => 'Resources', 'href' => route('resources')],
         ['label' => 'Contact', 'href' => route('contact')],
     ];
+    $links = ! empty($navLinks ?? [])
+        ? collect($navLinks)->map(fn ($l) => ['label' => $l['label'], 'href' => $l['url']])->all()
+        : $defaultLinks;
 @endphp
 <header class="site-header">
     <div class="container nav-shell">

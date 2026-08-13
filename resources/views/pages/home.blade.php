@@ -7,11 +7,11 @@
 <section class="hero hero-home">
     <div class="hero-grid">
         <div class="hero-content">
-            <p class="eyebrow">CLARITY. STRUCTURE. CONFIDENCE.</p>
-            <h1>Navigate Life’s Financial Decisions with Confidence.</h1>
+            <p class="eyebrow">{{ $sc['home.eyebrow'] ?? 'CLARITY. STRUCTURE. CONFIDENCE.' }}</p>
+            <h1>{{ $sc['home.title'] ?? 'Navigate Life’s Financial Decisions with Confidence.' }}</h1>
             <div class="gold-rule"></div>
-            <h2 class="hero-byline">Mitali Mehta, CA, CFP®</h2>
-            <p class="hero-lead">Chartered Accountant and Personal Finance Professional helping individuals, professionals and NRIs navigate taxation, investments and financial decisions with clarity, structure and a long-term perspective.</p>
+            <h2 class="hero-byline">{{ $sc['home.byline'] ?? 'Mitali Mehta, CA, CFP®' }}</h2>
+            <p class="hero-lead">{{ $sc['home.lead'] ?? 'Chartered Accountant and Personal Finance Professional helping individuals, professionals and NRIs navigate taxation, investments and financial decisions with clarity, structure and a long-term perspective.' }}</p>
             <div class="hero-actions">
                 <a href="{{ route('contact') }}" class="button button-primary">Let's Connect <span class="arrow-icon">→</span></a>
                 <a href="{{ route('services') }}" class="button button-outline">Explore Services</a>
@@ -23,7 +23,7 @@
                         <path d="M9 11l2 2 4-4"/>
                     </svg>
                 </span>
-                <p>Mutual fund distribution services are offered as a SEBI-registered Mutual Fund Distributor. Other financial products and professional services are offered through the practice as applicable.</p>
+                <p>{{ $sc['home.regulatory'] ?? 'Mutual fund distribution services are offered as a SEBI-registered Mutual Fund Distributor. Other financial products and professional services are offered through the practice as applicable.' }}</p>
             </div>
         </div>
         <div class="hero-photo">
