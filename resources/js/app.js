@@ -300,11 +300,65 @@ function initLightbox() {
     });
 }
 
+const bookData = {
+    b1: {
+        title: 'Planning in Your 40s', sub: 'Building Strength for the Future', img: '/assets/crops/books2-s1.jpg',
+        toc: ['Why your 40s are the pivot decade', 'Taking stock: income, expenses and what’s left', 'Setting goals that fit your real life', 'Building the retirement corpus engine', 'Balancing children’s goals with your own', 'Insurance and protection check-up', 'Your 10-year action plan'],
+        excerpt: '“The 40s are where retirement stops being an abstract idea and becomes a plan. The decisions of this decade — how much you save, what you protect and what you ignore — quietly decide how your 60s will feel.”',
+    },
+    b2: {
+        title: 'Retirement Income That Lasts', sub: 'From Corpus to Cash Flow', img: '/assets/crops/books2-s2.jpg',
+        toc: ['Thinking in cash flow, not corpus', 'Estimating your real retirement expenses', 'Inflation: the quiet risk', 'Income buckets: liquidity, stability, growth', 'Withdrawal strategies and safe rates', 'Buffering health shocks', 'Making money last as long as you do'],
+        excerpt: '“A corpus is only a number until it becomes income. The real question of retirement is not what you accumulate — it is whether what you built can pay you, reliably, for as long as you need it to.”',
+    },
+    b3: {
+        title: 'Purpose, Identity & Well-being', sub: 'The Non-Financial Side of Retirement', img: '/assets/crops/books2-s3.jpg',
+        toc: ['Retirement is a life transition, not a financial event', 'Identity after work: who are you now?', 'Rebuilding routine and rhythm', 'Relationships, family and changing roles', 'Health, energy and emotional well-being', 'Purpose, contribution and legacy', 'Designing your ideal week'],
+        excerpt: '“Many people prepare for the money side of retirement and nobody prepares them for the morning side — the quiet weekdays, the shifted identity, the search for meaning. This chapter is about that morning.”',
+    },
+};
+
+function initBookModal() {
+    if (!document.querySelector('[data-book]')) return;
+    const modal = document.createElement('div');
+    modal.id = 'mm-book-modal';
+    modal.className = 'mm-book-modal is-hidden';
+    modal.innerHTML = '<div class="mm-bm-backdrop"></div><div class="mm-bm-frame"><button class="mm-lightbox-close" aria-label="Close">×</button><div class="mm-bm-grid"><div class="mm-bm-cover"><img alt=""></div><div class="mm-bm-body"><p class="bok-eyebrow">BOOK PREVIEW</p><h3></h3><p class="mm-bm-sub"></p><p class="mm-bm-label">Inside this book</p><ol class="mm-bm-toc"></ol><p class="mm-bm-excerpt"></p><div class="mm-bm-actions"><a class="svch-btn-solid" href="/contact">Get the Book</a><button type="button" class="svch-btn-outline mm-bm-close2">Close</button></div></div></div></div>';
+    document.body.appendChild(modal);
+
+    const open = (id) => {
+        const book = bookData[id];
+        if (!book) return;
+        modal.querySelector('img').src = book.img;
+        modal.querySelector('img').alt = book.title;
+        modal.querySelector('h3').textContent = book.title;
+        modal.querySelector('.mm-bm-sub').textContent = book.sub;
+        modal.querySelector('.mm-bm-toc').innerHTML = book.toc.map((t) => `<li>${t}</li>`).join('');
+        modal.querySelector('.mm-bm-excerpt').textContent = book.excerpt;
+        modal.classList.remove('is-hidden');
+        document.body.style.overflow = 'hidden';
+    };
+    const close = () => {
+        modal.classList.add('is-hidden');
+        document.body.style.overflow = '';
+    };
+
+    document.addEventListener('click', (event) => {
+        const trigger = event.target.closest('[data-book]');
+        if (trigger) { open(trigger.dataset.book); return; }
+        if (event.target.closest('.mm-lightbox-close') || event.target.closest('.mm-bm-close2') || event.target.classList.contains('mm-bm-backdrop')) close();
+    });
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && !modal.classList.contains('is-hidden')) close();
+    });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     initNavigation();
     initInsightFilters();
     initCalculator();
     initLightbox();
+    initBookModal();
 });
 
 export { annuityDue, formatted };
