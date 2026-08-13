@@ -41,28 +41,62 @@ function initNavigation() {
 
 function initInsightFilters() {
     const chips = document.querySelectorAll('[data-filter]');
-    const cards = document.querySelectorAll('.article-card[data-topic], .featured-insight-card[data-topic]');
-    const rows = document.querySelectorAll('.article-row[data-topic], .table-body-row[data-topic]');
+    const cards = document.querySelectorAll('.insi-card[data-topic]');
+    const rows = [...document.querySelectorAll('.article-row[data-topic]')];
     const search = document.getElementById('article-search');
+    const pager = document.getElementById('insi-pager');
+    const empty = document.querySelector('.insi-empty');
     if (!chips.length) return;
 
-    let activeFilter = 'all';
-    const update = () => {
+    const active = new Set();
+    const PAGE = 4;
+    let page = 1;
+
+    const matches = (el) => {
         const query = (search?.value || '').trim().toLowerCase();
-        [...cards, ...rows].forEach((item) => {
-            const topic = item.dataset.topic || '';
-            const text = item.dataset.search || item.textContent.toLowerCase();
-            const visible = (activeFilter === 'all' || topic.includes(activeFilter)) && (!query || text.includes(query));
-            item.classList.toggle('is-hidden', !visible);
-        });
+        const okTopic = active.size === 0 || active.has(el.dataset.topic);
+        const okQuery = !query || ((el.dataset.search || el.textContent.toLowerCase()).includes(query));
+        return okTopic && okQuery;
+    };
+
+    const update = () => {
+        cards.forEach((card) => card.classList.toggle('is-hidden', !matches(card)));
+        const visible = rows.filter(matches);
+        const pages = Math.max(1, Math.ceil(visible.length / PAGE));
+        if (page > pages) page = pages;
+        rows.forEach((row) => row.classList.add('is-hidden'));
+        visible.slice((page - 1) * PAGE, page * PAGE).forEach((row) => row.classList.remove('is-hidden'));
+        empty?.classList.toggle('is-hidden', visible.length > 0);
+        if (pager) {
+            pager.innerHTML = '';
+            for (let i = 1; i <= pages; i += 1) {
+                const button = document.createElement('button');
+                button.type = 'button';
+                button.textContent = i;
+                if (i === page) button.classList.add('is-active');
+                button.addEventListener('click', () => { page = i; update(); });
+                pager.appendChild(button);
+            }
+            if (pages > 1) {
+                const next = document.createElement('button');
+                next.type = 'button';
+                next.className = 'insi-next';
+                next.textContent = 'Next →';
+                next.addEventListener('click', () => { page = page < pages ? page + 1 : 1; update(); });
+                pager.appendChild(next);
+            }
+        }
     };
 
     chips.forEach((chip) => chip.addEventListener('click', () => {
-        activeFilter = chip.dataset.filter || 'all';
-        chips.forEach((item) => item.classList.toggle('is-selected', item === chip));
+        const filter = chip.dataset.filter;
+        if (active.has(filter)) active.delete(filter); else active.add(filter);
+        chip.classList.toggle('is-selected', active.has(filter));
+        page = 1;
         update();
     }));
-    search?.addEventListener('input', update);
+    search?.addEventListener('input', () => { page = 1; update(); });
+    update();
 }
 
 function initCalculator() {
@@ -218,10 +252,59 @@ function initSwp() {
     calculate();
 }
 
+function initLightbox() {
+    const triggers = document.querySelectorAll('[data-lightbox]');
+    if (!triggers.length) return;
+
+    const box = document.createElement('div');
+    box.id = 'mm-lightbox';
+    box.className = 'mm-lightbox is-hidden';
+    box.innerHTML = '<div class="mm-lightbox-backdrop"></div><figure class="mm-lightbox-frame"><button class="mm-lightbox-close" aria-label="Close">×</button><button class="mm-lightbox-prev" aria-label="Previous">‹</button><img alt=""><button class="mm-lightbox-next" aria-label="Next">›</button><figcaption class="mm-lightbox-caption"></figcaption></figure>';
+    document.body.appendChild(box);
+
+    const img = box.querySelector('img');
+    const caption = box.querySelector('figcaption');
+    let list = [];
+    let index = 0;
+
+    const show = () => {
+        const el = list[index];
+        img.src = el.getAttribute('src');
+        img.alt = el.getAttribute('alt') || '';
+        caption.textContent = `${index + 1} / ${list.length} — ${el.getAttribute('alt') || ''}`;
+    };
+    const open = (el) => {
+        list = [...document.querySelectorAll(`[data-lightbox][data-group="${el.dataset.group}"]`)];
+        index = list.indexOf(el);
+        show();
+        box.classList.remove('is-hidden');
+        document.body.style.overflow = 'hidden';
+    };
+    const close = () => {
+        box.classList.add('is-hidden');
+        document.body.style.overflow = '';
+    };
+
+    document.addEventListener('click', (event) => {
+        const trigger = event.target.closest('[data-lightbox]');
+        if (trigger) { event.preventDefault(); open(trigger); return; }
+        if (event.target.closest('.mm-lightbox-close') || event.target.classList.contains('mm-lightbox-backdrop')) { close(); return; }
+        if (event.target.closest('.mm-lightbox-prev')) { index = (index - 1 + list.length) % list.length; show(); return; }
+        if (event.target.closest('.mm-lightbox-next')) { index = (index + 1) % list.length; show(); }
+    });
+    document.addEventListener('keydown', (event) => {
+        if (box.classList.contains('is-hidden')) return;
+        if (event.key === 'Escape') close();
+        if (event.key === 'ArrowLeft') { index = (index - 1 + list.length) % list.length; show(); }
+        if (event.key === 'ArrowRight') { index = (index + 1) % list.length; show(); }
+    });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     initNavigation();
     initInsightFilters();
     initCalculator();
+    initLightbox();
 });
 
 export { annuityDue, formatted };
