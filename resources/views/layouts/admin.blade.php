@@ -11,7 +11,7 @@
         .adm-wrap { display:grid; grid-template-columns:240px 1fr; min-height:100vh; }
         .adm-side { background:var(--forest); color:#e8e2d4; padding:22px 0; position:sticky; top:0; height:100vh; }
         .adm-brand { display:flex; gap:10px; align-items:center; padding:0 20px 20px; border-bottom:1px solid rgba(255,255,255,.12); }
-        .adm-brand img { height:38px; filter:brightness(1.4); }
+        .adm-brand img { height:55px; filter:brightness(-1); }
         .adm-brand b { font-size:15px; letter-spacing:.06em; color:#fff; display:block; }
         .adm-brand small { color:var(--gold); font-size:10px; letter-spacing:.12em; text-transform:uppercase; }
         .adm-nav { padding:16px 0; }
@@ -54,7 +54,7 @@
 <div class="adm-wrap">
     <aside class="adm-side">
         <div class="adm-brand">
-            <img src="{{ asset('assets/money-maze-logo.png') }}" alt="Money Maze">
+            <img src="{{ asset('assets/mm-logo.png') }}" alt="Money Maze">
         </div>
         <nav class="adm-nav">
             <a href="{{ route('admin.dashboard') }}" class="{{ request()->routeIs('admin.dashboard') ? 'on' : '' }}"><span class="dot"></span> Dashboard</a>
