@@ -18,8 +18,8 @@
         <div class="ab-hero-right">
             <div class="ab-little-copy">
                 <h2 class="ab-h2">A little about me</h2>
-                <p>I am a finance professional with a background across personal finance, taxation and financial organisation, and the founder of <strong>Money Maze</strong>.</p>
-                <p>Over the years, I have come to value one thing deeply: most people do not need more noise around money — they need more structure, more context and a more organised way of looking at their finances.</p>
+                <p>{!! $sc['about.little_p1'] ?? 'I am a finance professional with a background across personal finance, taxation and financial organisation, and the founder of <strong>Money Maze</strong>.' !!}</p>
+                <p>{{ $sc['about.little_p2'] ?? 'Over the years, I have come to value one thing deeply: most people do not need more noise around money — they need more structure, more context and a more organised way of looking at their finances.' }}</p>
                 <p>That belief is what shaped <strong>Money Maze</strong>.</p>
                 <p>My work today brings together multiple parts of an individual's financial life — from investment solutions and tax-related support to financial organisation and practical money conversations — with the aim of making the overall process feel more structured, more thoughtful and easier to navigate.</p>
             </div>
@@ -38,8 +38,8 @@
             <div class="ab-col-copy">
                 <h2 class="ab-h2">Why “Money Maze”?</h2>
                 <p class="ab-lead">Because for many people, money can genuinely feel like a maze.</p>
-                <p>There is often too much information, too many opinions, too many products, too many moving parts — and not enough clarity on what deserves attention, what can wait, and how different financial pieces fit together.</p>
-                <p>Money Maze was built around the idea of making that journey feel more organised and less intimidating.</p>
+                <p>{{ $sc['about.maze_p2'] ?? 'There is often too much information, too many opinions, too many products, too many moving parts — and not enough clarity on what deserves attention, what can wait, and how different financial pieces fit together.' }}</p>
+                <p>{{ $sc['about.maze_p3'] ?? 'Money Maze was built around the idea of making that journey feel more organised and less intimidating.' }}</p>
                 <p>It reflects the kind of work I value — thoughtful, practical, grounded and focused on helping clients navigate financial complexity with more confidence and better structure.</p>
             </div>
         </div>
@@ -65,8 +65,8 @@
             </div>
             <div class="ab-cap-copy">
                 <h2 class="ab-h2">Current Professional Capacity</h2>
-                <p>I am a SEBI-registered Mutual Fund Distributor (MFD).</p>
-                <p>My work includes facilitating access to mutual fund solutions and supporting clients with broader financial organisation, tax planning and related financial matters in a practical and structured manner.</p>
+                <p>{{ $sc['about.capacity_p1'] ?? 'I am a SEBI-registered Mutual Fund Distributor (MFD).' }}</p>
+                <p>{{ $sc['about.capacity_p2'] ?? 'My work includes facilitating access to mutual fund solutions and supporting clients with broader financial organisation, tax planning and related financial matters in a practical and structured manner.' }}</p>
             </div>
         </div>
     </section>
@@ -88,7 +88,7 @@
         <div class="ab-matters">
             <div class="ab-col-copy">
                 <h2 class="ab-h2">What matters to me</h2>
-                <p>One of the things I value most about this profession is the opportunity to be part of meaningful financial journeys — whether that involves putting structure around finances, handling important compliance work, or simply being a steady point of contact in an area that often feels overwhelming.</p>
+                <p>{{ $sc['about.matters_p1'] ?? 'One of the things I value most about this profession is the opportunity to be part of meaningful financial journeys — whether that involves putting structure around finances, handling important compliance work, or simply being a steady point of contact in an area that often feels overwhelming.' }}</p>
                 <p>To me, good financial work is not just about products or paperwork. It is also about trust, consistency, responsibility and bringing order to something that affects such an important part of people's lives.</p>
             </div>
             <div class="ab-side-img">
