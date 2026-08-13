@@ -5,6 +5,7 @@
 <div class="card">
 <form method="POST" action="{{ $article ? route('admin.articles.update', $article) : route('admin.articles.store') }}">
 @csrf
+@if ($article) @method('PUT') @endif
 <div class="grid2">
     <label>Title<input type="text" name="title" value="{{ old('title', $article?->title) }}" required></label>
     <label>Topic<input type="text" name="topic" value="{{ old('topic', $article?->topic) }}"></label>

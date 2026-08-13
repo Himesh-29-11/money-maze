@@ -5,6 +5,7 @@
 <div class="card">
 <form method="POST" action="{{ $entry ? route('admin.media.update', $entry) : route('admin.media.store') }}">
 @csrf
+@if ($entry) @method('PUT') @endif
 <div class="grid2">
     <label>Type<select name="type"><option value="interview" {{ old('type', $entry?->type) === 'interview' ? 'selected' : '' }}>Television interview</option><option value="video" {{ old('type', $entry?->type) === 'video' ? 'selected' : '' }}>Video</option><option value="podcast" {{ old('type', $entry?->type) === 'podcast' ? 'selected' : '' }}>Podcast</option><option value="feature" {{ old('type', $entry?->type) === 'feature' ? 'selected' : '' }}>Featured-in tile</option></select></label>
     <label>Label (e.g. POCKET MONEY)<input type="text" name="label" value="{{ old('label', $entry?->label) }}"></label>

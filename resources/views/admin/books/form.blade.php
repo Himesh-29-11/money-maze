@@ -5,6 +5,7 @@
 <div class="card">
 <form method="POST" action="{{ $book ? route('admin.books.update', $book) : route('admin.books.store') }}">
 @csrf
+@if ($book) @method('PUT') @endif
 <div class="grid2">
     <label>Key (slug)<input type="text" name="key" value="{{ old('key', $book?->key) }}" required></label>
     <label>Title<input type="text" name="title" value="{{ old('title', $book?->title) }}" required></label>
