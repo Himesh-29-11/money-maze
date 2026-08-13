@@ -2,25 +2,9 @@
 <footer class="site-footer">
     <div class="container footer-grid">
         <div class="footer-brand">
-            @if (request()->routeIs('home'))
-                <a href="{{ route('home') }}" class="brand-logo-lockup brand-logo-lockup-footer" aria-label="Mitali Mehta Home">
-                    <div class="logo-icon-wrap">
-                        <svg viewBox="0 0 100 100" width="46" height="46" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <circle cx="50" cy="50" r="45" stroke="#ffffff" stroke-width="1.5"/>
-                            <circle cx="50" cy="50" r="40" stroke="#ffffff" stroke-width="0.75" stroke-dasharray="2 1"/>
-                            <text x="50" y="58" font-family="'Playfair Display', Georgia, serif" font-size="34" font-style="italic" fill="#ffffff" text-anchor="middle">M</text>
-                        </svg>
-                    </div>
-                    <div class="brand-text-wrap">
-                        <span class="brand-title" style="color: #ffffff;">MITALI MEHTA</span>
-                        <span class="brand-subtitle" style="color: #c8a25a;">Personal Finance Professional</span>
-                    </div>
-                </a>
-            @else
-                <a href="{{ route('home') }}" class="mm-logo-lockup mm-logo-lockup-footer" aria-label="Money Maze home">
-                    <img class="mm-logo-img mm-logo-img-light" src="{{ asset('assets/mm-logo1.png') }}" alt="Money Maze — Paving Your Financial Path">
-                </a>
-            @endif
+            <a href="{{ route('home') }}" class="mm-logo-lockup mm-logo-lockup-footer" aria-label="Money Maze home">
+                <img class="mm-logo-img mm-logo-footer" src="{{ asset('assets/money-maze-logo-footer.png') }}" alt="Money Maze — Paving Your Financial Path">
+            </a>
             <p class="brand-footer-motto">Clarity today. Freedom tomorrow.</p>
         </div>
         <div>

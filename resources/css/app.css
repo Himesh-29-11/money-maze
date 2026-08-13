@@ -7019,3 +7019,7 @@ p {
   .bok-inside, .bok-split { grid-template-columns: 1fr; }
   .bok-cta { grid-template-columns: 1fr; }
 }
+
+/* transparent logo in every footer */
+.mm-logo-footer { height: 58px; filter: none; }
+.footer-brand .brand-footer-motto { margin: 14px 0 0; }
