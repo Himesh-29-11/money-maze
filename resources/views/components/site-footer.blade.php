@@ -18,7 +18,7 @@
                 </a>
             @else
                 <a href="{{ route('home') }}" class="mm-logo-lockup mm-logo-lockup-footer" aria-label="Money Maze home">
-                    <img class="mm-logo-img mm-logo-img-light" src="{{ asset('assets/money-maze-logo.png') }}" alt="Money Maze — Paving Your Financial Path">
+                    <img class="mm-logo-img mm-logo-img-light" src="{{ asset('assets/mm-logo1.png') }}" alt="Money Maze — Paving Your Financial Path">
                 </a>
             @endif
             <p class="brand-footer-motto">Clarity today. Freedom tomorrow.</p>
