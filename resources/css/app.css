@@ -7209,3 +7209,9 @@ p {
 /* Resources note imagery polish */
 .res2-note-img img { height: 170px; object-fit: cover; box-shadow: 0 8px 20px rgba(60, 45, 24, .12); }
 .res2-plant-img img { height: 150px; object-fit: contain; }
+
+/* Resources fidelity round 2 */
+.res2-qr, .res2-note { background: #f6f1e8; }
+.res2-head-icon { border-radius: 10px; background: #eef1e9; border: 1px solid var(--line); }
+.res2-cols .res2-panel { background: #fff; }
+.svch-btn-solid svg, .svch-btn-outline svg { flex: 0 0 auto; }
