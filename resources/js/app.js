@@ -252,10 +252,59 @@ function initSwp() {
     calculate();
 }
 
+function initLightbox() {
+    const triggers = document.querySelectorAll('[data-lightbox]');
+    if (!triggers.length) return;
+
+    const box = document.createElement('div');
+    box.id = 'mm-lightbox';
+    box.className = 'mm-lightbox is-hidden';
+    box.innerHTML = '<div class="mm-lightbox-backdrop"></div><figure class="mm-lightbox-frame"><button class="mm-lightbox-close" aria-label="Close">×</button><button class="mm-lightbox-prev" aria-label="Previous">‹</button><img alt=""><button class="mm-lightbox-next" aria-label="Next">›</button><figcaption class="mm-lightbox-caption"></figcaption></figure>';
+    document.body.appendChild(box);
+
+    const img = box.querySelector('img');
+    const caption = box.querySelector('figcaption');
+    let list = [];
+    let index = 0;
+
+    const show = () => {
+        const el = list[index];
+        img.src = el.getAttribute('src');
+        img.alt = el.getAttribute('alt') || '';
+        caption.textContent = `${index + 1} / ${list.length} — ${el.getAttribute('alt') || ''}`;
+    };
+    const open = (el) => {
+        list = [...document.querySelectorAll(`[data-lightbox][data-group="${el.dataset.group}"]`)];
+        index = list.indexOf(el);
+        show();
+        box.classList.remove('is-hidden');
+        document.body.style.overflow = 'hidden';
+    };
+    const close = () => {
+        box.classList.add('is-hidden');
+        document.body.style.overflow = '';
+    };
+
+    document.addEventListener('click', (event) => {
+        const trigger = event.target.closest('[data-lightbox]');
+        if (trigger) { event.preventDefault(); open(trigger); return; }
+        if (event.target.closest('.mm-lightbox-close') || event.target.classList.contains('mm-lightbox-backdrop')) { close(); return; }
+        if (event.target.closest('.mm-lightbox-prev')) { index = (index - 1 + list.length) % list.length; show(); return; }
+        if (event.target.closest('.mm-lightbox-next')) { index = (index + 1) % list.length; show(); }
+    });
+    document.addEventListener('keydown', (event) => {
+        if (box.classList.contains('is-hidden')) return;
+        if (event.key === 'Escape') close();
+        if (event.key === 'ArrowLeft') { index = (index - 1 + list.length) % list.length; show(); }
+        if (event.key === 'ArrowRight') { index = (index + 1) % list.length; show(); }
+    });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     initNavigation();
     initInsightFilters();
     initCalculator();
+    initLightbox();
 });
 
 export { annuityDue, formatted };
