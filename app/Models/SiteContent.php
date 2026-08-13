@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class SiteContent extends Model
 {
-    protected $fillable = ['page', 'key', 'label', 'type', 'value', 'sort'];
+    protected $fillable = ['page', 'section', 'key', 'label', 'type', 'value', 'sort'];
 }

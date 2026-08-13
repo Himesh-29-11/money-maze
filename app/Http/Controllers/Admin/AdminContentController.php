@@ -12,7 +12,7 @@ class AdminContentController extends Controller
 {
     public function index(): View
     {
-        $groups = SiteContent::query()->orderBy('page')->orderBy('sort')->get()->groupBy('page');
+        $groups = SiteContent::query()->orderBy('page')->orderBy('section')->orderBy('sort')->get()->groupBy('page')->map(fn ($items) => $items->groupBy('section'));
 
         return view('admin.content', ['groups' => $groups]);
     }

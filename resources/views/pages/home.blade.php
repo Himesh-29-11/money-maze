@@ -46,8 +46,8 @@
                     <path d="M15.5 3H19v3.5"/>
                 </svg>
             </div>
-            <h3>1. INVESTMENT SOLUTIONS</h3>
-            <p>Access to a range of investment solutions including mutual funds, fixed deposits, bonds, NCDs, GIFT City products and select opportunities, depending on client requirements and suitability.</p>
+            <h3>{{ $sc['home.pillar1_title'] ?? '1. INVESTMENT SOLUTIONS' }}</h3>
+            <p>{{ $sc['home.pillar1_text'] ?? 'Access to a range of investment solutions including mutual funds, fixed deposits, bonds, NCDs, GIFT City products and select opportunities, depending on client requirements and suitability.' }}</p>
             <a class="text-link" href="{{ route('services') }}">Learn More <span class="arrow-icon">→</span></a>
         </article>
         <article class="feature-card feature-card-tall">
@@ -65,8 +65,8 @@
                     <path d="M18.5 18.5h-0.01"/>
                 </svg>
             </div>
-            <h3>2. TAX PLANNING & COMPLIANCE</h3>
-            <p>Support with income tax returns, tax planning, GST registrations and GST return filings to keep your financial affairs organised, compliant and tax-efficient.</p>
+            <h3>{{ $sc['home.pillar2_title'] ?? '2. TAX PLANNING & COMPLIANCE' }}</h3>
+            <p>{{ $sc['home.pillar2_text'] ?? 'Support with income tax returns, tax planning, GST registrations and GST return filings to keep your financial affairs organised, compliant and tax-efficient.' }}</p>
             <a class="text-link" href="{{ route('services') }}">Learn More <span class="arrow-icon">→</span></a>
         </article>
         <article class="feature-card feature-card-tall">
@@ -76,8 +76,8 @@
                     <path d="M5.5 19.5c.8-3.4 3.3-5.2 6.5-5.2s5.7 1.8 6.5 5.2"/>
                 </svg>
             </div>
-            <h3>3. FINANCIAL ORGANISATION & PROFESSIONAL SUPPORT</h3>
-            <p>Practical support for salaried individuals and self-employed professionals across financial records, cash flow review, tax-ready documentation and better financial clarity.</p>
+            <h3>{{ $sc['home.pillar3_title'] ?? '3. FINANCIAL ORGANISATION & PROFESSIONAL SUPPORT' }}</h3>
+            <p>{{ $sc['home.pillar3_text'] ?? 'Practical support for salaried individuals and self-employed professionals across financial records, cash flow review, tax-ready documentation and better financial clarity.' }}</p>
             <a class="text-link" href="{{ route('services') }}">Learn More <span class="arrow-icon">→</span></a>
         </article>
     </div>
@@ -88,7 +88,7 @@
     <div class="container">
         <div class="section-title-divider">
             <span class="divider-line"></span>
-            <h2>WHY WORK WITH ME?</h2>
+            <h2>{{ $sc['home.why_title'] ?? 'WHY WORK WITH ME?' }}</h2>
             <span class="divider-line"></span>
         </div>
         <div class="value-grid">
@@ -165,7 +165,7 @@
 <!-- Credentials Section -->
 <section class="container credentials-section section-pad-sm">
     <div class="credentials-box">
-        <h3 class="credentials-title">PROFESSIONAL CREDENTIALS</h3>
+        <h3 class="credentials-title">{{ $sc['home.credentials_title'] ?? 'PROFESSIONAL CREDENTIALS' }}</h3>
         <div class="credential-flex-row">
             <div class="credential-badge-item">
                 <span class="badge-round">CA<sup>®</sup></span>
@@ -205,8 +205,8 @@ BI</span>
 <section class="container triple-feature section-pad">
     <!-- Insights & Articles -->
     <article class="mini-feature">
-        <h3 class="mini-feature-title">INSIGHTS & ARTICLES</h3>
-        <p class="mini-desc">Thoughtful articles and practical insights on personal finance, taxation and investments.</p>
+        <h3 class="mini-feature-title">{{ $sc['home.insights_title'] ?? 'INSIGHTS & ARTICLES' }}</h3>
+        <p class="mini-desc">{{ $sc['home.insights_text'] ?? 'Thoughtful articles and practical insights on personal finance, taxation and investments.' }}</p>
         <div class="insights-row-images">
             <img src="{{ asset('assets/crops/insights-1.jpg') }}" alt="Desk writing">
             <img src="{{ asset('assets/crops/insights-2.jpg') }}" alt="Newspaper">
@@ -217,8 +217,8 @@ BI</span>
 
     <!-- Featured In -->
     <article class="mini-feature">
-        <h3 class="mini-feature-title">FEATURED IN</h3>
-        <p class="mini-desc">Seen in leading publications and platforms.</p>
+        <h3 class="mini-feature-title">{{ $sc['home.featured_title'] ?? 'FEATURED IN' }}</h3>
+        <p class="mini-desc">{{ $sc['home.featured_text'] ?? 'Seen in leading publications and platforms.' }}</p>
         <div class="logos-badge-grid">
             <div class="logo-box">
                 <span class="zee-circle">ZEE</span><span class="logo-business">BUSINESS</span>
@@ -238,7 +238,7 @@ BI</span>
 
     <!-- What Clients Say -->
     <article class="mini-feature">
-        <h3 class="mini-feature-title">WHAT CLIENTS SAY</h3>
+        <h3 class="mini-feature-title">{{ $sc['home.clients_title'] ?? 'WHAT CLIENTS SAY' }}</h3>
         <div class="stars-rating">★★★★★</div>
         <div class="client-quote-block">
             <p class="quote-text">“Mitali explains complex financial concepts so simply. Her guidance has helped me make confident and well-informed decisions.”</p>
@@ -256,8 +256,8 @@ BI</span>
 <section class="conversation-section">
     <div class="conversation-banner-card">
         <div class="banner-content">
-            <h2>Let’s Start a Conversation</h2>
-            <p>Whether you need support with investments, taxation, financial organisation or simply want greater clarity around your finances, I would be happy to connect.</p>
+            <h2>{{ $sc['home.cta_title'] ?? 'Let’s Start a Conversation' }}</h2>
+            <p>{{ $sc['home.cta_text'] ?? 'Whether you need support with investments, taxation, financial organisation or simply want greater clarity around your finances, I would be happy to connect.' }}</p>
             <a href="{{ route('contact') }}" class="button button-primary banner-cta-btn">Let's Connect <span class="arrow-icon">→</span></a>
         </div>
     </div>
