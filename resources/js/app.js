@@ -364,7 +364,7 @@ function initArchiveTools() {
     if (!rows.length && !cards.length) return;
     const matches = (el) => {
         const q = (search?.value || '').toLowerCase();
-        const okT = !selTopic?.value || el.dataset.topic === selTopic.value.toLowerCase();
+        const okT = !selTopic?.value || (el.dataset.topic || '').includes(selTopic.value.toLowerCase());
         const okPub = !selPub?.value || el.dataset.pub === selPub.value;
         const okY = !selYear?.value || (el.dataset.date || '').startsWith(selYear.value);
         const okQ = !q || ((el.dataset.search || el.textContent.toLowerCase()).includes(q));

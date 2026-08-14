@@ -42,13 +42,14 @@ class PageController extends Controller
                     'english_url' => $a->english_url,
                     'gujarati_url' => $a->gujarati_url,
                     'image' => $a->image ? asset($a->image) : null,
+                    'iso' => $a->published_at?->format('Y-m-d'),
                 ])->all();
             }
         } catch (\Throwable) {
             // fall through to static list
         }
 
-        return collect($this->articles())->map(fn ($a, $i) => $a + ['image' => asset('assets/crops/insights2-'.($i % 6 + 1).'.jpg')])->all();
+        return collect($this->articles())->map(fn ($a, $i) => $a + ['image' => asset('assets/crops/insights2-'.($i % 6 + 1).'.jpg'), 'iso' => date('Y-m-d', strtotime($a['date']))])->all();
     }
 
     public function insightDetail(string $slug): View
