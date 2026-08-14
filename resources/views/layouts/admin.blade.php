@@ -72,12 +72,14 @@
             <a href="{{ route('admin.testimonials.index') }}" class="{{ request()->routeIs('admin.testimonials.*') ? 'on' : '' }}"><span class="dot"></span> Testimonials</a>
             <a href="{{ route('admin.links.index') }}" class="{{ request()->routeIs('admin.links.*') ? 'on' : '' }}"><span class="dot"></span> Navigation Links</a>
             <a href="{{ route('admin.messages') }}" class="{{ request()->routeIs('admin.messages') ? 'on' : '' }}"><span class="dot"></span> Messages</a>
+            <a href="{{ route('admin.content', ['page' => 'settings']) }}" class="{{ request()->routeIs('admin.content') && request()->query('page') === 'settings' ? 'on' : '' }}"><span class="dot"></span> Settings</a>
         </nav>
     </aside>
     <main class="adm-main">
         <div class="adm-top">
             <h1>@yield('heading', 'Dashboard')</h1>
             <div class="acts">
+                <span style="font-size:12px;color:#6e6e68;align-self:center;">Signed in as {{ auth()->user()?->name ?? 'Admin' }}</span>
                 <a class="btn btn-line" href="{{ url('/') }}">View site</a>
                 <form method="POST" action="{{ route('admin.logout') }}">@csrf<button class="btn btn-danger">Log out</button></form>
             </div>
