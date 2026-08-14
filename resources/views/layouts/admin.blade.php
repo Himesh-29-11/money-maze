@@ -86,6 +86,9 @@
         </div>
         @if (session('status'))<div class="flash">{{ session('status') }}</div>@endif
         @if ($errors->any())<div class="err">{{ $errors->first() }}</div>@endif
+        @if (! request()->routeIs('admin.dashboard'))
+        <div class="flash" style="background:#f4f1e8;border-color:#d8d2c2;color:#6e6e68;margin-bottom:16px;">Changes save to the database and appear instantly on the live Laravel site (the static design preview does not read the database).</div>
+    @endif
         @yield('content')
     </main>
 </div>
