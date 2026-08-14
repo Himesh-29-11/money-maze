@@ -353,12 +353,43 @@ function initBookModal() {
     });
 }
 
+function initArchiveTools() {
+    const rows = [...document.querySelectorAll('.article-row[data-topic]')];
+    const cards = [...document.querySelectorAll('.insi-card[data-topic]')];
+    const search = document.getElementById('article-search');
+    const selTopic = document.getElementById('insi-filter-topic');
+    const selPub = document.getElementById('insi-filter-pub');
+    const selYear = document.getElementById('insi-filter-year');
+    const selSort = document.getElementById('insi-sort');
+    if (!rows.length && !cards.length) return;
+    const matches = (el) => {
+        const q = (search?.value || '').toLowerCase();
+        const okT = !selTopic?.value || el.dataset.topic === selTopic.value.toLowerCase();
+        const okPub = !selPub?.value || el.dataset.pub === selPub.value;
+        const okY = !selYear?.value || (el.dataset.date || '').startsWith(selYear.value);
+        const okQ = !q || ((el.dataset.search || el.textContent.toLowerCase()).includes(q));
+        return okT && okPub && okY && okQ;
+    };
+    const apply = () => {
+        [...rows, ...cards].forEach((el) => el.classList.toggle('is-hidden', !matches(el)));
+    };
+    search?.addEventListener('input', apply);
+    [selTopic, selPub, selYear].forEach((x) => x?.addEventListener('change', apply));
+    selSort?.addEventListener('change', () => {
+        const dir = selSort.value === 'asc' ? 1 : -1;
+        const parent = rows[0]?.parentElement;
+        if (parent) [...rows].sort((a, b) => (a.dataset.date || '').localeCompare(b.dataset.date || '') * dir).forEach((r) => parent.appendChild(r));
+        apply();
+    });
+    apply();
+}
 document.addEventListener('DOMContentLoaded', () => {
     initNavigation();
     initInsightFilters();
     initCalculator();
     initLightbox();
     initBookModal();
+    initArchiveTools();
 });
 
 export { annuityDue, formatted };
