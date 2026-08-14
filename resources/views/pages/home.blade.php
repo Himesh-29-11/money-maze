@@ -34,55 +34,6 @@
 </section>
 
 <!-- Services Pillar Section -->
-<section class="container service-pillars section-pad-top">
-    <div class="card-grid card-grid-3">
-        <article class="feature-card feature-card-tall">
-            <div class="icon-disc icon-green">
-                <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M4 20h16"/>
-                    <path d="M7 20v-5"/>
-                    <path d="M12 20v-8"/>
-                    <path d="M17 20v-3"/>
-                    <path d="M6 10l4.5-4.5 3 3L19 3"/>
-                    <path d="M15.5 3H19v3.5"/>
-                </svg>
-            </div>
-            <h3>{{ $sc['home.pillar1_title'] ?? '1. INVESTMENT SOLUTIONS' }}</h3>
-            <p>{{ $sc['home.pillar1_text'] ?? 'Access to a range of investment solutions including mutual funds, fixed deposits, bonds, NCDs, GIFT City products and select opportunities, depending on client requirements and suitability.' }}</p>
-            <a class="text-link" href="{{ route('services') }}">Learn More <span class="arrow-icon">→</span></a>
-        </article>
-        <article class="feature-card feature-card-tall">
-            <div class="icon-disc icon-green">
-                <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M14 3H6a1.5 1.5 0 0 0-1.5 1.5v15A1.5 1.5 0 0 0 6 21h6"/>
-                    <path d="M14 3v5h-5"/>
-                    <path d="M8 12h3"/>
-                    <path d="M8 15.5h3"/>
-                    <rect x="13.5" y="11" width="7" height="10" rx="1"/>
-                    <path d="M15.5 13.5h3"/>
-                    <path d="M15.5 16h1"/>
-                    <path d="M18.5 16h-0.01"/>
-                    <path d="M15.5 18.5h1"/>
-                    <path d="M18.5 18.5h-0.01"/>
-                </svg>
-            </div>
-            <h3>{{ $sc['home.pillar2_title'] ?? '2. TAX PLANNING & COMPLIANCE' }}</h3>
-            <p>{{ $sc['home.pillar2_text'] ?? 'Support with income tax returns, tax planning, GST registrations and GST return filings to keep your financial affairs organised, compliant and tax-efficient.' }}</p>
-            <a class="text-link" href="{{ route('services') }}">Learn More <span class="arrow-icon">→</span></a>
-        </article>
-        <article class="feature-card feature-card-tall">
-            <div class="icon-disc icon-green">
-                <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                    <circle cx="12" cy="8" r="3.4"/>
-                    <path d="M5.5 19.5c.8-3.4 3.3-5.2 6.5-5.2s5.7 1.8 6.5 5.2"/>
-                </svg>
-            </div>
-            <h3>{{ $sc['home.pillar3_title'] ?? '3. FINANCIAL ORGANISATION & PROFESSIONAL SUPPORT' }}</h3>
-            <p>{{ $sc['home.pillar3_text'] ?? 'Practical support for salaried individuals and self-employed professionals across financial records, cash flow review, tax-ready documentation and better financial clarity.' }}</p>
-            <a class="text-link" href="{{ route('services') }}">Learn More <span class="arrow-icon">→</span></a>
-        </article>
-    </div>
-</section>
 
 <!-- What I Do Section -->
 <section class="container whatido-sec">
