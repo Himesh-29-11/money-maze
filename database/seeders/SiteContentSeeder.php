@@ -97,7 +97,15 @@ class SiteContentSeeder extends Seeder
             // ---------------- CONTACT ----------------
             ['contact', 'Office', 'office', 'Office location', 'text', 'Ahmedabad, Gujarat, India', 1],
             ['contact', 'Hero', 'lead', 'Intro paragraph', 'textarea', 'Whether you are reaching out for a service-related query, a writing or a media request, or a general professional enquiry, you can use the form below or the contact details on this page.', 2],
+
+            // ---------------- SETTINGS ----------------
+            ['settings', 'Contact & Social', 'email', 'Contact email', 'text', 'hello@moneymaze.in', 1],
+            ['settings', 'Contact & Social', 'whatsapp', 'WhatsApp link', 'text', 'https://wa.me/919000000000', 2],
+            ['settings', 'Contact & Social', 'linkedin', 'LinkedIn URL', 'text', 'https://www.linkedin.com/', 3],
+            ['settings', 'Contact & Social', 'youtube', 'YouTube URL', 'text', 'https://www.youtube.com/', 4],
+            ['settings', 'Contact & Social', 'footer_tagline', 'Footer tagline', 'text', 'Clarity today. Freedom tomorrow.', 5],
         ];
+
 
         foreach ($rows as [$page, $section, $key, $label, $type, $value, $sort]) {
             SiteContent::query()->updateOrCreate(

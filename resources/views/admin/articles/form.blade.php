@@ -14,6 +14,14 @@
     <label>English URL<input type="url" name="english_url" value="{{ old('english_url', $article?->english_url) }}"></label>
     <label>Gujarati URL<input type="url" name="gujarati_url" value="{{ old('gujarati_url', $article?->gujarati_url) }}"></label>
 </div>
+<label>Image
+    <div class="up-zone" data-upload="{{ route('admin.upload') }}" data-target="article_image">
+        <input type="file" accept="image/*" hidden>
+        <div class="up-preview"></div>
+        <span class="up-hint">Drag &amp; drop an image here, or click to browse (max 5 MB)</span>
+    </div>
+    <input type="text" id="article_image" name="image" value="{{ old('image', $article?->image) }}" placeholder="or paste a path, e.g. uploads/2026-08-14-photo.jpg">
+</label>
 <label>Excerpt<textarea name="excerpt">{{ old('excerpt', $article?->excerpt) }}</textarea></label>
 <label style="display:flex;gap:8px;align-items:center;"><input type="hidden" name="featured" value="0"><input type="checkbox" name="featured" value="1" style="width:auto;" {{ old('featured', $article?->featured) ? 'checked' : '' }}> Feature this article on the Insights page</label>
 <div class="row-acts"><button class="btn btn-green">Save article</button><a class="btn btn-line" href="{{ route('admin.articles.index') }}">Cancel</a></div>

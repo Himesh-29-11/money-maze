@@ -10,11 +10,17 @@ use Illuminate\View\View;
 
 class AdminContentController extends Controller
 {
-    public function index(): View
+    public function index(Request $request): View
     {
-        $groups = SiteContent::query()->orderBy('page')->orderBy('section')->orderBy('sort')->get()->groupBy('page')->map(fn ($items) => $items->groupBy('section'));
+        $query = SiteContent::query()->orderBy('page')->orderBy('section')->orderBy('sort');
 
-        return view('admin.content', ['groups' => $groups]);
+        if ($request->filled('page')) {
+            $query->where('page', $request->page);
+        }
+
+        $groups = $query->get()->groupBy('page')->map(fn ($items) => $items->groupBy('section'));
+
+        return view('admin.content', ['groups' => $groups, 'only' => $request->query('page')]);
     }
 
     public function update(Request $request): RedirectResponse

@@ -12,6 +12,7 @@ class Article extends Model
         'topic',
         'publication',
         'excerpt',
+        'image',
         'published_at',
         'english_url',
         'gujarati_url',

@@ -13,7 +13,14 @@
     <label>Meta line 1 (channel / publication)<input type="text" name="meta1" value="{{ old('meta1', $entry?->meta1) }}"></label>
     <label>Meta line 2 (topic / subtitle)<input type="text" name="meta2" value="{{ old('meta2', $entry?->meta2) }}"></label>
     <label>Duration (e.g. 02:00)<input type="text" name="duration" value="{{ old('duration', $entry?->duration) }}"></label>
-    <label>Image path (e.g. assets/crops/media2-v1.jpg)<input type="text" name="image" value="{{ old('image', $entry?->image) }}"></label>
+    <label>Image
+    <div class="up-zone" data-upload="{{ route('admin.upload') }}" data-target="media_image">
+        <input type="file" accept="image/*" hidden>
+        <div class="up-preview"></div>
+        <span class="up-hint">Drag &amp; drop an image here, or click to browse (max 5 MB)</span>
+    </div>
+    <input type="text" id="media_image" name="image" value="{{ old('image', $entry?->image) }}" placeholder="or paste a path, e.g. assets/crops/media2-v1.jpg">
+</label>
     <label>Link URL<input type="url" name="url" value="{{ old('url', $entry?->url) }}"></label>
 </div>
 <label>Description<textarea name="description">{{ old('description', $entry?->description) }}</textarea></label>

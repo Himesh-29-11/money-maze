@@ -26,6 +26,7 @@ use App\Http\Controllers\Admin\AdminMediaController;
 use App\Http\Controllers\Admin\AdminBookController;
 use App\Http\Controllers\Admin\AdminLinkController;
 use App\Http\Controllers\Admin\AdminMessageController;
+use App\Http\Controllers\Admin\AdminUploadController;
 
 Route::get('/login', fn () => redirect()->route('admin.login'))->name('login');
 Route::get('/admin/login', [AdminAuthController::class, 'show'])->name('admin.login');
@@ -37,6 +38,7 @@ Route::prefix('admin')->middleware('auth')->name('admin.')->group(function () {
     Route::get('/content', [AdminContentController::class, 'index'])->name('content');
     Route::post('/content', [AdminContentController::class, 'update'])->name('content.update');
     Route::get('/messages', [AdminMessageController::class, 'index'])->name('messages');
+    Route::post('/upload', [AdminUploadController::class, 'store'])->name('upload');
     Route::resource('articles', AdminArticleController::class)->parameters(['articles' => 'article']);
     Route::resource('testimonials', AdminTestimonialController::class)->parameters(['testimonials' => 'testimonial']);
     Route::resource('media', AdminMediaController::class)->parameters(['media' => 'media']);

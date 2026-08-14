@@ -10,7 +10,14 @@
     <label>Key (slug)<input type="text" name="key" value="{{ old('key', $book?->key) }}" required></label>
     <label>Title<input type="text" name="title" value="{{ old('title', $book?->title) }}" required></label>
     <label>Subtitle<input type="text" name="subtitle" value="{{ old('subtitle', $book?->subtitle) }}"></label>
-    <label>Cover image path<input type="text" name="cover" value="{{ old('cover', $book?->cover) }}"></label>
+    <label>Image
+    <div class="up-zone" data-upload="{{ route('admin.upload') }}" data-target="book_cover">
+        <input type="file" accept="image/*" hidden>
+        <div class="up-preview"></div>
+        <span class="up-hint">Drag &amp; drop an image here, or click to browse (max 5 MB)</span>
+    </div>
+    <input type="text" id="book_cover" name="cover" value="{{ old('cover', $book?->cover) }}" placeholder="or paste a path, e.g. assets/crops/books2-cover.jpg">
+</label>
     <label>Sort order<input type="number" name="sort" value="{{ old('sort', $book?->sort ?? 0) }}"></label>
     <label style="align-self:end;display:flex;gap:8px;align-items:center;"><input type="hidden" name="featured" value="0"><input type="checkbox" name="featured" value="1" style="width:auto;" {{ old('featured', $book?->featured) ? 'checked' : '' }}> Featured book</label>
 </div>

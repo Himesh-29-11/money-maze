@@ -24,7 +24,31 @@ class PageController extends Controller
 
     public function insights(): View
     {
-        return view('pages.insights', array_merge($this->shared(), ['articles' => $this->articles()]));
+        return view('pages.insights', array_merge($this->shared(), ['articles' => $this->articlesPublic()]));
+    }
+
+    private function articlesPublic(): array
+    {
+        try {
+            $db = \App\Models\Article::query()->orderByDesc('published_at')->limit(6)->get();
+            if ($db->isNotEmpty()) {
+                return $db->map(fn ($a) => [
+                    'slug' => $a->slug,
+                    'title' => $a->title,
+                    'topic' => $a->topic,
+                    'publication' => $a->publication,
+                    'date' => $a->published_at?->format('d M Y'),
+                    'excerpt' => $a->excerpt,
+                    'english_url' => $a->english_url,
+                    'gujarati_url' => $a->gujarati_url,
+                    'image' => $a->image ? asset($a->image) : null,
+                ])->all();
+            }
+        } catch (\Throwable) {
+            // fall through to static list
+        }
+
+        return collect($this->articles())->map(fn ($a, $i) => $a + ['image' => asset('assets/crops/insights2-'.($i % 6 + 1).'.jpg')])->all();
     }
 
     public function insightDetail(string $slug): View
@@ -175,7 +199,17 @@ class PageController extends Controller
             $entries = [];
         }
 
-        return $entries ?: $this->defaultMedia();
+        if (! $entries) {
+            $entries = $this->defaultMedia();
+        }
+
+        foreach ($entries as &$entry) {
+            if (empty($entry['url'])) {
+                $entry['url'] = 'https://www.youtube.com/results?search_query='.urlencode($entry['title']);
+            }
+        }
+
+        return $entries;
     }
 
     private function defaultMedia(): array

@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>@yield('title', 'Admin') — Money Maze</title>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <style>
         :root { --forest:#133d34; --forest-2:#204d40; --gold:#c8a25a; --gold-dark:#a77e39; --ivory:#f7f4ee; --line:#e2dccf; --ink:#2a2a2a; --muted:#6e6e68; }
         * { box-sizing:border-box; } body { margin:0; font-family:'Segoe UI',Arial,sans-serif; background:var(--ivory); color:var(--ink); font-size:14px; }
@@ -48,6 +49,12 @@
         .err { background:#fff2ef; border:1px solid #d99c91; color:#8e3e32; border-radius:8px; padding:10px 14px; margin-bottom:18px; font-size:13px; }
         .row-acts { display:flex; gap:8px; }
         @media (max-width:900px){ .adm-wrap{grid-template-columns:1fr;} .adm-side{position:static;height:auto;} .stats{grid-template-columns:1fr 1fr 1fr;} .grid2{grid-template-columns:1fr;} }
+    
+        .up-zone { border: 2px dashed #c8a25a; border-radius: 10px; padding: 14px; display: flex; gap: 12px; align-items: center; cursor: pointer; background: #fdfcf9; margin-bottom: 8px; transition: background .2s, border-color .2s; }
+        .up-zone:hover, .up-zone.up-drag { background: #f6efdd; border-color: #a77e39; }
+        .up-preview { width: 72px; height: 52px; border-radius: 6px; background: #eceae4 center / cover no-repeat; flex: 0 0 auto; border: 1px solid var(--line); }
+        .up-hint { font-size: 11px; color: #6e6e68; font-weight: 400; }
+        .up-zone.up-loading { opacity: .6; pointer-events: none; }
     </style>
 </head>
 <body>
@@ -65,12 +72,14 @@
             <a href="{{ route('admin.testimonials.index') }}" class="{{ request()->routeIs('admin.testimonials.*') ? 'on' : '' }}"><span class="dot"></span> Testimonials</a>
             <a href="{{ route('admin.links.index') }}" class="{{ request()->routeIs('admin.links.*') ? 'on' : '' }}"><span class="dot"></span> Navigation Links</a>
             <a href="{{ route('admin.messages') }}" class="{{ request()->routeIs('admin.messages') ? 'on' : '' }}"><span class="dot"></span> Messages</a>
+            <a href="{{ route('admin.content', ['page' => 'settings']) }}" class="{{ request()->routeIs('admin.content') && request()->query('page') === 'settings' ? 'on' : '' }}"><span class="dot"></span> Settings</a>
         </nav>
     </aside>
     <main class="adm-main">
         <div class="adm-top">
             <h1>@yield('heading', 'Dashboard')</h1>
             <div class="acts">
+                <span style="font-size:12px;color:#6e6e68;align-self:center;">Signed in as {{ auth()->user()?->name ?? 'Admin' }}</span>
                 <a class="btn btn-line" href="{{ url('/') }}">View site</a>
                 <form method="POST" action="{{ route('admin.logout') }}">@csrf<button class="btn btn-danger">Log out</button></form>
             </div>
@@ -80,5 +89,40 @@
         @yield('content')
     </main>
 </div>
+<script>
+(function () {
+    function initUploads() {
+        document.querySelectorAll('[data-upload]').forEach(function (zone) {
+            var target = document.getElementById(zone.dataset.target);
+            var preview = zone.querySelector('.up-preview');
+            var input = zone.querySelector('input[type=file]');
+            if (target && target.value && preview) preview.style.backgroundImage = "url('/" + target.value + "')";
+            function send(file) {
+                if (!file || !file.type || file.type.indexOf('image/') !== 0) return;
+                var fd = new FormData();
+                fd.append('image', file);
+                zone.classList.add('up-loading');
+                fetch(zone.dataset.upload, {
+                    method: 'POST',
+                    headers: { 'X-CSRF-TOKEN': document.querySelector('meta[name=csrf-token]').content, 'Accept': 'application/json' },
+                    body: fd
+                }).then(function (r) { return r.json(); }).then(function (d) {
+                    zone.classList.remove('up-loading');
+                    if (d && d.path) {
+                        target.value = d.path;
+                        preview.style.backgroundImage = "url('" + d.url + "')";
+                    }
+                }).catch(function () { zone.classList.remove('up-loading'); });
+            }
+            zone.addEventListener('click', function () { input.click(); });
+            input.addEventListener('change', function () { send(input.files[0]); });
+            ['dragover', 'dragenter'].forEach(function (e) { zone.addEventListener(e, function (ev) { ev.preventDefault(); zone.classList.add('up-drag'); }); });
+            ['dragleave', 'drop'].forEach(function (e) { zone.addEventListener(e, function (ev) { ev.preventDefault(); zone.classList.remove('up-drag'); }); });
+            zone.addEventListener('drop', function (ev) { send(ev.dataTransfer.files[0]); });
+        });
+    }
+    document.addEventListener('DOMContentLoaded', initUploads);
+})();
+</script>
 </body>
 </html>

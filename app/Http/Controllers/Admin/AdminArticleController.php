@@ -56,6 +56,7 @@ class AdminArticleController extends Controller
             'topic' => ['nullable', 'string', 'max:120'],
             'publication' => ['nullable', 'string', 'max:120'],
             'excerpt' => ['nullable', 'string'],
+            'image' => ['nullable', 'string', 'max:255'],
             'published_at' => ['nullable', 'date'],
             'english_url' => ['nullable', 'string', 'max:255'],
             'gujarati_url' => ['nullable', 'string', 'max:255'],
