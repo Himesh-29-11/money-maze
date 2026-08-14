@@ -7249,3 +7249,7 @@ p {
 .who-band-text { max-width: 760px; margin: 0 auto; text-align: center; font-size: 14px; color: #4d554e; }
 @media (max-width: 900px) { .whatido-grid { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 580px) { .whatido-grid { grid-template-columns: 1fr; } }
+
+/* Home hero: long-form headline tuning */
+.home-original .hero-content h1 { font-size: clamp(26px, 2.6vw, 38px); line-height: 1.25; letter-spacing: -0.01em; }
+.home-original .eyebrow { font-size: 12px; letter-spacing: .12em; max-width: 540px; line-height: 1.7; }
