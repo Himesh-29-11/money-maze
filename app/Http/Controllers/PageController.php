@@ -175,7 +175,17 @@ class PageController extends Controller
             $entries = [];
         }
 
-        return $entries ?: $this->defaultMedia();
+        if (! $entries) {
+            $entries = $this->defaultMedia();
+        }
+
+        foreach ($entries as &$entry) {
+            if (empty($entry['url'])) {
+                $entry['url'] = 'https://www.youtube.com/results?search_query='.urlencode($entry['title']);
+            }
+        }
+
+        return $entries;
     }
 
     private function defaultMedia(): array
