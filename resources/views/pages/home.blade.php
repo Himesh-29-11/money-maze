@@ -7,16 +7,15 @@
 <section class="hero hero-home">
     <div class="hero-grid">
         <div class="hero-content">
-            <p class="eyebrow">{{ $sc['home.eyebrow'] ?? 'CLARITY. STRUCTURE. CONFIDENCE.' }}</p>
-            <h1>{{ $sc['home.title'] ?? 'Navigate Life’s Financial Decisions with Confidence.' }}</h1>
+            <p class="eyebrow">{{ $sc['home.eyebrow'] ?? 'Personal finance, investments, taxation and financial organisation — brought together under one roof.' }}</p>
+            <h1>{{ $sc['home.title'] ?? 'I’m Mitali Mehta, a Certified Financial Planner, Chartered Accountant and Lawyer based in Ahmedabad.' }}</h1>
             <div class="gold-rule"></div>
-            <h2 class="hero-byline">{{ $sc['home.byline'] ?? 'I’m Mitali Mehta, a Certified Financial Planner, Chartered Accountant and Lawyer based in Ahmedabad.' }}</h2>
-            <p class="hero-lead">{{ $sc['home.lead'] ?? 'Personal finance, investments, taxation and financial organisation — brought together under one roof. Through Money Maze, I work with individuals, professionals and families on investment execution, taxation, financial organisation and the practical matters that come with managing money well.' }}</p>
+            <p class="hero-lead">{{ $sc['home.lead'] ?? 'Through Money Maze, I work with individuals, professionals and families on investment execution, taxation, financial organisation and the practical matters that come with managing money well.' }}</p>
             <p class="hero-about-link">{{ $sc['home.about_link'] ?? 'Curious about the path that led here?' }} <a href="{{ route('about') }}">Read more on About</a>.</p>
             <div class="hero-actions">
-                <a href="{{ route('contact') }}" class="button button-primary">Let's Connect <span class="arrow-icon">→</span></a>
-                <a href="{{ route('about') }}" class="button button-outline">About Me</a>
-                <a href="{{ route('services') }}" class="button button-outline">Explore Services</a>
+                <a href="{{ route('services') }}" class="button button-primary">{{ $sc['home.btn_services'] ?? 'Explore Services' }} <span class="arrow-icon">→</span></a>
+                <a href="{{ route('about') }}" class="button button-outline">{{ $sc['home.btn_about'] ?? 'About Me' }}</a>
+                <a href="{{ route('contact') }}" class="button button-outline">{{ $sc['home.btn_contact'] ?? 'Get in Touch' }}</a>
             </div>
             <div class="hero-regulatory-note">
                 <span class="shield-icon">
