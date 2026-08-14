@@ -44,3 +44,18 @@ Then open the live preview at the port printed by the server. The preview suppor
 - Calculator outputs are indicative educational estimates and should not be treated as personalised financial or insurance advice.
 - Actual email/phone details were not supplied in the source content, so the contact page intentionally asks visitors to use the form and lists Ahmedabad, Gujarat, India.
 - Article and media entries are structured placeholder content based on the supplied mockups and can be replaced with the final URLs/content in the database.
+
+## Admin panel
+
+A Shopify-style admin lives at `/admin` (sign in with `admin@moneymaze.in` and the
+password from `ADMIN_PASSWORD` in `.env`, default `admin123` after seeding).
+
+```bash
+php artisan migrate --seed   # creates tables + seeds admin & default content
+php artisan serve            # then open http://localhost:8000/admin
+```
+
+From the admin you can edit page copy (Home/About/Services/Books/Contact), manage
+articles, media & features entries, books, testimonials, navigation links and read
+contact messages. All changes render on the public pages immediately. The admin UI
+uses the same forest-green / antique-gold brand theme as the website.
