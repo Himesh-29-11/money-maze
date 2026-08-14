@@ -13,9 +13,9 @@ class SiteContentSeeder extends Seeder
             // ---------------- HOME ----------------
             ['home', 'Hero', 'eyebrow', 'Eyebrow line', 'text', 'CLARITY. STRUCTURE. CONFIDENCE.', 1],
             ['home', 'Hero', 'title', 'Headline', 'text', 'Navigate Life’s Financial Decisions with Confidence.', 2],
-            ['home', 'Hero', 'byline', 'Byline', 'text', 'Mitali Mehta, CA, CFP®', 3],
-            ['home', 'Hero', 'lead', 'Intro paragraph', 'textarea', 'Chartered Accountant and Personal Finance Professional helping individuals, professionals and NRIs navigate taxation, investments and financial decisions with clarity, structure and a long-term perspective.', 4],
-            ['home', 'Hero', 'regulatory', 'Regulatory note', 'textarea', 'Mutual fund distribution services are offered as a SEBI-registered Mutual Fund Distributor. Other financial products and professional services are offered through the practice as applicable.', 5],
+            ['home', 'Hero', 'byline', 'Byline', 'text', 'I’m Mitali Mehta, a Certified Financial Planner, Chartered Accountant and Lawyer based in Ahmedabad.', 3],
+            ['home', 'Hero', 'lead', 'Intro paragraph', 'textarea', 'Personal finance, investments, taxation and financial organisation — brought together under one roof. Through Money Maze, I work with individuals, professionals and families on investment execution, taxation, financial organisation and the practical matters that come with managing money well.', 4],
+            ['home', 'Hero', 'regulatory', 'Regulatory note', 'textarea', 'Mitali Mehta is a SEBI-registered Mutual Fund Distributor. Mutual fund investments are subject to market risks; please read all scheme-related documents carefully before investing.', 5],
             ['home', 'Service Pillars', 'pillar1_title', 'Pillar 1 title', 'text', '1. INVESTMENT SOLUTIONS', 1],
             ['home', 'Service Pillars', 'pillar1_text', 'Pillar 1 text', 'textarea', 'Access to a range of investment solutions including mutual funds, fixed deposits, bonds, NCDs, GIFT City products and select opportunities, depending on client requirements and suitability.', 2],
             ['home', 'Service Pillars', 'pillar2_title', 'Pillar 2 title', 'text', '2. TAX PLANNING & COMPLIANCE', 3],
@@ -29,9 +29,13 @@ class SiteContentSeeder extends Seeder
             ['home', 'Highlights', 'featured_title', 'Featured-in card title', 'text', 'FEATURED IN', 3],
             ['home', 'Highlights', 'featured_text', 'Featured-in card text', 'textarea', 'Seen in leading publications and platforms.', 4],
             ['home', 'Highlights', 'clients_title', 'Testimonials card title', 'text', 'WHAT CLIENTS SAY', 5],
-            ['home', 'Closing CTA', 'cta_title', 'CTA heading', 'text', 'Let’s Start a Conversation', 1],
-            ['home', 'Closing CTA', 'cta_text', 'CTA text', 'textarea', 'Whether you need support with investments, taxation, financial organisation or simply want greater clarity around your finances, I would be happy to connect.', 2],
+            ['home', 'Closing CTA', 'cta_title', 'CTA heading', 'text', 'Looking to get your finances better organised?', 1],
+            ['home', 'Closing CTA', 'cta_text', 'CTA text', 'textarea', 'Explore the services on offer, or get in touch directly with what you need.', 2],
 
+            ['home', 'Hero', 'about_link', 'About-link line', 'text', 'Curious about the path that led here?', 6],
+            ['home', 'What I Do', 'whatido_title', 'Section title', 'text', 'WHAT I DO', 1],
+            ['home', 'Who I Work With', 'who_title', 'Section title', 'text', 'WHO I WORK WITH', 1],
+            ['home', 'Who I Work With', 'who_text', 'Section text', 'textarea', 'My work is built primarily around individuals, salaried professionals, self-employed professionals and families — and is growing to serve small business owners who need dependable support with tax, compliance and broader financial matters.', 2],
             // ---------------- ABOUT ----------------
             ['about', 'Hero', 'title', 'Page title', 'text', 'About Mitali', 1],
             ['about', 'Hero', 'lead', 'Intro paragraph', 'textarea', 'Chartered Accountant, CFP professional, and founder of Money Maze — a practice built around thoughtful financial solutions, tax support and organised financial decision-making for individuals and professionals.', 2],

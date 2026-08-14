@@ -10,10 +10,12 @@
             <p class="eyebrow">{{ $sc['home.eyebrow'] ?? 'CLARITY. STRUCTURE. CONFIDENCE.' }}</p>
             <h1>{{ $sc['home.title'] ?? 'Navigate Life’s Financial Decisions with Confidence.' }}</h1>
             <div class="gold-rule"></div>
-            <h2 class="hero-byline">{{ $sc['home.byline'] ?? 'Mitali Mehta, CA, CFP®' }}</h2>
-            <p class="hero-lead">{{ $sc['home.lead'] ?? 'Chartered Accountant and Personal Finance Professional helping individuals, professionals and NRIs navigate taxation, investments and financial decisions with clarity, structure and a long-term perspective.' }}</p>
+            <h2 class="hero-byline">{{ $sc['home.byline'] ?? 'I’m Mitali Mehta, a Certified Financial Planner, Chartered Accountant and Lawyer based in Ahmedabad.' }}</h2>
+            <p class="hero-lead">{{ $sc['home.lead'] ?? 'Personal finance, investments, taxation and financial organisation — brought together under one roof. Through Money Maze, I work with individuals, professionals and families on investment execution, taxation, financial organisation and the practical matters that come with managing money well.' }}</p>
+            <p class="hero-about-link">{{ $sc['home.about_link'] ?? 'Curious about the path that led here?' }} <a href="{{ route('about') }}">Read more on About</a>.</p>
             <div class="hero-actions">
                 <a href="{{ route('contact') }}" class="button button-primary">Let's Connect <span class="arrow-icon">→</span></a>
+                <a href="{{ route('about') }}" class="button button-outline">About Me</a>
                 <a href="{{ route('services') }}" class="button button-outline">Explore Services</a>
             </div>
             <div class="hero-regulatory-note">
@@ -23,7 +25,7 @@
                         <path d="M9 11l2 2 4-4"/>
                     </svg>
                 </span>
-                <p>{{ $sc['home.regulatory'] ?? 'Mutual fund distribution services are offered as a SEBI-registered Mutual Fund Distributor. Other financial products and professional services are offered through the practice as applicable.' }}</p>
+                <p>{{ $sc['home.regulatory'] ?? 'Mitali Mehta is a SEBI-registered Mutual Fund Distributor. Mutual fund investments are subject to market risks; please read all scheme-related documents carefully before investing.' }}</p>
             </div>
         </div>
         <div class="hero-photo">
@@ -80,6 +82,45 @@
             <p>{{ $sc['home.pillar3_text'] ?? 'Practical support for salaried individuals and self-employed professionals across financial records, cash flow review, tax-ready documentation and better financial clarity.' }}</p>
             <a class="text-link" href="{{ route('services') }}">Learn More <span class="arrow-icon">→</span></a>
         </article>
+    </div>
+</section>
+
+<!-- What I Do Section -->
+<section class="container whatido-sec">
+    <div class="insi-head"><span></span><h2>{{ $sc['home.whatido_title'] ?? 'WHAT I DO' }}</h2><span></span></div>
+    <div class="whatido-grid">
+        <article class="whatido-card">
+            <span class="whatido-icon"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2"/><path d="M3 12h18"/></svg></span>
+            <h3>Financial Professional</h3>
+            <p>Investment execution, taxation and financial organisation.</p>
+            <a class="text-link" href="{{ route('services') }}">See Services <span class="arrow-icon">→</span></a>
+        </article>
+        <article class="whatido-card">
+            <span class="whatido-icon"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg></span>
+            <h3>Writer</h3>
+            <p>Articles and educational content on personal finance.</p>
+            <a class="text-link" href="{{ route('insights') }}">See Insights <span class="arrow-icon">→</span></a>
+        </article>
+        <article class="whatido-card">
+            <span class="whatido-icon"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6c-2-1.8-4.5-2.5-8-2.5v14c3.5 0 6 .7 8 2.5 2-1.8 4.5-2.5 8-2.5v-14c-3.5 0-6 .7-8 2.5z"/><path d="M12 6v14"/></svg></span>
+            <h3>Author</h3>
+            <p>The Second Half of Zindagi!, a retirement planning book.</p>
+            <a class="text-link" href="{{ route('books') }}">See Books <span class="arrow-icon">→</span></a>
+        </article>
+        <article class="whatido-card">
+            <span class="whatido-icon"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10a7 7 0 0 0 14 0"/><path d="M12 17v4"/><path d="M8 21h8"/></svg></span>
+            <h3>Educator</h3>
+            <p>Television appearances, interviews and financial awareness initiatives.</p>
+            <a class="text-link" href="{{ route('media') }}">See Media &amp; Features <span class="arrow-icon">→</span></a>
+        </article>
+    </div>
+</section>
+
+<!-- Who I Work With Section -->
+<section class="who-band">
+    <div class="container">
+        <div class="section-title-divider"><span class="divider-line"></span><h2>{{ $sc['home.who_title'] ?? 'WHO I WORK WITH' }}</h2><span class="divider-line"></span></div>
+        <p class="who-band-text">{{ $sc['home.who_text'] ?? 'My work is built primarily around individuals, salaried professionals, self-employed professionals and families — and is growing to serve small business owners who need dependable support with tax, compliance and broader financial matters.' }}</p>
     </div>
 </section>
 
@@ -256,8 +297,8 @@ BI</span>
 <section class="conversation-section">
     <div class="conversation-banner-card">
         <div class="banner-content">
-            <h2>{{ $sc['home.cta_title'] ?? 'Let’s Start a Conversation' }}</h2>
-            <p>{{ $sc['home.cta_text'] ?? 'Whether you need support with investments, taxation, financial organisation or simply want greater clarity around your finances, I would be happy to connect.' }}</p>
+            <h2>{{ $sc['home.cta_title'] ?? 'Looking to get your finances better organised?' }}</h2>
+            <p>{{ $sc['home.cta_text'] ?? 'Explore the services on offer, or get in touch directly with what you need.' }}</p>
             <a href="{{ route('contact') }}" class="button button-primary banner-cta-btn">Let's Connect <span class="arrow-icon">→</span></a>
         </div>
     </div>
