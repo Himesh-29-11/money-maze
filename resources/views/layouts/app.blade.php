@@ -11,14 +11,14 @@
 </head>
 <body>
     <a class="skip-link" href="#main-content">Skip to content</a>
-    <x-site-nav />
+    <x-site-nav :nav-links="$navLinks ?? []" :sc="$sc ?? []" />
     <main id="main-content">
         @if (session('success'))
             <div class="flash-message" role="status">{{ session('success') }}</div>
         @endif
         @yield('content')
     </main>
-    <x-site-footer :regulatory-note="$regulatoryNote ?? null" />
+    <x-site-footer :regulatory-note="$regulatoryNote ?? null" :nav-links="$navLinks ?? []" :sc="$sc ?? []" />
     @stack('scripts')
 </body>
 </html>

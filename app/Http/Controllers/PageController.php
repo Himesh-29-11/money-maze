@@ -24,7 +24,32 @@ class PageController extends Controller
 
     public function insights(): View
     {
-        return view('pages.insights', array_merge($this->shared(), ['articles' => $this->articles()]));
+        return view('pages.insights', array_merge($this->shared(), ['articles' => $this->articlesPublic()]));
+    }
+
+    private function articlesPublic(): array
+    {
+        try {
+            $db = \App\Models\Article::query()->orderByDesc('published_at')->limit(6)->get();
+            if ($db->isNotEmpty()) {
+                return $db->map(fn ($a) => [
+                    'slug' => $a->slug,
+                    'title' => $a->title,
+                    'topic' => $a->topic,
+                    'publication' => $a->publication,
+                    'date' => $a->published_at?->format('d M Y'),
+                    'excerpt' => $a->excerpt,
+                    'english_url' => $a->english_url,
+                    'gujarati_url' => $a->gujarati_url,
+                    'image' => $a->image ? asset($a->image) : null,
+                    'iso' => $a->published_at?->format('Y-m-d'),
+                ])->all();
+            }
+        } catch (\Throwable) {
+            // fall through to static list
+        }
+
+        return collect($this->articles())->map(fn ($a, $i) => $a + ['image' => asset('assets/crops/insights2-'.($i % 6 + 1).'.jpg'), 'iso' => date('Y-m-d', strtotime($a['date']))])->all();
     }
 
     public function insightDetail(string $slug): View
@@ -111,6 +136,102 @@ class PageController extends Controller
                 'person' => 'Mitali Mehta',
             ],
             'regulatoryNote' => 'Mitali Mehta is a SEBI-registered Mutual Fund Distributor. Mutual fund investments are subject to market risks; please read all scheme-related documents carefully before investing.',
+            'sc' => $this->contentMap(),
+            'navLinks' => $this->navLinks(),
+            'testimonials' => $this->testimonialsData(),
+            'books' => $this->booksData(),
+            'mediaEntries' => $this->mediaEntries(),
+        ];
+    }
+
+    private function contentMap(): array
+    {
+        try {
+            return \App\Models\SiteContent::query()->get()
+                ->mapWithKeys(fn ($c) => ["{$c->page}.{$c->key}" => $c->value])
+                ->all();
+        } catch (\Throwable) {
+            return [];
+        }
+    }
+
+    private function navLinks(): array
+    {
+        try {
+            return \App\Models\NavLink::query()->where('active', true)->orderBy('sort')->get()
+                ->map(fn ($l) => ['label' => $l->label, 'url' => $l->url])->all();
+        } catch (\Throwable) {
+            return [];
+        }
+    }
+
+    private function testimonialsData(): array
+    {
+        try {
+            return \App\Models\Testimonial::query()->orderBy('sort')->get()->map(fn ($t) => [
+                'quote' => $t->quote, 'author' => $t->author, 'role' => $t->role, 'rating' => $t->rating,
+            ])->all();
+        } catch (\Throwable) {
+            return [];
+        }
+    }
+
+    private function booksData(): array
+    {
+        try {
+            return \App\Models\Book::query()->orderBy('sort')->get()->map(fn ($b) => [
+                'key' => $b->key, 'title' => $b->title, 'subtitle' => $b->subtitle,
+                'description' => $b->description, 'cover' => $b->cover, 'featured' => $b->featured,
+            ])->all();
+        } catch (\Throwable) {
+            return [];
+        }
+    }
+
+    private function mediaEntries(): array
+    {
+        try {
+            $entries = \App\Models\MediaEntry::query()->orderBy('type')->orderBy('sort')->get()->map(fn ($m) => [
+                'type' => $m->type, 'label' => $m->label, 'title' => $m->title, 'meta1' => $m->meta1,
+                'meta2' => $m->meta2, 'description' => $m->description, 'image' => $m->image,
+                'duration' => $m->duration, 'url' => $m->url,
+            ])->all();
+        } catch (\Throwable) {
+            $entries = [];
+        }
+
+        if (! $entries) {
+            $entries = $this->defaultMedia();
+        }
+
+        foreach ($entries as &$entry) {
+            if (empty($entry['url'])) {
+                $entry['url'] = 'https://www.youtube.com/results?search_query='.urlencode($entry['title']);
+            }
+        }
+
+        return $entries;
+    }
+
+    private function defaultMedia(): array
+    {
+        return [
+            ['type' => 'interview', 'label' => 'POCKET MONEY', 'title' => 'Children & Money Habits: Building a Strong Foundation', 'meta1' => 'News Capital Market TV', 'meta2' => 'Topic: Children & Money', 'description' => 'A conversation on pocket money, financial habits for children and building money confidence early.', 'image' => 'assets/crops/media2-tv1.jpg', 'duration' => null, 'url' => null],
+            ['type' => 'interview', 'label' => 'RETIRE RICH', 'title' => 'Retirement Planning: Plan Today, Retire Rich', 'meta1' => 'News Capital Market TV', 'meta2' => 'Topic: Retirement Planning', 'description' => 'Discussion on retirement readiness, income planning, corpus creation and living a financially free life.', 'image' => 'assets/crops/media2-tv2.jpg', 'duration' => null, 'url' => null],
+            ['type' => 'video', 'label' => null, 'title' => 'What is an IPO? Key Basics Explained', 'meta1' => 'Chitralekha – IPO Series', 'meta2' => null, 'description' => null, 'image' => 'assets/crops/media2-v1.jpg', 'duration' => '02:00', 'url' => null],
+            ['type' => 'video', 'label' => null, 'title' => 'SME IPOs: What Should Investors Know?', 'meta1' => 'Chitralekha – IPO Series', 'meta2' => null, 'description' => null, 'image' => 'assets/crops/media2-v2.jpg', 'duration' => '02:00', 'url' => null],
+            ['type' => 'video', 'label' => null, 'title' => 'Why Long-Term Investing Always Wins', 'meta1' => 'Because Money Matters', 'meta2' => null, 'description' => null, 'image' => 'assets/crops/media2-v3.jpg', 'duration' => '02:00', 'url' => null],
+            ['type' => 'video', 'label' => null, 'title' => 'Emergency Fund: How Much is Enough?', 'meta1' => 'Because Money Matters', 'meta2' => null, 'description' => null, 'image' => 'assets/crops/media2-v4.jpg', 'duration' => '02:00', 'url' => null],
+            ['type' => 'video', 'label' => null, 'title' => 'Upcoming IPOs: What to Watch For', 'meta1' => 'Chitralekha – IPO Series', 'meta2' => null, 'description' => null, 'image' => 'assets/crops/media2-v5.jpg', 'duration' => '02:00', 'url' => null],
+            ['type' => 'podcast', 'label' => null, 'title' => 'Retirement Planning in Your 40s', 'meta1' => 'Podcast Conversation', 'meta2' => null, 'description' => 'Key steps to take in your 40s to build a secure retirement and financial independence.', 'image' => 'assets/crops/media2-p1.jpg', 'duration' => '28:19', 'url' => null],
+            ['type' => 'podcast', 'label' => null, 'title' => 'Tax Planning for Salaried Individuals', 'meta1' => 'Podcast Conversation', 'meta2' => null, 'description' => 'Smart tax planning strategies to save more, invest better and stay compliant.', 'image' => 'assets/crops/media2-p2.jpg', 'duration' => '24:40', 'url' => null],
+            ['type' => 'podcast', 'label' => null, 'title' => 'Mutual Funds vs Direct Equity', 'meta1' => 'Podcast Conversation', 'meta2' => null, 'description' => 'Understanding the right approach for your goals, risk appetite and timeline.', 'image' => 'assets/crops/media2-p3.jpg', 'duration' => '26:10', 'url' => null],
+            ['type' => 'feature', 'label' => null, 'title' => 'News Capital Market TV', 'meta1' => 'Television Interviews', 'meta2' => null, 'description' => null, 'image' => null, 'duration' => null, 'url' => null],
+            ['type' => 'feature', 'label' => null, 'title' => 'Mumbai Samachar', 'meta1' => 'Mumbai Samachar Articles & Columns', 'meta2' => null, 'description' => null, 'image' => null, 'duration' => null, 'url' => null],
+            ['type' => 'feature', 'label' => null, 'title' => 'Capital World', 'meta1' => 'Magazine Articles', 'meta2' => null, 'description' => null, 'image' => null, 'duration' => null, 'url' => null],
+            ['type' => 'feature', 'label' => null, 'title' => 'Business Guardian', 'meta1' => 'Articles & Contributions', 'meta2' => null, 'description' => null, 'image' => null, 'duration' => null, 'url' => null],
+            ['type' => 'feature', 'label' => null, 'title' => 'Chitralekha', 'meta1' => 'Video Series – IPOs & Money Matters', 'meta2' => null, 'description' => null, 'image' => null, 'duration' => null, 'url' => null],
+            ['type' => 'feature', 'label' => null, 'title' => 'Magazine Interviews', 'meta1' => 'Magazine Interviews & Print Features', 'meta2' => null, 'description' => null, 'image' => null, 'duration' => null, 'url' => null],
         ];
     }
 

@@ -1,6 +1,6 @@
 /vendor/
 /node_modules/
-/public/build/
+/public/hot
 /.env
 /storage/*.key
 /storage/framework/cache/*
@@ -11,3 +11,4 @@
 .phpunit.result.cache
 database/*.sqlite
 npm-debug.log*
+/public/build/

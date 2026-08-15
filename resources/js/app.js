@@ -41,28 +41,62 @@ function initNavigation() {
 
 function initInsightFilters() {
     const chips = document.querySelectorAll('[data-filter]');
-    const cards = document.querySelectorAll('.article-card[data-topic], .featured-insight-card[data-topic]');
-    const rows = document.querySelectorAll('.article-row[data-topic], .table-body-row[data-topic]');
+    const cards = document.querySelectorAll('.insi-card[data-topic]');
+    const rows = [...document.querySelectorAll('.article-row[data-topic]')];
     const search = document.getElementById('article-search');
+    const pager = document.getElementById('insi-pager');
+    const empty = document.querySelector('.insi-empty');
     if (!chips.length) return;
 
-    let activeFilter = 'all';
-    const update = () => {
+    const active = new Set();
+    const PAGE = 4;
+    let page = 1;
+
+    const matches = (el) => {
         const query = (search?.value || '').trim().toLowerCase();
-        [...cards, ...rows].forEach((item) => {
-            const topic = item.dataset.topic || '';
-            const text = item.dataset.search || item.textContent.toLowerCase();
-            const visible = (activeFilter === 'all' || topic.includes(activeFilter)) && (!query || text.includes(query));
-            item.classList.toggle('is-hidden', !visible);
-        });
+        const okTopic = active.size === 0 || active.has(el.dataset.topic);
+        const okQuery = !query || ((el.dataset.search || el.textContent.toLowerCase()).includes(query));
+        return okTopic && okQuery;
+    };
+
+    const update = () => {
+        cards.forEach((card) => card.classList.toggle('is-hidden', !matches(card)));
+        const visible = rows.filter(matches);
+        const pages = Math.max(1, Math.ceil(visible.length / PAGE));
+        if (page > pages) page = pages;
+        rows.forEach((row) => row.classList.add('is-hidden'));
+        visible.slice((page - 1) * PAGE, page * PAGE).forEach((row) => row.classList.remove('is-hidden'));
+        empty?.classList.toggle('is-hidden', visible.length > 0);
+        if (pager) {
+            pager.innerHTML = '';
+            for (let i = 1; i <= pages; i += 1) {
+                const button = document.createElement('button');
+                button.type = 'button';
+                button.textContent = i;
+                if (i === page) button.classList.add('is-active');
+                button.addEventListener('click', () => { page = i; update(); });
+                pager.appendChild(button);
+            }
+            if (pages > 1) {
+                const next = document.createElement('button');
+                next.type = 'button';
+                next.className = 'insi-next';
+                next.textContent = 'Next →';
+                next.addEventListener('click', () => { page = page < pages ? page + 1 : 1; update(); });
+                pager.appendChild(next);
+            }
+        }
     };
 
     chips.forEach((chip) => chip.addEventListener('click', () => {
-        activeFilter = chip.dataset.filter || 'all';
-        chips.forEach((item) => item.classList.toggle('is-selected', item === chip));
+        const filter = chip.dataset.filter;
+        if (active.has(filter)) active.delete(filter); else active.add(filter);
+        chip.classList.toggle('is-selected', active.has(filter));
+        page = 1;
         update();
     }));
-    search?.addEventListener('input', update);
+    search?.addEventListener('input', () => { page = 1; update(); });
+    update();
 }
 
 function initCalculator() {
@@ -218,10 +252,144 @@ function initSwp() {
     calculate();
 }
 
+function initLightbox() {
+    const triggers = document.querySelectorAll('[data-lightbox]');
+    if (!triggers.length) return;
+
+    const box = document.createElement('div');
+    box.id = 'mm-lightbox';
+    box.className = 'mm-lightbox is-hidden';
+    box.innerHTML = '<div class="mm-lightbox-backdrop"></div><figure class="mm-lightbox-frame"><button class="mm-lightbox-close" aria-label="Close">×</button><button class="mm-lightbox-prev" aria-label="Previous">‹</button><img alt=""><button class="mm-lightbox-next" aria-label="Next">›</button><figcaption class="mm-lightbox-caption"></figcaption></figure>';
+    document.body.appendChild(box);
+
+    const img = box.querySelector('img');
+    const caption = box.querySelector('figcaption');
+    let list = [];
+    let index = 0;
+
+    const show = () => {
+        const el = list[index];
+        img.src = el.getAttribute('src');
+        img.alt = el.getAttribute('alt') || '';
+        caption.textContent = `${index + 1} / ${list.length} — ${el.getAttribute('alt') || ''}`;
+    };
+    const open = (el) => {
+        list = [...document.querySelectorAll(`[data-lightbox][data-group="${el.dataset.group}"]`)];
+        index = list.indexOf(el);
+        show();
+        box.classList.remove('is-hidden');
+        document.body.style.overflow = 'hidden';
+    };
+    const close = () => {
+        box.classList.add('is-hidden');
+        document.body.style.overflow = '';
+    };
+
+    document.addEventListener('click', (event) => {
+        const trigger = event.target.closest('[data-lightbox]');
+        if (trigger) { event.preventDefault(); open(trigger); return; }
+        if (event.target.closest('.mm-lightbox-close') || event.target.classList.contains('mm-lightbox-backdrop')) { close(); return; }
+        if (event.target.closest('.mm-lightbox-prev')) { index = (index - 1 + list.length) % list.length; show(); return; }
+        if (event.target.closest('.mm-lightbox-next')) { index = (index + 1) % list.length; show(); }
+    });
+    document.addEventListener('keydown', (event) => {
+        if (box.classList.contains('is-hidden')) return;
+        if (event.key === 'Escape') close();
+        if (event.key === 'ArrowLeft') { index = (index - 1 + list.length) % list.length; show(); }
+        if (event.key === 'ArrowRight') { index = (index + 1) % list.length; show(); }
+    });
+}
+
+const bookData = {
+    b1: {
+        title: 'Planning in Your 40s', sub: 'Building Strength for the Future', img: '/assets/crops/books2-s1.jpg',
+        toc: ['Why your 40s are the pivot decade', 'Taking stock: income, expenses and what’s left', 'Setting goals that fit your real life', 'Building the retirement corpus engine', 'Balancing children’s goals with your own', 'Insurance and protection check-up', 'Your 10-year action plan'],
+        excerpt: '“The 40s are where retirement stops being an abstract idea and becomes a plan. The decisions of this decade — how much you save, what you protect and what you ignore — quietly decide how your 60s will feel.”',
+    },
+    b2: {
+        title: 'Retirement Income That Lasts', sub: 'From Corpus to Cash Flow', img: '/assets/crops/books2-s2.jpg',
+        toc: ['Thinking in cash flow, not corpus', 'Estimating your real retirement expenses', 'Inflation: the quiet risk', 'Income buckets: liquidity, stability, growth', 'Withdrawal strategies and safe rates', 'Buffering health shocks', 'Making money last as long as you do'],
+        excerpt: '“A corpus is only a number until it becomes income. The real question of retirement is not what you accumulate — it is whether what you built can pay you, reliably, for as long as you need it to.”',
+    },
+    b3: {
+        title: 'Purpose, Identity & Well-being', sub: 'The Non-Financial Side of Retirement', img: '/assets/crops/books2-s3.jpg',
+        toc: ['Retirement is a life transition, not a financial event', 'Identity after work: who are you now?', 'Rebuilding routine and rhythm', 'Relationships, family and changing roles', 'Health, energy and emotional well-being', 'Purpose, contribution and legacy', 'Designing your ideal week'],
+        excerpt: '“Many people prepare for the money side of retirement and nobody prepares them for the morning side — the quiet weekdays, the shifted identity, the search for meaning. This chapter is about that morning.”',
+    },
+};
+
+function initBookModal() {
+    if (!document.querySelector('[data-book]')) return;
+    const modal = document.createElement('div');
+    modal.id = 'mm-book-modal';
+    modal.className = 'mm-book-modal is-hidden';
+    modal.innerHTML = '<div class="mm-bm-backdrop"></div><div class="mm-bm-frame"><button class="mm-lightbox-close" aria-label="Close">×</button><div class="mm-bm-grid"><div class="mm-bm-cover"><img alt=""></div><div class="mm-bm-body"><p class="bok-eyebrow">BOOK PREVIEW</p><h3></h3><p class="mm-bm-sub"></p><p class="mm-bm-label">Inside this book</p><ol class="mm-bm-toc"></ol><p class="mm-bm-excerpt"></p><div class="mm-bm-actions"><a class="svch-btn-solid" href="/contact">Get the Book</a><button type="button" class="svch-btn-outline mm-bm-close2">Close</button></div></div></div></div>';
+    document.body.appendChild(modal);
+
+    const open = (id) => {
+        const book = Object.assign({}, bookData[id], (window.MM_BOOKS || {})[id]);
+        if (!book) return;
+        modal.querySelector('img').src = book.img;
+        modal.querySelector('img').alt = book.title;
+        modal.querySelector('h3').textContent = book.title;
+        modal.querySelector('.mm-bm-sub').textContent = book.sub;
+        modal.querySelector('.mm-bm-toc').innerHTML = book.toc.map((t) => `<li>${t}</li>`).join('');
+        modal.querySelector('.mm-bm-excerpt').textContent = book.excerpt;
+        modal.classList.remove('is-hidden');
+        document.body.style.overflow = 'hidden';
+    };
+    const close = () => {
+        modal.classList.add('is-hidden');
+        document.body.style.overflow = '';
+    };
+
+    document.addEventListener('click', (event) => {
+        const trigger = event.target.closest('[data-book]');
+        if (trigger) { open(trigger.dataset.book); return; }
+        if (event.target.closest('.mm-lightbox-close') || event.target.closest('.mm-bm-close2') || event.target.classList.contains('mm-bm-backdrop')) close();
+    });
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && !modal.classList.contains('is-hidden')) close();
+    });
+}
+
+function initArchiveTools() {
+    const rows = [...document.querySelectorAll('.article-row[data-topic]')];
+    const cards = [...document.querySelectorAll('.insi-card[data-topic]')];
+    const search = document.getElementById('article-search');
+    const selTopic = document.getElementById('insi-filter-topic');
+    const selPub = document.getElementById('insi-filter-pub');
+    const selYear = document.getElementById('insi-filter-year');
+    const selSort = document.getElementById('insi-sort');
+    if (!rows.length && !cards.length) return;
+    const matches = (el) => {
+        const q = (search?.value || '').toLowerCase();
+        const okT = !selTopic?.value || (el.dataset.topic || '').includes(selTopic.value.toLowerCase());
+        const okPub = !selPub?.value || el.dataset.pub === selPub.value;
+        const okY = !selYear?.value || (el.dataset.date || '').startsWith(selYear.value);
+        const okQ = !q || ((el.dataset.search || el.textContent.toLowerCase()).includes(q));
+        return okT && okPub && okY && okQ;
+    };
+    const apply = () => {
+        [...rows, ...cards].forEach((el) => el.classList.toggle('is-hidden', !matches(el)));
+    };
+    search?.addEventListener('input', apply);
+    [selTopic, selPub, selYear].forEach((x) => x?.addEventListener('change', apply));
+    selSort?.addEventListener('change', () => {
+        const dir = selSort.value === 'asc' ? 1 : -1;
+        const parent = rows[0]?.parentElement;
+        if (parent) [...rows].sort((a, b) => (a.dataset.date || '').localeCompare(b.dataset.date || '') * dir).forEach((r) => parent.appendChild(r));
+        apply();
+    });
+    apply();
+}
 document.addEventListener('DOMContentLoaded', () => {
     initNavigation();
     initInsightFilters();
     initCalculator();
+    initLightbox();
+    initBookModal();
+    initArchiveTools();
 });
 
 export { annuityDue, formatted };
