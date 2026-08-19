@@ -71,9 +71,9 @@ class SiteContentSeeder extends Seeder
             ['services', 'Pillars', 'pillar3_text', 'Financial Organisation text', 'textarea', 'Support with financial records, account-related information and key financial data so that filings, reporting and ongoing financial matters are handled with greater ease and continuity.', 3],
             ['services', 'How I Work', 'how_title', 'Section title', 'text', 'How I Work', 1],
             ['services', 'Who I Work With', 'who_title', 'Section title', 'text', 'Who I Work With', 1],
-            ['services', 'Closing CTA', 'cta_title', 'CTA heading', 'text', 'Looking for support with investments, taxation or financial organisation?', 1],
-            ['services', 'Closing CTA', 'cta_text', 'CTA text', 'textarea', 'If you’d like to understand whether my services may be relevant for your requirements, feel free to get in touch.', 2],
-            ['services', 'Regulatory', 'regulatory', 'Regulatory strip', 'textarea', 'Mutual fund-related services are offered in my capacity as a SEBI-registered Mutual Fund Distributor (MFD). Other professional services are offered separately in the course of my practice.', 1],
+            ['services', 'Closing CTA', 'cta_title', 'CTA heading', 'text', 'Need support with investments, taxation, compliance or the practical side of managing your finances?', 1],
+            ['services', 'Closing CTA', 'cta_text', 'CTA text', 'textarea', '', 2],
+            ['services', 'Regulatory', 'regulatory', 'Regulatory strip', 'textarea', 'Mitali Mehta is a SEBI-registered Mutual Fund Distributor. Mutual fund investments are subject to market risks; please read all scheme-related documents carefully before investing.', 1],
 
             // ---------------- INSIGHTS ----------------
             ['insights', 'Hero', 'lead', 'Lead paragraph', 'textarea', 'Articles, columns and financial perspectives across investing, taxation, retirement and personal finance.', 1],
