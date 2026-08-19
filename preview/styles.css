@@ -1077,3 +1077,5 @@ body::-webkit-scrollbar-track { background: var(--ivory); }
 .insi-topics-list li::before { content: '✓'; position: absolute; left: 12px; top: 14px; color: var(--gold-dark); font-weight: 700; }
 @media (max-width: 900px) { .insi-topics-list { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 580px) { .insi-topics-list { grid-template-columns: 1fr; } }
+.contact-closing-actions { display: grid; gap: 10px; }
+.contact-closing-actions a { justify-content: center; }

@@ -129,6 +129,10 @@ class SiteContentSeeder extends Seeder
 
             // ---------------- CONTACT ----------------
             ['contact', 'Office', 'office', 'Office location', 'text', 'Ahmedabad, Gujarat, India', 1],
+            ['contact', 'Hero', 'title', 'Headline', 'textarea', 'Get in touch about investments, taxation, financial organisation, media enquiries or other professional matters.', 3],
+            ['contact', 'Closing', 'closing', 'Closing note', 'textarea', 'Thank you for visiting. If your query relates to the work I do, I’ll do my best to respond as soon as possible.', 1],
+            ['contact', 'Closing', 'btn_services', 'Button 1 label', 'text', 'Explore Services', 2],
+            ['contact', 'Closing', 'btn_insights', 'Button 2 label', 'text', 'Read Insights', 3],
             ['contact', 'Hero', 'lead', 'Intro paragraph', 'textarea', 'Whether you are reaching out for a service-related query, a writing or a media request, or a general professional enquiry, you can use the form below or the contact details on this page.', 2],
 
             // ---------------- SETTINGS ----------------
@@ -136,6 +140,7 @@ class SiteContentSeeder extends Seeder
             ['settings', 'Contact & Social', 'whatsapp', 'WhatsApp link', 'text', 'https://wa.me/919000000000', 2],
             ['settings', 'Contact & Social', 'linkedin', 'LinkedIn URL', 'text', 'https://www.linkedin.com/', 3],
             ['settings', 'Contact & Social', 'youtube', 'YouTube URL', 'text', 'https://www.youtube.com/', 4],
+            ['settings', 'Contact & Social', 'phone', 'Phone number', 'text', '', 6],
             ['settings', 'Contact & Social', 'footer_tagline', 'Footer tagline', 'text', 'Clarity today. Freedom tomorrow.', 5],
         ];
 
