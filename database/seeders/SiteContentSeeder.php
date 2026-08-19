@@ -90,11 +90,20 @@ class SiteContentSeeder extends Seeder
             ['insights', 'Closing CTA', 'btn_media', 'Button 3 label', 'text', 'Explore Media & Features', 10],
             ['insights', 'Closing CTA', 'btn_contact', 'Button 4 label', 'text', 'Get in Touch', 11],
 
+            ['insights', 'Hero', 'btn_browse', 'Button 1 label', 'text', 'Browse Articles', 3],
+            ['insights', 'Hero', 'btn_featured', 'Button 2 label', 'text', 'Read Featured Pieces', 4],
+            ['insights', 'What Youll Find', 'find_title', 'Section title', 'text', 'WHAT YOU’LL FIND HERE', 1],
+            ['insights', 'What Youll Find', 'find_p1', 'Paragraph 1', 'textarea', 'My writing spans retirement planning, investing, taxation, borrowing, insurance, cash flow, financial habits and long-term money decisions.', 2],
+            ['insights', 'What Youll Find', 'find_p2', 'Paragraph 2', 'textarea', 'Some pieces are written for newspapers and publications; others appear here in a website-friendly format for easier reading. This page is meant to be a single home for that written work.', 3],
+            ['insights', 'What Youll Find', 'find_p3', 'Paragraph 3 (HTML allowed)', 'textarea', 'My articles and columns regularly appear in publications such as <strong>Mumbai Samachar, Capital World and Business Guardian.</strong>', 4],
+            ['insights', 'Topics', 'topics_title', 'Section title', 'text', 'TOPICS I WRITE ABOUT', 1],
+            ['insights', 'Closing CTA', 'cta_title', 'CTA heading', 'text', 'Prefer to watch or listen instead?', 1],
+            ['insights', 'Closing CTA', 'cta_text', 'CTA text', 'textarea', 'For interviews, television appearances, podcasts and other media features, head to Media & Features.', 2],
             // ---------------- MEDIA ----------------
             ['media', 'Hero', 'lead', 'Lead paragraph', 'textarea', 'Television interviews, video series, podcasts and media appearances across personal finance, retirement, taxation and investing.', 1],
             ['media', 'Hero', 'body', 'Intro paragraph', 'textarea', 'This section brings together my television interviews, educational video content, podcasts and selected media features across personal finance, retirement planning, taxation, investing and related financial topics. It is a space for conversations, appearances and educational formats that go beyond written articles.', 2],
-            ['media', 'Closing CTA', 'cta_title', 'CTA heading', 'text', 'Explore the conversations behind the work', 1],
-            ['media', 'Closing CTA', 'cta_text', 'CTA text', 'textarea', 'From articles and interviews to short educational videos and podcasts, each format offers a different way to engage with financial ideas.', 2],
+            ['media', 'Closing CTA', 'cta_title', 'CTA heading', 'text', 'Looking for my written work?', 1],
+            ['media', 'Closing CTA', 'cta_text', 'CTA text', 'textarea', 'Head to Insights for articles, columns and educational pieces.', 2],
 
             // ---------------- BOOKS ----------------
             ['books', 'Hero', 'lead', 'Lead paragraph', 'textarea', 'Long-form financial writing designed to make retirement planning more practical, relatable and easier to navigate.', 1],
