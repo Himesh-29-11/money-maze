@@ -7286,3 +7286,13 @@ body::-webkit-scrollbar-track { background: var(--ivory); }
 @media (max-width: 580px) { .insi-topics-list { grid-template-columns: 1fr; } }
 .contact-closing-actions { display: grid; gap: 10px; }
 .contact-closing-actions a { justify-content: center; }
+
+/* Resources sections 2-3 rebuilt */
+.res2-calc-list { display: flex; flex-direction: column; gap: 10px; }
+.res2-calc-row, .res2-check-row { display: grid; grid-template-columns: auto 1fr auto; gap: 14px; align-items: center; background: #fff; border: 1px solid var(--line); border-radius: 8px; padding: 14px 16px; }
+.res2-calc-row:hover, .res2-check-row:hover { border-color: var(--gold); box-shadow: 0 8px 20px rgba(24,24,20,.06); transform: translateY(-1px); }
+.res2-calc-icon { width: 40px; height: 40px; border-radius: 50%; background: #eef1e9; color: #3f5a41; display: grid; place-items: center; }
+.res2-calc-row b, .res2-check-row b { display: block; font-size: 13px; color: #1f2a1f; }
+.res2-calc-row small, .res2-check-row small { display: block; font-size: 11px; color: #6a706a; }
+.res2-calc-row > span:last-child { color: #333; font-size: 16px; }
+.res2-checks-note { font-size: 12px; color: #55524b; margin: 14px 0 0; }
