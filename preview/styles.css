@@ -1067,3 +1067,13 @@ body::-webkit-scrollbar-thumb { background: #cfc8b8; border-radius: 8px; border:
 body::-webkit-scrollbar-track { background: var(--ivory); }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { transition: none !important; animation: none !important; } }
 .who-band p + p { margin-top: 10px; }
+
+/* Insights draft sections */
+.insi-find { background: #f6f1e8; border: 1px solid var(--line); border-radius: 10px; padding: 30px 34px; }
+.insi-find .insi-head { margin-bottom: 18px; }
+.insi-find p { font-size: 13px; color: #55524b; margin: 0 0 12px; max-width: 860px; }
+.insi-topics-list { list-style: none; display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; margin: 0; padding: 0; }
+.insi-topics-list li { background: #fbf9f5; border: 1px solid var(--line); border-radius: 10px; padding: 16px 14px; font-size: 12.5px; color: #4d554e; position: relative; padding-left: 34px; }
+.insi-topics-list li::before { content: '✓'; position: absolute; left: 12px; top: 14px; color: var(--gold-dark); font-weight: 700; }
+@media (max-width: 900px) { .insi-topics-list { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 580px) { .insi-topics-list { grid-template-columns: 1fr; } }
