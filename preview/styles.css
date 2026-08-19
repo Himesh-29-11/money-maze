@@ -1079,3 +1079,4 @@ body::-webkit-scrollbar-track { background: var(--ivory); }
 @media (max-width: 580px) { .insi-topics-list { grid-template-columns: 1fr; } }
 .contact-closing-actions { display: grid; gap: 10px; }
 .contact-closing-actions a { justify-content: center; }
+.res2-group-sub { font-size: 11px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: var(--gold-dark); margin: 18px 0 10px; }
