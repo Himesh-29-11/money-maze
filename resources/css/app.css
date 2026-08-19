@@ -7253,3 +7253,5 @@ p {
 /* Home hero: long-form headline tuning */
 .home-original .hero-content h1 { font-size: clamp(26px, 2.6vw, 38px); line-height: 1.25; letter-spacing: -0.01em; }
 .home-original .eyebrow { font-size: 12px; letter-spacing: .12em; max-width: 540px; line-height: 1.7; }
+.ab-cap-copy p { font-size: 12.5px; color: #55524b; margin: 0 0 12px; }
+.ab-col-copy a, .ab-little-copy a, .ab-cap-copy a { color: var(--gold-dark); font-weight: 700; text-decoration: underline; text-underline-offset: 4px; }
