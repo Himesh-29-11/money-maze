@@ -102,8 +102,8 @@ class SiteContentSeeder extends Seeder
             // ---------------- MEDIA ----------------
             ['media', 'Hero', 'lead', 'Lead paragraph', 'textarea', 'Television interviews, video series, podcasts and media appearances across personal finance, retirement, taxation and investing.', 1],
             ['media', 'Hero', 'body', 'Intro paragraph', 'textarea', 'This section brings together my television interviews, educational video content, podcasts and selected media features across personal finance, retirement planning, taxation, investing and related financial topics. It is a space for conversations, appearances and educational formats that go beyond written articles.', 2],
-            ['media', 'Closing CTA', 'cta_title', 'CTA heading', 'text', 'Explore the conversations behind the work', 1],
-            ['media', 'Closing CTA', 'cta_text', 'CTA text', 'textarea', 'From articles and interviews to short educational videos and podcasts, each format offers a different way to engage with financial ideas.', 2],
+            ['media', 'Closing CTA', 'cta_title', 'CTA heading', 'text', 'Looking for my written work?', 1],
+            ['media', 'Closing CTA', 'cta_text', 'CTA text', 'textarea', 'Head to Insights for articles, columns and educational pieces.', 2],
 
             // ---------------- BOOKS ----------------
             ['books', 'Hero', 'lead', 'Lead paragraph', 'textarea', 'Long-form financial writing designed to make retirement planning more practical, relatable and easier to navigate.', 1],
