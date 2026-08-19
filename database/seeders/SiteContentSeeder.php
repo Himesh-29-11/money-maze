@@ -76,10 +76,19 @@ class SiteContentSeeder extends Seeder
             ['services', 'Regulatory', 'regulatory', 'Regulatory strip', 'textarea', 'Mitali Mehta is a SEBI-registered Mutual Fund Distributor. Mutual fund investments are subject to market risks; please read all scheme-related documents carefully before investing.', 1],
 
             // ---------------- INSIGHTS ----------------
-            ['insights', 'Hero', 'lead', 'Lead paragraph', 'textarea', 'Articles, columns and financial perspectives across investing, taxation, retirement and personal finance.', 1],
-            ['insights', 'Hero', 'body', 'Intro paragraph', 'textarea', 'This section brings together my written work across personal finance, retirement, taxation, investing, IPOs and related financial topics. It includes published newspaper articles, practical financial explainers and English originals of Gujarati-language pieces, all organised in one place for readers who want to explore financial ideas in greater depth.', 2],
-            ['insights', 'Closing CTA', 'cta_title', 'CTA heading', 'text', 'Explore financial ideas, one topic at a time.', 1],
-            ['insights', 'Closing CTA', 'cta_text', 'CTA text', 'textarea', 'Whether you are looking for a practical tax explainer, a retirement perspective, an investing concept or a piece on personal finance, this section is designed to make that journey easier to navigate.', 2],
+            ['insights', 'Hero', 'lead', 'Lead paragraph', 'textarea', 'Articles, explainers and educational content on personal finance, retirement, taxation and related topics.', 1],
+            ['insights', 'Hero', 'body', 'Intro paragraph', 'textarea', 'This page brings together my written work — articles, columns and educational pieces created to make financial ideas easier to understand and more relevant to everyday life.', 2],
+            ['insights', 'Closing CTA', 'cta_title', 'CTA heading', 'text', 'Prefer to watch or listen instead?', 1],
+            ['insights', 'Closing CTA', 'cta_text', 'CTA text', 'textarea', 'For interviews, television appearances, podcasts and other media features, head to Media & Features.', 2],
+            ['insights', 'What Youll Find Here', 'find_title', 'Section title', 'text', 'WHAT YOU’LL FIND HERE', 3],
+            ['insights', 'What Youll Find Here', 'find_p1', 'Paragraph 1', 'textarea', 'My writing spans retirement planning, investing, taxation, borrowing, insurance, cash flow, financial habits and long-term money decisions.', 4],
+            ['insights', 'What Youll Find Here', 'find_p2', 'Paragraph 2', 'textarea', 'Some pieces are written for newspapers and publications; others appear here in a website-friendly format for easier reading. This page is meant to be a single home for that written work.', 5],
+            ['insights', 'What Youll Find Here', 'find_p3', 'Paragraph 3', 'textarea', 'My articles and columns regularly appear in publications such as Mumbai Samachar, Capital World and Business Guardian.', 6],
+            ['insights', 'Topics', 'topics_title', 'Section title', 'text', 'TOPICS I WRITE ABOUT', 7],
+            ['insights', 'Closing CTA', 'btn_browse', 'Button 1 label', 'text', 'Browse Articles', 8],
+            ['insights', 'Closing CTA', 'btn_featured', 'Button 2 label', 'text', 'Read Featured Pieces', 9],
+            ['insights', 'Closing CTA', 'btn_media', 'Button 3 label', 'text', 'Explore Media & Features', 10],
+            ['insights', 'Closing CTA', 'btn_contact', 'Button 4 label', 'text', 'Get in Touch', 11],
 
             // ---------------- MEDIA ----------------
             ['media', 'Hero', 'lead', 'Lead paragraph', 'textarea', 'Television interviews, video series, podcasts and media appearances across personal finance, retirement, taxation and investing.', 1],

@@ -7273,3 +7273,4 @@ body::-webkit-scrollbar { width: 10px; }
 body::-webkit-scrollbar-thumb { background: #cfc8b8; border-radius: 8px; border: 2px solid var(--ivory); }
 body::-webkit-scrollbar-track { background: var(--ivory); }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { transition: none !important; animation: none !important; } }
+.who-band p + p { margin-top: 10px; }
