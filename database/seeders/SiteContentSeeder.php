@@ -114,8 +114,8 @@ class SiteContentSeeder extends Seeder
             ['books', 'Closing CTA', 'cta_text', 'CTA text', 'textarea', 'If retirement planning has felt overwhelming, technical or difficult to begin, The Second Half of Zindagi! is designed to make the subject more approachable — one idea, one decision and one chapter at a time.', 2],
 
             // ---------------- RESOURCES ----------------
-            ['resources', 'Hero', 'lead', 'Lead paragraph', 'textarea', 'Practical tools, worksheets and financial calculators designed to help you turn ideas into action.', 1],
-            ['resources', 'Hero', 'body', 'Intro paragraph', 'textarea', 'Whether you are planning for retirement, reviewing your cash flow, working through a chapter of The Second Half of Zindagi! or simply trying to organise your finances better, this page brings together practical tools that can help you move from concept to clarity.', 2],
+            ['resources', 'Hero', 'lead', 'Lead paragraph', 'textarea', 'Calculators, checklists and practical tools to review, estimate and organise key parts of your financial life.', 1],
+            ['resources', 'Hero', 'body', 'Intro paragraph', 'textarea', 'A growing set of financial tools designed to make everyday decisions easier — whether you’re estimating a retirement corpus, reviewing insurance needs or keeping track of financial documents.', 2],
             ['resources', 'QR Companion', 'qr_intro', 'Section intro', 'textarea', 'This section is designed as a practical companion to The Second Half of Zindagi!. Use these tools to apply the ideas from the book and strengthen your planning.', 1],
             ['resources', 'Note', 'note_p1', 'Paragraph 1', 'textarea', 'These calculators, worksheets and checklists are designed to make financial concepts easier to understand and easier to apply. They can help you organise financial information, test assumptions and approach financial questions with more structure.', 1],
             ['resources', 'Note', 'note_p2', 'Paragraph 2', 'textarea', 'At the same time, every financial situation comes with its own context, constraints and trade-offs. Calculator outputs depend on the assumptions used, and real-life decisions often involve factors that no tool can fully capture—such as changing income patterns, taxation, family responsibilities, risk tolerance, liquidity needs and future uncertainty.', 2],
@@ -123,6 +123,9 @@ class SiteContentSeeder extends Seeder
             ['resources', 'Closing CTA', 'cta_title', 'CTA heading', 'text', '5. NEED HELP PUTTING THE NUMBERS IN CONTEXT?', 1],
             ['resources', 'Closing CTA', 'cta_text', 'CTA text', 'textarea', 'If a calculator has raised new questions, a worksheet has highlighted gaps you want to address, or you’d like to approach your finances in a more organised way, I’m here to help.', 2],
 
+            ['resources', 'What You Will Find', 'find_title', 'Section title', 'text', 'WHAT YOU WILL FIND HERE', 1],
+            ['resources', 'What You Will Find', 'find_p1', 'Section text', 'textarea', 'Some tools here help you calculate or estimate numbers. Others help you review information, organise records or work through financial tasks more methodically.', 2],
+            ['resources', 'Closing CTA', 'cta_articles', 'Articles line', 'text', 'Looking for articles too? Visit Insights for more on financial topics.', 3],
             // ---------------- TESTIMONIALS ----------------
             ['testimonials', 'Hero', 'title', 'Headline', 'textarea', 'What it is like to work together — in clients’ own words.', 1],
             ['testimonials', 'Hero', 'lead', 'Intro paragraph', 'textarea', 'Working with money is rarely just a transaction. It often involves ongoing decisions, sensitive questions and the need for someone dependable on the other side.', 2],
