@@ -18,7 +18,7 @@ a{display:block;text-align:center;margin-top:14px;color:#a77e39;font-size:12px;}
 <body>
 <form class="box" method="POST" action="{{ route('admin.login.post') }}">
 @csrf
-<img src="{{ asset('assets/money-maze-logo.png') }}" alt="Money Maze">
+<img loading="lazy" decoding="async" src="{{ asset('assets/money-maze-logo.png') }}" alt="Money Maze">
 <h1>Admin panel</h1>
 <p>Sign in to manage content, articles, books, media and links.</p>
 @if ($errors->any())<div class="err">{{ $errors->first() }}</div>@endif

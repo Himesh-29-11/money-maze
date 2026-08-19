@@ -61,7 +61,7 @@
 <div class="adm-wrap">
     <aside class="adm-side">
         <div class="adm-brand">
-            <img src="{{ asset('assets/mm-logo.png') }}" alt="Money Maze">
+            <img loading="lazy" decoding="async" src="{{ asset('assets/mm-logo.png') }}" alt="Money Maze">
         </div>
         <nav class="adm-nav">
             <a href="{{ route('admin.dashboard') }}" class="{{ request()->routeIs('admin.dashboard') ? 'on' : '' }}"><span class="dot"></span> Dashboard</a>

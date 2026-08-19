@@ -28,7 +28,7 @@
             </div>
         </div>
         <div class="hero-photo">
-            <img src="{{ asset('assets/mitali-profile-black.png') }}" alt="Mitali Mehta at her desk — good financial decisions today create freedom tomorrow" style="object-fit: cover; object-position: top center;">
+            <img loading="lazy" decoding="async" src="{{ asset('assets/mitali-profile-black.png') }}" alt="Mitali Mehta at her desk — good financial decisions today create freedom tomorrow" style="object-fit: cover; object-position: top center;">
         </div>
     </div>
 </section>
@@ -199,9 +199,9 @@ BI</span>
         <h3 class="mini-feature-title">{{ $sc['home.insights_title'] ?? 'INSIGHTS & ARTICLES' }}</h3>
         <p class="mini-desc">{{ $sc['home.insights_text'] ?? 'Thoughtful articles and practical insights on personal finance, taxation and investments.' }}</p>
         <div class="insights-row-images">
-            <img src="{{ asset('assets/crops/insights-1.jpg') }}" alt="Desk writing">
-            <img src="{{ asset('assets/crops/insights-2.jpg') }}" alt="Newspaper">
-            <img src="{{ asset('assets/crops/insights-3.jpg') }}" alt="Laptop and coffee">
+            <img loading="lazy" decoding="async" src="{{ asset('assets/crops/insights-1.jpg') }}" alt="Desk writing">
+            <img loading="lazy" decoding="async" src="{{ asset('assets/crops/insights-2.jpg') }}" alt="Newspaper">
+            <img loading="lazy" decoding="async" src="{{ asset('assets/crops/insights-3.jpg') }}" alt="Laptop and coffee">
         </div>
         <a class="text-link" href="{{ route('insights') }}">Explore Insights <span class="arrow-icon">→</span></a>
     </article>
