@@ -20,6 +20,9 @@ class AdminContentController extends Controller
 
         $groups = $query->get()->groupBy('page')->map(fn ($items) => $items->groupBy('section'));
 
+        $order = ['home', 'about', 'services', 'insights', 'media', 'books', 'testimonials', 'resources', 'contact', 'settings'];
+        $groups = $groups->sortBy(fn ($items, $page) => in_array($page, $order, true) ? array_search($page, $order, true) : 99);
+
         return view('admin.content', ['groups' => $groups, 'only' => $request->query('page')]);
     }
 

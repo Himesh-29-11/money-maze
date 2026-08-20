@@ -66,6 +66,12 @@
         .card table td { overflow: hidden; }
         .msg-scroll::-webkit-scrollbar { width: 6px; }
         .msg-scroll::-webkit-scrollbar-thumb { background: #cfc8b8; border-radius: 6px; }
+
+        .jump-bar { position: sticky; top: 0; z-index: 20; background: #f7f4ee; padding: 10px 0; display: flex; flex-wrap: wrap; gap: 8px; border-bottom: 1px solid #e2dccf; margin-bottom: 18px; }
+        .jump-bar a { background: #fff; border: 1px solid #e2dccf; border-radius: 999px; padding: 6px 14px; font-size: 11px; font-weight: 700; color: #133d34; text-decoration: none; }
+        .jump-bar a:hover { border-color: #a77e39; color: #a77e39; }
+        .content-page-block { scroll-margin-top: 70px; }
+        .page-block-title { margin: 26px 0 10px; font-size: 12px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: #a77e39; }
     </style>
 </head>
 <body>
