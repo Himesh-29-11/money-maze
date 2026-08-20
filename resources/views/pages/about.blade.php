@@ -13,7 +13,7 @@
             <h1>{{ $c('about.title', 'About') }} <em>{{ $c('about.name', 'Mitali Mehta') }}</em></h1>
         </div>
         <div class="ab-hero-photo">
-            <img loading="lazy" decoding="async" src="{{ asset('assets/crops/about-hero.jpg') }}" alt="Mitali Mehta, founder of Money Maze">
+            <img loading="lazy" decoding="async" src="{{ asset($sc['about.hero_image'] ?? 'assets/crops/about-hero.jpg') }}" alt="Mitali Mehta, founder of Money Maze">
         </div>
     </div>
     <div class="ab-hero-right">
@@ -24,7 +24,7 @@
             <p>{{ $c('about.journey_p3', 'Over time these strands have come together naturally, letting me look at a client’s financial needs more holistically rather than one requirement at a time.') }}</p>
         </div>
         <div class="ab-little-photo">
-            <img loading="lazy" decoding="async" src="{{ asset('assets/crops/about-little.jpg') }}" alt="Calm desk with plant, notebooks and tea">
+            <img loading="lazy" decoding="async" src="{{ asset($sc['about.side_image'] ?? 'assets/crops/about-little.jpg') }}" alt="Calm desk with plant, notebooks and tea">
         </div>
     </div>
 </section>
@@ -32,7 +32,7 @@
 <section class="ab-band ab-mid-band">
     <div class="ab-maze-col">
         <div class="ab-side-img">
-            <img loading="lazy" decoding="async" src="{{ asset('assets/crops/about-maze.jpg') }}" alt="Cream maze with a golden ball finding its path">
+            <img loading="lazy" decoding="async" src="{{ asset($sc['about.maze_image'] ?? 'assets/crops/about-maze.jpg') }}" alt="Cream maze with a golden ball finding its path">
         </div>
         <div class="ab-col-copy">
             <h2 class="ab-h2">{{ $c('about.today_title', 'What My Work Looks Like Today') }}</h2>
@@ -71,7 +71,7 @@
 <section class="ab-band ab-low-band">
     <div class="ab-approach">
         <div class="ab-side-img">
-            <img loading="lazy" decoding="async" src="{{ asset('assets/crops/about-sprout.jpg') }}" alt="Young sprout growing through pebbles">
+            <img loading="lazy" decoding="async" src="{{ asset($sc['about.sprout_image'] ?? 'assets/crops/about-sprout.jpg') }}" alt="Young sprout growing through pebbles">
         </div>
         <div class="ab-col-copy">
             <h2 class="ab-h2">{{ $c('about.writing_title', 'Writing, Media & Authorship') }}</h2>
@@ -90,7 +90,7 @@
             </div>
         </div>
         <div class="ab-side-img">
-            <img loading="lazy" decoding="async" src="{{ asset('assets/crops/about-compass.jpg') }}" alt="Brass compass resting on an old map journal">
+            <img loading="lazy" decoding="async" src="{{ asset($sc['about.compass_image'] ?? 'assets/crops/about-compass.jpg') }}" alt="Brass compass resting on an old map journal">
         </div>
     </div>
 </section>

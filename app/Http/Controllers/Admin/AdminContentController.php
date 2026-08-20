@@ -80,6 +80,7 @@ class AdminContentController extends Controller
         ],
         'settings' => [
             'Contact & Social',
+            'Branding',
         ],
     ];
 

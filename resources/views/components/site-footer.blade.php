@@ -3,7 +3,7 @@
     <div class="container footer-grid">
         <div class="footer-brand">
             <a href="{{ route('home') }}" class="mm-logo-lockup mm-logo-lockup-footer" aria-label="Money Maze home">
-                <img class="mm-logo-img mm-logo-footer" src="{{ asset('assets/mm-logo.png') }}" alt="Money Maze — Paving Your Financial Path">
+                <img class="mm-logo-img mm-logo-footer" src="{{ asset($sc['settings.footer_logo'] ?? 'assets/mm-logo.png') }}" alt="Money Maze — Paving Your Financial Path">
             </a>
             <p class="brand-footer-motto">{{ $sc['settings.footer_tagline'] ?? 'Clarity today. Freedom tomorrow.' }}</p>
         </div>

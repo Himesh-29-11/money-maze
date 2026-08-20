@@ -17,7 +17,7 @@
             <a class="svch-btn-outline" href="#featured">{{ $c('insights.btn_featured', 'Read Featured Pieces') }}</a>
         </div>
     </div>
-    <div class="insi-hero-photo"><img src="{{ asset('assets/crops/insights2-hero.jpg') }}" alt="Coffee, notebook with handwritten notes, glasses and a gold pen" loading="eager" fetchpriority="high"></div>
+    <div class="insi-hero-photo"><img src="{{ asset($sc['insights.hero_image'] ?? 'assets/crops/insights2-hero.jpg') }}" alt="Coffee, notebook with handwritten notes, glasses and a gold pen" loading="eager" fetchpriority="high"></div>
 </section>
 
 <section class="container insi-sec">

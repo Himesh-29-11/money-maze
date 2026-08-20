@@ -17,7 +17,7 @@
 <header class="site-header">
     <div class="container nav-shell">
         <a href="{{ route('home') }}" class="mm-logo-lockup" aria-label="Money Maze home">
-            <img class="mm-logo-img" src="{{ asset('assets/money-maze-logo.png') }}" alt="Money Maze — Paving Your Financial Path">
+            <img class="mm-logo-img" src="{{ asset($sc['settings.nav_logo'] ?? 'assets/money-maze-logo.png') }}" alt="Money Maze — Paving Your Financial Path">
         </a>
         <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation" aria-label="Open navigation">
             <span></span><span></span><span></span>

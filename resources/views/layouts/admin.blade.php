@@ -72,6 +72,13 @@
         .jump-bar a:hover { border-color: #a77e39; color: #a77e39; }
         .content-page-block { scroll-margin-top: 70px; }
         .page-block-title { margin: 26px 0 10px; font-size: 12px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: #a77e39; }
+        .img-field { border-top:1px dashed var(--line); margin-top:14px; padding-top:14px; }
+        .img-field .img-label { display:block; font-size:12.5px; font-weight:600; color:var(--forest); margin-bottom:8px; }
+        .img-field .img-label small { color:var(--muted); font-weight:400; margin-left:6px; }
+        .img-preview-box { margin-bottom:8px; }
+        .img-preview-box img { max-width:240px; max-height:160px; border-radius:8px; border:1px solid var(--line); display:block; }
+        .img-none { color:var(--muted); font-size:12px; }
+        .img-path { display:block; margin-top:6px; font-size:11px; color:var(--muted); }
     </style>
 </head>
 <body>
