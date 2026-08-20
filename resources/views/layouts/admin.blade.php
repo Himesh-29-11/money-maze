@@ -55,6 +55,12 @@
         .up-preview { width: 72px; height: 52px; border-radius: 6px; background: #eceae4 center / cover no-repeat; flex: 0 0 auto; border: 1px solid var(--line); }
         .up-hint { font-size: 11px; color: #6e6e68; font-weight: 400; }
         .up-zone.up-loading { opacity: .6; pointer-events: none; }
+
+        a.stat { display: block; color: inherit; text-decoration: none; cursor: pointer; }
+        a.stat:hover { border-color: #a77e39; box-shadow: 0 8px 20px rgba(0,0,0,.07); transform: translateY(-2px); }
+        .msg-scroll { max-height: 130px; overflow-y: auto; white-space: pre-line; padding-right: 8px; }
+        .msg-scroll::-webkit-scrollbar { width: 6px; }
+        .msg-scroll::-webkit-scrollbar-thumb { background: #cfc8b8; border-radius: 6px; }
     </style>
 </head>
 <body>

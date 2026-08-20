@@ -3,20 +3,25 @@
 @section('heading', 'Dashboard')
 @section('content')
 <div class="stats">
-    <div class="stat"><b>{{ $counts['articles'] ?? '—' }}</b><span>Articles</span></div>
-    <div class="stat"><b>{{ $counts['media'] ?? '—' }}</b><span>Media entries</span></div>
-    <div class="stat"><b>{{ $counts['books'] ?? '—' }}</b><span>Books</span></div>
-    <div class="stat"><b>{{ $counts['testimonials'] ?? '—' }}</b><span>Testimonials</span></div>
-    <div class="stat"><b>{{ $counts['links'] ?? '—' }}</b><span>Nav links</span></div>
-    <div class="stat"><b>{{ $counts['messages'] ?? '—' }}</b><span>Messages</span></div>
+    <a class="stat" href="{{ route('admin.articles.index') }}"><b>{{ $counts['articles'] ?? '—' }}</b><span>Articles</span></a>
+    <a class="stat" href="{{ route('admin.media.index') }}"><b>{{ $counts['media'] ?? '—' }}</b><span>Media entries</span></a>
+    <a class="stat" href="{{ route('admin.books.index') }}"><b>{{ $counts['books'] ?? '—' }}</b><span>Books</span></a>
+    <a class="stat" href="{{ route('admin.testimonials.index') }}"><b>{{ $counts['testimonials'] ?? '—' }}</b><span>Testimonials</span></a>
+    <a class="stat" href="{{ route('admin.links.index') }}"><b>{{ $counts['links'] ?? '—' }}</b><span>Nav links</span></a>
+    <a class="stat" href="{{ route('admin.messages') }}"><b>{{ $counts['messages'] ?? '—' }}</b><span>Messages</span></a>
 </div>
 <div class="card">
     <h2>Recent messages</h2>
-    <p class="sub">Latest enquiries from the contact form.</p>
+    <p class="sub">Latest enquiries from the contact form. Long messages scroll inside their box.</p>
     <table>
         <tr><th>Name</th><th>Category</th><th>Message</th><th>Received</th></tr>
         @forelse ($messages as $m)
-            <tr><td>{{ $m->name }}<br><small>{{ $m->email }}</small></td><td><span class="pill">{{ $m->category }}</span></td><td>{{ \Illuminate\Support\Str::limit($m->message, 90) }}</td><td>{{ $m->created_at?->format('d M Y') }}</td></tr>
+            <tr>
+                <td>{{ $m->name }}<br><small>{{ $m->email }}</small></td>
+                <td><span class="pill">{{ $m->category }}</span></td>
+                <td><div class="msg-scroll">{{ $m->message }}</div></td>
+                <td>{{ $m->created_at?->format('d M Y') }}</td>
+            </tr>
         @empty
             <tr><td colspan="4">No messages yet.</td></tr>
         @endforelse
