@@ -38,32 +38,7 @@
 <!-- What I Do Section -->
 <section class="container whatido-sec">
     <div class="insi-head"><span></span><h2>{{ $sc['home.whatido_title'] ?? 'WHAT I DO' }}</h2><span></span></div>
-    <div class="whatido-grid">
-        <article class="whatido-card">
-            <span class="whatido-icon"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2"/><path d="M3 12h18"/></svg></span>
-            <h3>Financial Professional</h3>
-            <p>Investment execution, taxation and financial organisation.</p>
-            <a class="text-link" href="{{ route('services') }}">See Services <span class="arrow-icon">→</span></a>
-        </article>
-        <article class="whatido-card">
-            <span class="whatido-icon"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg></span>
-            <h3>Writer</h3>
-            <p>Articles and educational content on personal finance.</p>
-            <a class="text-link" href="{{ route('insights') }}">See Insights <span class="arrow-icon">→</span></a>
-        </article>
-        <article class="whatido-card">
-            <span class="whatido-icon"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6c-2-1.8-4.5-2.5-8-2.5v14c3.5 0 6 .7 8 2.5 2-1.8 4.5-2.5 8-2.5v-14c-3.5 0-6 .7-8 2.5z"/><path d="M12 6v14"/></svg></span>
-            <h3>Author</h3>
-            <p>The Second Half of Zindagi!, a retirement planning book.</p>
-            <a class="text-link" href="{{ route('books') }}">See Books <span class="arrow-icon">→</span></a>
-        </article>
-        <article class="whatido-card">
-            <span class="whatido-icon"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10a7 7 0 0 0 14 0"/><path d="M12 17v4"/><path d="M8 21h8"/></svg></span>
-            <h3>Educator</h3>
-            <p>Television appearances, interviews and financial awareness initiatives.</p>
-            <a class="text-link" href="{{ route('media') }}">See Media &amp; Features <span class="arrow-icon">→</span></a>
-        </article>
-    </div>
+    <div class="sec-body cards">@if(!empty($secs['home.what_i_do']['body'] ?? '')){!! $secs['home.what_i_do']['body'] !!}@else<ul><li><strong>Financial Professional</strong> — Investment execution, taxation and financial organisation. <a href="{{ route('services') }}">See Services</a>.</li><li><strong>Writer</strong> — Articles and educational content on personal finance. <a href="{{ route('insights') }}">See Insights</a>.</li><li><strong>Author</strong> — The Second Half of Zindagi!, a retirement planning book. <a href="{{ route('books') }}">See Books</a>.</li><li><strong>Educator</strong> — Television appearances, interviews and financial awareness initiatives. <a href="{{ route('media') }}">See Media &amp; Features</a>.</li></ul>@endif</div>
 </section>
 
 <!-- Who I Work With Section -->
