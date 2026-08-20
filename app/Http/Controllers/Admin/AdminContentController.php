@@ -57,6 +57,7 @@ class AdminContentController extends Controller
         'books' => [
             'Hero',
             'Featured Book',
+            'What the Book Covers',
             'Why & Covers',
             'Closing CTA',
         ],
