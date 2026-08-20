@@ -68,8 +68,8 @@
             <p>{{ $c('insights.cta_text', 'For interviews, television appearances, podcasts and other media features, head to Media & Features.') }}</p>
         </div>
         <div class="insi-cta-actions">
-            <a class="svch-btn-solid" href="{{ route('media') }}">Explore Media &amp; Features</a>
-            <a class="svch-btn-outline" href="{{ route('contact') }}">Get in Touch</a>
+            <a class="svch-btn-solid" href="{{ route('media') }}">{{ $c('insights.btn_media', 'Explore Media & Features') }}</a>
+            <a class="svch-btn-outline" href="{{ route('contact') }}">{{ $c('insights.btn_contact', 'Get in Touch') }}</a>
         </div>
     </div>
 </section>
