@@ -24,7 +24,18 @@ class SiteContentSeeder extends Seeder
             ['home', 'Hero', 'btn_contact', 'Button 3 label', 'text', 'Get in Touch', 8],
             ['home', 'Hero', 'regulatory', 'Regulatory note', 'textarea', 'Mitali Mehta is a SEBI-registered Mutual Fund Distributor. Mutual fund investments are subject to market risks; please read all scheme-related documents carefully before investing.', 9],
             ['home', 'What I Do', 'whatido_title', 'Section title', 'text', 'WHAT I DO', 1],
-            ['home', 'What I Do', 'roles', 'Role cards (HTML list)', 'textarea', '<ul><li><strong>Financial Professional</strong> — Investment execution, taxation and financial organisation. <a href="/services">See Services</a>.</li><li><strong>Writer</strong> — Articles and educational content on personal finance. <a href="/insights">See Insights</a>.</li><li><strong>Author</strong> — The Second Half of Zindagi!, a retirement planning book. <a href="/books">See Books</a>.</li><li><strong>Educator</strong> — Television appearances, interviews and financial awareness initiatives. <a href="/media-features">See Media &amp; Features</a>.</li></ul>', 2],
+            ['home', 'What I Do', 'role1_title', 'Card 1 title', 'text', 'Financial Professional', 2],
+            ['home', 'What I Do', 'role1_text', 'Card 1 text', 'textarea', 'Investment execution, taxation and financial organisation.', 3],
+            ['home', 'What I Do', 'role1_link', 'Card 1 link label', 'text', 'See Services', 4],
+            ['home', 'What I Do', 'role2_title', 'Card 2 title', 'text', 'Writer', 5],
+            ['home', 'What I Do', 'role2_text', 'Card 2 text', 'textarea', 'Articles and educational content on personal finance.', 6],
+            ['home', 'What I Do', 'role2_link', 'Card 2 link label', 'text', 'See Insights', 7],
+            ['home', 'What I Do', 'role3_title', 'Card 3 title', 'text', 'Author', 8],
+            ['home', 'What I Do', 'role3_text', 'Card 3 text', 'textarea', 'The Second Half of Zindagi!, a retirement planning book.', 9],
+            ['home', 'What I Do', 'role3_link', 'Card 3 link label', 'text', 'See Books', 10],
+            ['home', 'What I Do', 'role4_title', 'Card 4 title', 'text', 'Educator', 11],
+            ['home', 'What I Do', 'role4_text', 'Card 4 text', 'textarea', 'Television appearances, interviews and financial awareness initiatives.', 12],
+            ['home', 'What I Do', 'role4_link', 'Card 4 link label', 'text', 'See Media & Features', 13],
             ['home', 'Who I Work With', 'who_title', 'Section title', 'text', 'WHO I WORK WITH', 1],
             ['home', 'Who I Work With', 'who_text', 'Section text', 'textarea', 'My work is built primarily around individuals, salaried professionals, self-employed professionals and families — and is growing to serve small business owners who need dependable support with tax, compliance and broader financial matters.', 2],
             ['home', 'Why Work With Me', 'why_title', 'Section title', 'text', 'WHY WORK WITH ME?', 1],
@@ -160,6 +171,7 @@ class SiteContentSeeder extends Seeder
         // One-time cleanup of legacy rows that no longer map to any section on
         // the website (old home "Service Pillars" module and superseded keys).
         $deprecated = [
+            ['home', 'roles'],
             ['home', 'pillar1_title'], ['home', 'pillar1_text'],
             ['home', 'pillar2_title'], ['home', 'pillar2_text'],
             ['home', 'pillar3_title'], ['home', 'pillar3_text'],

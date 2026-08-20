@@ -38,10 +38,15 @@
 <!-- What I Do Section -->
 <section class="container whatido-sec">
     <div class="insi-head"><span></span><h2>{{ $sc['home.whatido_title'] ?? 'WHAT I DO' }}</h2><span></span></div>
-    @if(!empty($sc['home.roles'] ?? ''))<div class="sec-body cards">{!! $sc['home.roles'] !!}</div>
-</section>@else<div class="sec-body cards">@if(!empty($secs['home.what_i_do']['body'] ?? '')){!! $secs['home.what_i_do']['body'] !!}@else<ul><li><strong>Financial Professional</strong> — Investment execution, taxation and financial organisation. <a href="{{ route('services') }}">See Services</a>.</li><li><strong>Writer</strong> — Articles and educational content on personal finance. <a href="{{ route('insights') }}">See Insights</a>.</li><li><strong>Author</strong> — The Second Half of Zindagi!, a retirement planning book. <a href="{{ route('books') }}">See Books</a>.</li><li><strong>Educator</strong> — Television appearances, interviews and financial awareness initiatives. <a href="{{ route('media') }}">See Media &amp; Features</a>.</li></ul>@endif</div>
+    <div class="sec-body cards">
+        <ul>
+            <li><strong>{{ $sc['home.role1_title'] ?? 'Financial Professional' }}</strong> — {{ $sc['home.role1_text'] ?? 'Investment execution, taxation and financial organisation.' }} <a href="{{ route('services') }}">{{ $sc['home.role1_link'] ?? 'See Services' }}</a>.</li>
+            <li><strong>{{ $sc['home.role2_title'] ?? 'Writer' }}</strong> — {{ $sc['home.role2_text'] ?? 'Articles and educational content on personal finance.' }} <a href="{{ route('insights') }}">{{ $sc['home.role2_link'] ?? 'See Insights' }}</a>.</li>
+            <li><strong>{{ $sc['home.role3_title'] ?? 'Author' }}</strong> — {{ $sc['home.role3_text'] ?? 'The Second Half of Zindagi!, a retirement planning book.' }} <a href="{{ route('books') }}">{{ $sc['home.role3_link'] ?? 'See Books' }}</a>.</li>
+            <li><strong>{{ $sc['home.role4_title'] ?? 'Educator' }}</strong> — {{ $sc['home.role4_text'] ?? 'Television appearances, interviews and financial awareness initiatives.' }} <a href="{{ route('media') }}">{{ $sc['home.role4_link'] ?? 'See Media & Features' }}</a>.</li>
+        </ul>
+    </div>
 </section>
-@endif
 
 <!-- Who I Work With Section -->
 <section class="who-band">
