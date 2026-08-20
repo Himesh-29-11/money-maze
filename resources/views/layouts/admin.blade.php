@@ -89,6 +89,7 @@
             <a href="{{ route('admin.testimonials.index') }}" class="{{ request()->routeIs('admin.testimonials.*') ? 'on' : '' }}"><span class="dot"></span> Testimonials</a>
             <a href="{{ route('admin.links.index') }}" class="{{ request()->routeIs('admin.links.*') ? 'on' : '' }}"><span class="dot"></span> Navigation Links</a>
             <a href="{{ route('admin.messages') }}" class="{{ request()->routeIs('admin.messages') ? 'on' : '' }}"><span class="dot"></span> Messages</a>
+            <a href="{{ route('admin.sections.index') }}" class="{{ request()->routeIs('admin.sections.*') ? 'on' : '' }}"><span class="dot"></span> Page Sections</a>
             <a href="{{ route('admin.content', ['page' => 'settings']) }}" class="{{ request()->routeIs('admin.content') && request()->query('page') === 'settings' ? 'on' : '' }}"><span class="dot"></span> Settings</a>
         </nav>
     </aside>

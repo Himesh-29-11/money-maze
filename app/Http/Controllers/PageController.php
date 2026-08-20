@@ -27,6 +27,16 @@ class PageController extends Controller
         return view('pages.insights', array_merge($this->shared(), ['articles' => $this->articlesPublic()]));
     }
 
+    private function sectionsMap(): array
+    {
+        try {
+            return \App\Models\PageSection::query()->where('visible', true)->get()
+                ->mapWithKeys(fn ($s) => ["{$s->page}.{$s->key}" => ['title' => $s->title, 'body' => $s->body]])->all();
+        } catch (\Throwable) {
+            return [];
+        }
+    }
+
     private function articlesPublic(): array
     {
         try {
@@ -141,6 +151,7 @@ class PageController extends Controller
             'testimonials' => $this->testimonialsData(),
             'books' => $this->booksData(),
             'mediaEntries' => $this->mediaEntries(),
+            'secs' => $this->sectionsMap(),
         ];
     }
 
