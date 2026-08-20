@@ -5,15 +5,17 @@
 @section('content')
 <!-- Hero Section -->
 <section class="hero hero-home">
-    <div class="container hero-grid">
+    <div class="hero-grid">
         <div class="hero-content">
-            <p class="eyebrow">CLARITY. STRUCTURE. CONFIDENCE.</p>
-            <h1>Navigate Life’s Financial Decisions with Confidence.</h1>
-            <h2 class="hero-byline">Mitali Mehta, CA, CFP®</h2>
-            <p class="hero-lead">Chartered Accountant and Personal Finance Professional helping individuals, professionals and NRIs navigate taxation, investments and financial decisions with clarity, structure and a long-term perspective.</p>
+            <p class="eyebrow">{{ $sc['home.eyebrow'] ?? 'Personal finance, investments, taxation and financial organisation — brought together under one roof.' }}</p>
+            <h1>{{ $sc['home.title'] ?? 'I’m Mitali Mehta, a Certified Financial Planner, Chartered Accountant and Lawyer based in Ahmedabad.' }}</h1>
+            <div class="gold-rule"></div>
+            <p class="hero-lead">{{ $sc['home.lead'] ?? 'Through Money Maze, I work with individuals, professionals and families on investment execution, taxation, financial organisation and the practical matters that come with managing money well.' }}</p>
+            <p class="hero-about-link">{{ $sc['home.about_link'] ?? 'Curious about the path that led here?' }} <a href="{{ route('about') }}">Read more on About</a>.</p>
             <div class="hero-actions">
-                <a href="{{ route('contact') }}" class="button button-primary">Let's Connect <span class="arrow-icon">→</span></a>
-                <a href="{{ route('services') }}" class="button button-outline">Explore Services</a>
+                <a href="{{ route('services') }}" class="button button-primary">{{ $sc['home.btn_services'] ?? 'Explore Services' }} <span class="arrow-icon">→</span></a>
+                <a href="{{ route('about') }}" class="button button-outline">{{ $sc['home.btn_about'] ?? 'About Me' }}</a>
+                <a href="{{ route('contact') }}" class="button button-outline">{{ $sc['home.btn_contact'] ?? 'Get in Touch' }}</a>
             </div>
             <div class="hero-regulatory-note">
                 <span class="shield-icon">
@@ -22,59 +24,53 @@
                         <path d="M9 11l2 2 4-4"/>
                     </svg>
                 </span>
-                <p>Mutual fund distribution services are offered as a SEBI-registered Mutual Fund Distributor. Other financial products and professional services are offered through the practice as applicable.</p>
+                <p>{{ $sc['home.regulatory'] ?? 'Mitali Mehta is a SEBI-registered Mutual Fund Distributor. Mutual fund investments are subject to market risks; please read all scheme-related documents carefully before investing.' }}</p>
             </div>
         </div>
-        <div class="hero-portrait-wrap">
-            <img class="hero-portrait" src="{{ asset('assets/mitali-profile.png') }}" alt="Mitali Mehta, Personal Finance Professional">
-            <div class="floating-quote-frame">
-                <p>Good financial decisions today create freedom tomorrow.</p>
-            </div>
+        <div class="hero-photo">
+            <img loading="lazy" decoding="async" src="{{ asset('assets/mitali-profile-black.png') }}" alt="Mitali Mehta at her desk — good financial decisions today create freedom tomorrow" style="object-fit: cover; object-position: top center;">
         </div>
     </div>
 </section>
 
 <!-- Services Pillar Section -->
-<section class="container service-pillars section-pad-top">
-    <div class="card-grid card-grid-3">
-        <article class="feature-card feature-card-tall">
-            <div class="icon-disc icon-green">
-                <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2">
-                    <line x1="18" y1="20" x2="18" y2="10"/>
-                    <line x1="12" y1="20" x2="12" y2="4"/>
-                    <line x1="6" y1="20" x2="6" y2="14"/>
-                </svg>
-            </div>
-            <h3>1. INVESTMENT SOLUTIONS</h3>
-            <p>Access to a range of investment solutions including mutual funds, fixed deposits, bonds, NCDs, GIFT City products and select opportunities, depending on client requirements and suitability.</p>
-            <a class="text-link" href="{{ route('services') }}">Learn More <span class="arrow-icon">→</span></a>
+
+<!-- What I Do Section -->
+<section class="container whatido-sec">
+    <div class="insi-head"><span></span><h2>{{ $sc['home.whatido_title'] ?? 'WHAT I DO' }}</h2><span></span></div>
+    <div class="whatido-grid">
+        <article class="whatido-card">
+            <span class="whatido-icon"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2"/><path d="M3 12h18"/></svg></span>
+            <h3>Financial Professional</h3>
+            <p>Investment execution, taxation and financial organisation.</p>
+            <a class="text-link" href="{{ route('services') }}">See Services <span class="arrow-icon">→</span></a>
         </article>
-        <article class="feature-card feature-card-tall">
-            <div class="icon-disc icon-green">
-                <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2">
-                    <rect x="4" y="4" width="16" height="16" rx="2"/>
-                    <line x1="9" y1="9" x2="15" y2="9"/>
-                    <line x1="9" y1="13" x2="15" y2="13"/>
-                    <line x1="9" y1="17" x2="15" y2="17"/>
-                </svg>
-            </div>
-            <h3>2. TAX PLANNING & COMPLIANCE</h3>
-            <p>Support with income tax returns, tax planning, GST registrations and GST return filings to keep your financial affairs organised, compliant and tax-efficient.</p>
-            <a class="text-link" href="{{ route('services') }}">Learn More <span class="arrow-icon">→</span></a>
+        <article class="whatido-card">
+            <span class="whatido-icon"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg></span>
+            <h3>Writer</h3>
+            <p>Articles and educational content on personal finance.</p>
+            <a class="text-link" href="{{ route('insights') }}">See Insights <span class="arrow-icon">→</span></a>
         </article>
-        <article class="feature-card feature-card-tall">
-            <div class="icon-disc icon-green">
-                <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-                    <circle cx="9" cy="7" r="4"/>
-                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
-                    <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-                </svg>
-            </div>
-            <h3>3. FINANCIAL ORGANISATION & PROFESSIONAL SUPPORT</h3>
-            <p>Practical support for salaried individuals and self-employed professionals across financial records, cash flow review, tax-ready documentation and better financial clarity.</p>
-            <a class="text-link" href="{{ route('services') }}">Learn More <span class="arrow-icon">→</span></a>
+        <article class="whatido-card">
+            <span class="whatido-icon"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6c-2-1.8-4.5-2.5-8-2.5v14c3.5 0 6 .7 8 2.5 2-1.8 4.5-2.5 8-2.5v-14c-3.5 0-6 .7-8 2.5z"/><path d="M12 6v14"/></svg></span>
+            <h3>Author</h3>
+            <p>The Second Half of Zindagi!, a retirement planning book.</p>
+            <a class="text-link" href="{{ route('books') }}">See Books <span class="arrow-icon">→</span></a>
         </article>
+        <article class="whatido-card">
+            <span class="whatido-icon"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10a7 7 0 0 0 14 0"/><path d="M12 17v4"/><path d="M8 21h8"/></svg></span>
+            <h3>Educator</h3>
+            <p>Television appearances, interviews and financial awareness initiatives.</p>
+            <a class="text-link" href="{{ route('media') }}">See Media &amp; Features <span class="arrow-icon">→</span></a>
+        </article>
+    </div>
+</section>
+
+<!-- Who I Work With Section -->
+<section class="who-band">
+    <div class="container">
+        <div class="section-title-divider"><span class="divider-line"></span><h2>{{ $sc['home.who_title'] ?? 'WHO I WORK WITH' }}</h2><span class="divider-line"></span></div>
+        <p class="who-band-text">{{ $sc['home.who_text'] ?? 'My work is built primarily around individuals, salaried professionals, self-employed professionals and families — and is growing to serve small business owners who need dependable support with tax, compliance and broader financial matters.' }}</p>
     </div>
 </section>
 
@@ -83,14 +79,18 @@
     <div class="container">
         <div class="section-title-divider">
             <span class="divider-line"></span>
-            <h2>WHY WORK WITH ME?</h2>
+            <h2>{{ $sc['home.why_title'] ?? 'WHY WORK WITH ME?' }}</h2>
             <span class="divider-line"></span>
         </div>
         <div class="value-grid">
             <div class="value-item">
                 <div class="value-icon">
-                    <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.5">
-                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                    <svg viewBox="0 0 24 24" width="42" height="42" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="5" r="2.6"/>
+                        <path d="M8.4 11.2c.6-2 1.9-3 3.6-3s3 1 3.6 3"/>
+                        <path transform="translate(6.3,17.4)" d="M0 -2.6l.8 1.6 1.8.3-1.3 1.3.3 1.8-1.6-.9-1.6.9.3-1.8-1.3-1.3 1.8-.3z"/>
+                        <path transform="translate(12,19.4)" d="M0 -2.6l.8 1.6 1.8.3-1.3 1.3.3 1.8-1.6-.9-1.6.9.3-1.8-1.3-1.3 1.8-.3z"/>
+                        <path transform="translate(17.7,17.4)" d="M0 -2.6l.8 1.6 1.8.3-1.3 1.3.3 1.8-1.6-.9-1.6.9.3-1.8-1.3-1.3 1.8-.3z"/>
                     </svg>
                 </div>
                 <h3>Holistic Perspective</h3>
@@ -98,12 +98,13 @@
             </div>
             <div class="value-item">
                 <div class="value-icon">
-                    <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.5">
-                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-                        <polyline points="14 2 14 8 20 8"/>
-                        <line x1="16" y1="13" x2="8" y2="13"/>
-                        <line x1="16" y1="17" x2="8" y2="17"/>
-                        <polyline points="10 9 9 9 8 9"/>
+                    <svg viewBox="0 0 24 24" width="42" height="42" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="6" y="4.5" width="12" height="17" rx="1.5"/>
+                        <path d="M9.5 4.5V3h5v1.5"/>
+                        <path d="M9 10l1.2 1.2 2.1-2.3"/>
+                        <path d="M9 15l1.2 1.2 2.1-2.3"/>
+                        <path d="M14.6 10.4h1.4"/>
+                        <path d="M14.6 15.4h1.4"/>
                     </svg>
                 </div>
                 <h3>Structured & Personalised</h3>
@@ -111,8 +112,14 @@
             </div>
             <div class="value-item">
                 <div class="value-icon">
-                    <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.5">
-                        <path d="M9 21h6M12 17v4M12 3a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17h8v-1.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7z"/>
+                    <svg viewBox="0 0 24 24" width="42" height="42" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 3.5a5.8 5.8 0 0 1 5.8 5.8c0 1.9-.9 3.3-2.1 4.5-.6.6-.9 1.4-.9 2.2h-5.6c0-.8-.3-1.6-.9-2.2-1.2-1.2-2.1-2.6-2.1-4.5A5.8 5.8 0 0 1 12 3.5z"/>
+                        <path d="M10 18.8h4"/>
+                        <path d="M10.6 21.2h2.8"/>
+                        <path d="M3.5 9.3H2"/>
+                        <path d="M22 9.3h-1.5"/>
+                        <path d="M5.2 3.9l1.1 1.1"/>
+                        <path d="M18.8 3.9l-1.1 1.1"/>
                     </svg>
                 </div>
                 <h3>Clarity Over Complexity</h3>
@@ -120,9 +127,13 @@
             </div>
             <div class="value-item">
                 <div class="value-icon">
-                    <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.5">
-                        <path d="M17 11h1a3 3 0 0 1 0 6h-1m-10 0a3 3 0 0 1 0-6h1M9 17h6M9 13h6"/>
-                        <path d="M16 17a4 4 0 0 1-8 0v-2h8v2z"/>
+                    <svg viewBox="0 0 24 24" width="42" height="42" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M2.5 10.5L7 6l3.5 2.5L14 5l4.5 4.5"/>
+                        <path d="M7 6L3.5 9.5 6 12"/>
+                        <path d="M18.5 6l3 3.5L19 12"/>
+                        <path d="M6 12l3.5 3.5a1.5 1.5 0 0 0 2.1-2.1"/>
+                        <path d="M11.6 13.4l2.4 2.4a1.5 1.5 0 0 0 2.1-2.1l-2.6-2.7"/>
+                        <path d="M19 12l-2.9 2.9a1.5 1.5 0 0 1-2.1-2.1"/>
                     </svg>
                 </div>
                 <h3>Long-term Relationships</h3>
@@ -130,9 +141,9 @@
             </div>
             <div class="value-item">
                 <div class="value-icon">
-                    <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.5">
-                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-                        <path d="M9 11l2 2 4-4"/>
+                    <svg viewBox="0 0 24 24" width="42" height="42" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 21.5s7.5-3.7 7.5-9.3V5.5L12 2.7 4.5 5.5v6.7c0 5.6 7.5 9.3 7.5 9.3z"/>
+                        <path d="M9 11l2.2 2.2L15.5 9"/>
                     </svg>
                 </div>
                 <h3>Ethics & Professionalism</h3>
@@ -145,31 +156,37 @@
 <!-- Credentials Section -->
 <section class="container credentials-section section-pad-sm">
     <div class="credentials-box">
-        <h3 class="credentials-title">PROFESSIONAL CREDENTIALS</h3>
+        <h3 class="credentials-title">{{ $sc['home.credentials_title'] ?? 'PROFESSIONAL CREDENTIALS' }}</h3>
         <div class="credential-flex-row">
             <div class="credential-badge-item">
-                <span class="badge-round">CA</span>
-                <span class="badge-label">Chartered Accountant</span>
+                <span class="badge-round">CA<sup>®</sup></span>
+                <span class="badge-label">Chartered<br>Accountant</span>
             </div>
             <div class="credential-badge-item">
-                <span class="badge-round">CFP</span>
-                <span class="badge-label">Certified Financial Planner</span>
+                <span class="badge-round">CFP<sup>®</sup></span>
+                <span class="badge-label">Certified Financial<br>Planner</span>
             </div>
             <div class="credential-badge-item">
                 <span class="badge-round">QPFP</span>
-                <span class="badge-label">Qualified Personal Finance Professional</span>
+                <span class="badge-label">Qualified Personal<br>Finance Professional</span>
             </div>
             <div class="credential-badge-item">
                 <span class="badge-round">LLB</span>
-                <span class="badge-label">Bachelor of Laws</span>
             </div>
             <div class="credential-badge-item">
-                <span class="badge-round">SEBI</span>
-                <span class="badge-label">SEBI-registered Mutual Fund Distributor</span>
+                <span class="badge-square">SE
+BI</span>
+                <span class="badge-label">SEBI-registered<br>Mutual Fund<br>Distributor</span>
             </div>
             <div class="credential-badge-item">
-                <span class="badge-round">NRI</span>
-                <span class="badge-label">NRI Investment Course Certification</span>
+                <span class="badge-round">
+                    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.4">
+                        <circle cx="12" cy="12" r="9"/>
+                        <path d="M3 12h18"/>
+                        <path d="M12 3a13.8 13.8 0 0 1 0 18 13.8 13.8 0 0 1 0-18z"/>
+                    </svg>
+                </span>
+                <span class="badge-label">NRI Investment Course<br>Certification</span>
             </div>
         </div>
     </div>
@@ -179,31 +196,31 @@
 <section class="container triple-feature section-pad">
     <!-- Insights & Articles -->
     <article class="mini-feature">
-        <p class="eyebrow">INSIGHTS & ARTICLES</p>
-        <p class="mini-desc">Thoughtful articles and practical insights on personal finance, taxation and investments.</p>
+        <h3 class="mini-feature-title">{{ $sc['home.insights_title'] ?? 'INSIGHTS & ARTICLES' }}</h3>
+        <p class="mini-desc">{{ $sc['home.insights_text'] ?? 'Thoughtful articles and practical insights on personal finance, taxation and investments.' }}</p>
         <div class="insights-row-images">
-            <img src="{{ asset('assets/crops/insights-1.jpg') }}" alt="Desk writing">
-            <img src="{{ asset('assets/crops/insights-2.jpg') }}" alt="Newspaper">
-            <img src="{{ asset('assets/crops/insights-3.jpg') }}" alt="Laptop and coffee">
+            <img loading="lazy" decoding="async" src="{{ asset('assets/crops/insights-1.jpg') }}" alt="Desk writing">
+            <img loading="lazy" decoding="async" src="{{ asset('assets/crops/insights-2.jpg') }}" alt="Newspaper">
+            <img loading="lazy" decoding="async" src="{{ asset('assets/crops/insights-3.jpg') }}" alt="Laptop and coffee">
         </div>
         <a class="text-link" href="{{ route('insights') }}">Explore Insights <span class="arrow-icon">→</span></a>
     </article>
 
     <!-- Featured In -->
     <article class="mini-feature">
-        <p class="eyebrow">FEATURED IN</p>
-        <p class="mini-desc">Seen in leading publications and platforms.</p>
+        <h3 class="mini-feature-title">{{ $sc['home.featured_title'] ?? 'FEATURED IN' }}</h3>
+        <p class="mini-desc">{{ $sc['home.featured_text'] ?? 'Seen in leading publications and platforms.' }}</p>
         <div class="logos-badge-grid">
-            <div class="logo-box box-zee">
-                <span class="zee-orange">ZEE</span><span class="zee-blue">BUSINESS</span>
+            <div class="logo-box">
+                <span class="zee-circle">ZEE</span><span class="logo-business">BUSINESS</span>
             </div>
-            <div class="logo-box box-zee-24">
-                <span class="zee-blue">ZEE</span> <span class="zee-red">24 KALAK</span>
+            <div class="logo-box">
+                <span class="zee-circle zee-circle-blue">ZEE</span><span class="logo-kalak">24 KALAK</span>
             </div>
-            <div class="logo-box box-fe">
-                <span class="fe-red">♦</span> <span class="fe-text">FINANCIAL EXPRESS</span>
+            <div class="logo-box">
+                <span class="fe-diamond">♦</span><span class="fe-name">FINANCIAL EXPRESS</span>
             </div>
-            <div class="logo-box box-chitra">
+            <div class="logo-box">
                 <span class="chitra-text">ચિત્રલેખા</span>
             </div>
         </div>
@@ -212,7 +229,7 @@
 
     <!-- What Clients Say -->
     <article class="mini-feature">
-        <p class="eyebrow">WHAT CLIENTS SAY</p>
+        <h3 class="mini-feature-title">{{ $sc['home.clients_title'] ?? 'WHAT CLIENTS SAY' }}</h3>
         <div class="stars-rating">★★★★★</div>
         <div class="client-quote-block">
             <p class="quote-text">“Mitali explains complex financial concepts so simply. Her guidance has helped me make confident and well-informed decisions.”</p>
@@ -227,15 +244,13 @@
 </section>
 
 <!-- Let's Start a Conversation Section -->
-<section class="container conversation-section">
+<section class="conversation-section">
     <div class="conversation-banner-card">
-        <div class="banner-decor-left"></div>
         <div class="banner-content">
-            <h2>Let’s Start a Conversation</h2>
-            <p>Whether you need support with investments, taxation, financial organisation or simply want greater clarity around your finances, I would be happy to connect.</p>
+            <h2>{{ $sc['home.cta_title'] ?? 'Looking to get your finances better organised?' }}</h2>
+            <p>{{ $sc['home.cta_text'] ?? 'Explore the services on offer, or get in touch directly with what you need.' }}</p>
             <a href="{{ route('contact') }}" class="button button-primary banner-cta-btn">Let's Connect <span class="arrow-icon">→</span></a>
         </div>
-        <div class="banner-decor-right"></div>
     </div>
 </section>
 @endsection

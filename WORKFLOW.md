@@ -60,3 +60,18 @@ Then tell the agent "data synced" (or just ask it to check). The agent will `fet
 - The agent never pushes to `main` directly (unless you explicitly ask).
 - You never push to `arena/019feb5d-money-maze` directly (unless you want to).
 - Pull requests are optional. With this flow, PR #1 can be closed/ignored — or used later as a review gate before merging.
+
+## Automatic sync protocol (agent-side, every turn)
+
+The agent MUST, on every turn, before writing or pushing anything:
+
+1. `git fetch origin main arena-local arena/019febb5-money-maze`
+2. Merge `origin/arena-local` and `origin/main` into the agent branch,
+   resolving any conflicts on the agent side.
+3. Only then commit and push to `arena/019febb5-money-maze`.
+
+Because the agent branch always contains the tips of `main` and
+`arena-local`, pulls/merges on your side are always clean fast-forwards
+and never produce conflicts. If you have local work, commit + push it to
+`arena-local` (or `main`) and it will be absorbed automatically on the
+next turn.

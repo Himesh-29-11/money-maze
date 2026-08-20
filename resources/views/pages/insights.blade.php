@@ -3,228 +3,74 @@
 @section('title', 'Insights — Money Maze')
 
 @section('content')
-<div class="insights-page-v2">
-    <!-- Hero Section: Split Column -->
-    <section class="insights-hero-section">
-        <div class="container hero-grid-v2">
-            <div class="hero-text-col">
-                <p class="eyebrow">INSIGHTS</p>
-                <h1>Articles, columns and financial perspectives across <span>investing</span>, <span>taxation</span>, <span>retirement</span> and <span>personal finance</span>.</h1>
-                <div class="hero-body-text">
-                    <p>This section brings together my written work across personal finance, retirement, taxation, investing, IPOs and related financial topics. It includes published newspaper articles, practical financial explainers and English translations of Gujarati-language pieces, all organised in one place for readers who want to explore financial ideas in greater depth.</p>
-                </div>
-            </div>
-            <div class="hero-image-col">
-                <img src="{{ asset('assets/crops/insights-hero.jpg') }}" alt="Insights and writing desk">
-            </div>
+@php
+    $sc = $sc ?? [];
+    $c = fn (string $key, string $fallback) => $sc[$key] ?? $fallback;
+@endphp
+<section class="insi-hero">
+    <div class="insi-hero-copy">
+        <h1>Insights</h1>
+        <p class="insi-lead">{{ $c('insights.lead', 'Articles, explainers and educational content on personal finance, retirement, taxation and related topics.') }}</p>
+        <p>{{ $c('insights.body', 'This page brings together my written work — articles, columns and educational pieces created to make financial ideas easier to understand and more relevant to everyday life.') }}</p>
+        <div class="hero-actions" style="margin-top:18px;">
+            <a class="svch-btn-solid" href="#archive">{{ $c('insights.btn_browse', 'Browse Articles') }} <span>→</span></a>
+            <a class="svch-btn-outline" href="#featured">{{ $c('insights.btn_featured', 'Read Featured Pieces') }}</a>
         </div>
-    </section>
+    </div>
+    <div class="insi-hero-photo"><img src="{{ asset('assets/crops/insights2-hero.jpg') }}" alt="Coffee, notebook with handwritten notes, glasses and a gold pen" loading="eager" fetchpriority="high"></div>
+</section>
 
-    <!-- Featured Insights Section -->
-    <section class="featured-insights-section container">
-        @php
-            $topicTags = [
-                'Retirement planning' => 'retirement',
-                'Taxation' => 'taxation',
-                'Investing' => 'investing',
-                'IPOs & offerings' => 'ipo',
-                'Insurance' => 'insurance',
-                'Children & money' => 'children',
-            ];
-        @endphp
-        <h2 class="section-title-v2">FEATURED INSIGHTS</h2>
-        <div class="featured-insights-grid">
-            @foreach ($articles as $index => $article)
-            <article class="featured-insight-card" data-topic="{{ strtolower($article['topic']) }}" data-search="{{ strtolower($article['title'].' '.$article['topic'].' '.($article['publication'] ?? '')) }}">
-                <div class="card-thumb">
-                    <img src="{{ asset('assets/crops/insights-'.($index + 1).'.jpg') }}" alt="{{ $article['title'] }} thumbnail">
-                </div>
-                <div class="card-content">
-                    <span class="topic-tag tag-{{ $topicTags[$article['topic']] ?? 'sage' }}">{{ strtoupper($article['topic']) }}</span>
-                    <h3>{{ $article['title'] }}</h3>
-                    <p class="meta-info">{{ $article['publication'] }} <span>·</span> {{ $article['date'] }}</p>
-                    <div class="card-links">
-                        <a href="{{ $article['english_url'] ?? route('insights.show', $article['slug']) }}" class="link-english">Read English Version <span>→</span></a>
-                        <a href="{{ $article['gujarati_url'] ?? route('insights.show', $article['slug']) }}" class="link-gujarati">View Gujarati Publication <span>→</span></a>
-                    </div>
-                </div>
-            </article>
-            @endforeach</div>
-    </section>
+<section class="container insi-sec">
+    <div class="insi-find">
+        <div class="insi-head"><span></span><h2>{{ $c('insights.find_title', 'WHAT YOU’LL FIND HERE') }}</h2><span></span></div>
+        <p>{{ $c('insights.find_p1', 'My writing spans retirement planning, investing, taxation, borrowing, insurance, cash flow, financial habits and long-term money decisions.') }}</p>
+        <p>{{ $c('insights.find_p2', 'Some pieces are written for newspapers and publications; others appear here in a website-friendly format for easier reading. This page is meant to be a single home for that written work.') }}</p>
+        <p>{!! $c('insights.find_p3', 'My articles and columns regularly appear in publications such as <strong>Mumbai Samachar, Capital World and Business Guardian.</strong>') !!}</p>
+    </div>
+</section>
 
-    <!-- Browse Insights by Topic Section -->
-    <section class="browse-topics-section container">
-        <h2 class="section-title-v2">BROWSE INSIGHTS BY TOPIC</h2>
-        <div class="topics-chips-row">
-            <button class="topic-chip-btn is-selected" data-filter="all">
-                <span class="chip-icon">◈</span>
-                <span class="chip-label">All Topics</span>
-            </button>
-            <button class="topic-chip-btn" data-filter="retirement">
-                <span class="chip-icon">🪑</span>
-                <span class="chip-label">Retirement Planning</span>
-            </button>
-            <button class="topic-chip-btn" data-filter="personal">
-                <span class="chip-icon">👛</span>
-                <span class="chip-label">Personal Finance</span>
-            </button>
-            <button class="topic-chip-btn" data-filter="taxation">
-                <span class="chip-icon">📄</span>
-                <span class="chip-label">Taxation &amp; Compliance</span>
-            </button>
-            <button class="topic-chip-btn" data-filter="investing">
-                <span class="chip-icon">📈</span>
-                <span class="chip-label">Investing &amp; Products</span>
-            </button>
-            <button class="topic-chip-btn" data-filter="ipo">
-                <span class="chip-icon">🆕</span>
-                <span class="chip-label">IPOs &amp; Offerings</span>
-            </button>
-            <button class="topic-chip-btn" data-filter="insurance">
-                <span class="chip-icon">☔</span>
-                <span class="chip-label">Insurance</span>
-            </button>
-            <button class="topic-chip-btn" data-filter="children">
-                <span class="chip-icon">👦</span>
-                <span class="chip-label">Children &amp; Money</span>
-            </button>
-            <button class="topic-chip-btn" data-filter="special">
-                <span class="chip-icon">⭐</span>
-                <span class="chip-label">Special Topics / GIFT City</span>
-            </button>
+<section class="container insi-sec">
+    <div class="insi-head"><span></span><h2>{{ $c('insights.topics_title', 'TOPICS I WRITE ABOUT') }}</h2><span></span></div>
+    <ul class="insi-topics-list">
+        <li>Retirement planning and retirement preparedness</li>
+        <li>Investing and long-term wealth creation</li>
+        <li>Tax planning and income tax-related topics</li>
+        <li>Insurance, borrowing and other everyday financial decisions</li>
+        <li>Personal finance concepts explained in simple, practical terms</li>
+    </ul>
+</section>
+
+<section class="container insi-sec" id="featured">
+    <div class="insi-head"><span></span><h2>FEATURED INSIGHTS</h2><span></span></div>
+    <div class="insi-cards">@foreach ($articles as $i => $a)<article class="insi-card"><div class="insi-card-img"><img loading="lazy" decoding="async" src="{{ $a['image'] ?? asset('assets/crops/insights2-'.($i % 6 + 1).'.jpg') }}" alt="{{ $a['title'] }}"></div><div class="insi-card-body"><p class="insi-topic tc-{{ $i % 6 }}">{{ $a['topic'] }}</p><h3>{{ $a['title'] }}</h3><p class="insi-meta">{{ $a['publication'] }}</p><p class="insi-meta"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4"/><path d="M16 3v4"/><path d="M3 10h18"/></svg> {{ $a['date'] }}</p><a class="text-link insi-link" href="{{ $a['english_url'] ?? '#' }}">Read English Version <span class="arrow-icon">→</span></a><a class="text-link insi-link" href="{{ $a['gujarati_url'] ?? '#' }}">View Gujarati Publication <span class="arrow-icon">→</span></a></div></article>@endforeach</div>
+</section>
+
+<section class="container insi-sec" id="archive">
+    <div class="insi-head"><span></span><h2>ARTICLE ARCHIVE</h2><span></span></div>
+    <div class="insi-archive">
+        <aside class="insi-count">
+            <span class="insi-count-icon"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3h11a1 1 0 0 1 1 1v14"/><path d="M4 7a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z"/><path d="M8 9h6"/><path d="M8 13h6"/></svg></span>
+            <h3>150+ Articles<br>and Growing</h3>
+            <p>A comprehensive archive of published articles and financial writing across multiple topics.</p>
+        </aside>
+        <div class="insi-table-wrap">
+            <div class="insi-toolbar"><label class="search-box"><span>⌕</span><input id="article-search" type="search" placeholder="Search articles by title, keyword or topic..."></label><select id="insi-filter-topic" aria-label="Filter by topic"><option value="">All Topics</option><option>Retirement</option><option>Taxation</option><option>IPO</option><option>Children & Money</option></select><select id="insi-filter-pub" aria-label="Filter by publication"><option value="">All Publications</option><option>Mumbai Samachar</option><option>Capital World</option><option>Business Guardian</option></select><select id="insi-filter-year" aria-label="Filter by year"><option value="">All Years</option><option>2024</option></select><select id="insi-sort" aria-label="Sort"><option value="desc">Latest First</option><option value="asc">Oldest First</option></select></div><div class="archive-table insi-table"><div class="archive-row archive-head"><span class="th-spacer"></span><span>Article</span><span>Topic</span><span>Publication</span><span>Date</span><span>Actions</span></div>@foreach ($articles as $i => $a)<div class="archive-row article-row" data-topic="{{ strtolower($a['topic']) }}" data-pub="{{ $a['publication'] }}" data-date="{{ $a['iso'] ?? '' }}" data-search="{{ strtolower($a['title'].' '.$a['topic'].' '.$a['publication']) }}"><span class="insi-thumb"><img loading="lazy" decoding="async" src="{{ $a['image'] ?? asset('assets/crops/insights2-'.($i % 6 + 1).'.jpg') }}" alt="{{ $a['title'] }}"></span><span><strong>{{ $a['title'] }}</strong><small>{{ $a['excerpt'] }}</small></span><span class="tag tag-sage">{{ $a['topic'] }}</span><span>{{ $a['publication'] }}</span><span class="insi-date"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4"/><path d="M16 3v4"/><path d="M3 10h18"/></svg> {{ $a['date'] }}</span><span class="insi-actions"><a href="{{ $a['english_url'] ?? '#' }}">Read English</a><a href="{{ $a['gujarati_url'] ?? '#' }}">View Gujarati</a></span></div>@endforeach</div><div class="insi-pager" id="insi-pager"></div>
+            <p class="insi-empty is-hidden">No articles match the selected filters.</p>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Article Archive Section -->
-    <section id="article-archive" class="container archive-section-v2">
-        <h2 class="section-title-v2">ARTICLE ARCHIVE</h2>
-        <div class="archive-container-v2">
-            <!-- Sidebar -->
-            <div class="archive-sidebar">
-                <div class="archive-sidebar-card">
-                    <div class="sidebar-icon-wrap">
-                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#5a6f5c" stroke-width="1.5">
-                            <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/>
-                        </svg>
-                    </div>
-                    <h3>150+ Articles and Growing</h3>
-                    <p>A comprehensive archive of published articles and financial writing across multiple topics.</p>
-                </div>
-            </div>
-            <!-- Main Content: Filters + Table -->
-            <div class="archive-main-v2">
-                <div class="archive-toolbar-v2">
-                    <div class="search-input-wrap">
-                        <span class="search-icon">⌕</span>
-                        <input id="article-search" type="search" placeholder="Search articles by title, keyword or topic..." aria-label="Search articles">
-                    </div>
-                    <div class="toolbar-dropdowns">
-                        <select aria-label="Filter by Topic">
-                            <option>All Topics</option>
-                        </select>
-                        <select aria-label="Filter by Publication">
-                            <option>All Publications</option>
-                        </select>
-                        <select aria-label="Filter by Year">
-                            <option>All Years</option>
-                        </select>
-                        <select aria-label="Sort Articles">
-                            <option>Latest First</option>
-                        </select>
-                    </div>
-                </div>
-                <!-- Archive Table -->
-                <div class="archive-table-v2">
-                    <div class="table-header-row">
-                        <span>ARTICLE</span>
-                        <span>TOPIC</span>
-                        <span>PUBLICATION</span>
-                        <span>DATE</span>
-                        <span>ACTIONS</span>
-                    </div>
-                    <!-- Row 1 -->
-                    <div class="table-body-row" data-topic="taxation" data-search="smart tax planning for salaried individuals key deductions exemptions and strategies to legally reduce your tax liability. taxation mumbai samachar 05 may 2024">
-                        <span class="cell-article">
-                            <strong>Smart Tax Planning for Salaried Individuals</strong>
-                            <small>Key deductions, exemptions and strategies to legally reduce your tax liability.</small>
-                        </span>
-                        <span class="cell-topic"><span class="table-tag tag-tax">Taxation</span></span>
-                        <span class="cell-pub">Mumbai Samachar</span>
-                        <span class="cell-date">05 May 2024</span>
-                        <span class="cell-actions">
-                            <a href="#">Read English</a>
-                            <a href="#">View Gujarati</a>
-                        </span>
-                    </div>
-                    <!-- Row 2 -->
-                    <div class="table-body-row" data-topic="retirement" data-search="retirement corpus: how much is enough? a practical framework to estimate your retirement needs and build a secure corpus. retirement capital world 02 may 2024">
-                        <span class="cell-article">
-                            <strong>Retirement Corpus: How Much Is Enough?</strong>
-                            <small>A practical framework to estimate your retirement needs and build a secure corpus.</small>
-                        </span>
-                        <span class="cell-topic"><span class="table-tag tag-ret">Retirement</span></span>
-                        <span class="cell-pub">Capital World</span>
-                        <span class="cell-date">02 May 2024</span>
-                        <span class="cell-actions">
-                            <a href="#">Read English</a>
-                            <a href="#">View Gujarati</a>
-                        </span>
-                    </div>
-                    <!-- Row 3 -->
-                    <div class="table-body-row" data-topic="ipo" data-search="understanding ipos: key things to consider important factors every investor should evaluate before investing in an ipo. ipo business guardian 28 apr 2024">
-                        <span class="cell-article">
-                            <strong>Understanding IPOs: Key Things to Consider</strong>
-                            <small>Important factors every investor should evaluate before investing in an IPO.</small>
-                        </span>
-                        <span class="cell-topic"><span class="table-tag tag-ip">IPO</span></span>
-                        <span class="cell-pub">Business Guardian</span>
-                        <span class="cell-date">28 Apr 2024</span>
-                        <span class="cell-actions">
-                            <a href="#">Read English</a>
-                            <a href="#">View Gujarati</a>
-                        </span>
-                    </div>
-                    <!-- Row 4 -->
-                    <div class="table-body-row" data-topic="children" data-search="teaching kids about money: start early simple ways to build money awareness and good financial habits in children. children & money mumbai samachar 21 apr 2024">
-                        <span class="cell-article">
-                            <strong>Teaching Kids About Money: Start Early</strong>
-                            <small>Simple ways to build money awareness and good financial habits in children.</small>
-                        </span>
-                        <span class="cell-topic"><span class="table-tag tag-ch">Children &amp; Money</span></span>
-                        <span class="cell-pub">Mumbai Samachar</span>
-                        <span class="cell-date">21 Apr 2024</span>
-                        <span class="cell-actions">
-                            <a href="#">Read English</a>
-                            <a href="#">View Gujarati</a>
-                        </span>
-                    </div>
-                </div>
-                <!-- Pagination -->
-                <div class="archive-pagination-v2">
-                    <span class="page-num active">1</span>
-                    <span class="page-num">2</span>
-                    <span class="page-num">3</span>
-                    <span class="page-dots">...</span>
-                    <span class="page-num">8</span>
-                    <span class="page-num">9</span>
-                    <span class="page-next">Next <span>→</span></span>
-                </div>
-            </div>
+<section class="container insi-cta-sec">
+    <div class="insi-cta">
+        <span class="insi-cta-icon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M17 2l-5 5-5-5"/></svg></span>
+        <div class="insi-cta-copy">
+            <h3>{{ $c('insights.cta_title', 'Prefer to watch or listen instead?') }}</h3>
+            <p>{{ $c('insights.cta_text', 'For interviews, television appearances, podcasts and other media features, head to Media & Features.') }}</p>
         </div>
-    </section>
-
-    <!-- Bottom Dark Banner -->
-    <section class="insights-footer-banner container">
-        <div class="dark-banner-content">
-            <div class="cta-message-text">
-                <h3>Explore financial ideas, one topic at a time.</h3>
-                <p>Whether you are looking for a practical tax explainer, a retirement perspective, or a piece on personal finance, this section is designed to make that journey easier to navigate.</p>
-            </div>
-            <div class="cta-actions-v2">
-                <a href="#article-archive" class="button button-primary">BROWSE ARTICLES</a>
-                <a href="#article-archive" class="button button-outline-white">EXPLORE BY TOPIC</a>
-            </div>
+        <div class="insi-cta-actions">
+            <a class="svch-btn-solid" href="{{ route('media') }}">Explore Media &amp; Features</a>
+            <a class="svch-btn-outline" href="{{ route('contact') }}">Get in Touch</a>
         </div>
-    </section>
-</div>
+    </div>
+</section>
 @endsection
