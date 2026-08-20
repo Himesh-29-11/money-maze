@@ -38,13 +38,31 @@
 <!-- What I Do Section -->
 <section class="container whatido-sec">
     <div class="insi-head"><span></span><h2>{{ $sc['home.whatido_title'] ?? 'WHAT I DO' }}</h2><span></span></div>
-    <div class="sec-body cards">
-        <ul>
-            <li><strong>{{ $sc['home.role1_title'] ?? 'Financial Professional' }}</strong> — {{ $sc['home.role1_text'] ?? 'Investment execution, taxation and financial organisation.' }} <a href="{{ route('services') }}">{{ $sc['home.role1_link'] ?? 'See Services' }}</a>.</li>
-            <li><strong>{{ $sc['home.role2_title'] ?? 'Writer' }}</strong> — {{ $sc['home.role2_text'] ?? 'Articles and educational content on personal finance.' }} <a href="{{ route('insights') }}">{{ $sc['home.role2_link'] ?? 'See Insights' }}</a>.</li>
-            <li><strong>{{ $sc['home.role3_title'] ?? 'Author' }}</strong> — {{ $sc['home.role3_text'] ?? 'The Second Half of Zindagi!, a retirement planning book.' }} <a href="{{ route('books') }}">{{ $sc['home.role3_link'] ?? 'See Books' }}</a>.</li>
-            <li><strong>{{ $sc['home.role4_title'] ?? 'Educator' }}</strong> — {{ $sc['home.role4_text'] ?? 'Television appearances, interviews and financial awareness initiatives.' }} <a href="{{ route('media') }}">{{ $sc['home.role4_link'] ?? 'See Media & Features' }}</a>.</li>
-        </ul>
+    <div class="whatido-grid">
+        <article class="whatido-card">
+            <span class="whatido-icon"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2"/><path d="M3 12h18"/></svg></span>
+            <h3>{{ $sc['home.role1_title'] ?? 'Financial Professional' }}</h3>
+            <p>{{ $sc['home.role1_text'] ?? 'Investment execution, taxation and financial organisation.' }}</p>
+            <a class="text-link" href="{{ route('services') }}">{{ $sc['home.role1_link'] ?? 'See Services' }} <span class="arrow-icon">→</span></a>
+        </article>
+        <article class="whatido-card">
+            <span class="whatido-icon"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg></span>
+            <h3>{{ $sc['home.role2_title'] ?? 'Writer' }}</h3>
+            <p>{{ $sc['home.role2_text'] ?? 'Articles and educational content on personal finance.' }}</p>
+            <a class="text-link" href="{{ route('insights') }}">{{ $sc['home.role2_link'] ?? 'See Insights' }} <span class="arrow-icon">→</span></a>
+        </article>
+        <article class="whatido-card">
+            <span class="whatido-icon"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6c-2-1.8-4.5-2.5-8-2.5v14c3.5 0 6 .7 8 2.5 2-1.8 4.5-2.5 8-2.5v-14c-3.5 0-6 .7-8 2.5z"/><path d="M12 6v14"/></svg></span>
+            <h3>{{ $sc['home.role3_title'] ?? 'Author' }}</h3>
+            <p>{{ $sc['home.role3_text'] ?? 'The Second Half of Zindagi!, a retirement planning book.' }}</p>
+            <a class="text-link" href="{{ route('books') }}">{{ $sc['home.role3_link'] ?? 'See Books' }} <span class="arrow-icon">→</span></a>
+        </article>
+        <article class="whatido-card">
+            <span class="whatido-icon"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10a7 7 0 0 0 14 0"/><path d="M12 17v4"/><path d="M8 21h8"/></svg></span>
+            <h3>{{ $sc['home.role4_title'] ?? 'Educator' }}</h3>
+            <p>{{ $sc['home.role4_text'] ?? 'Television appearances, interviews and financial awareness initiatives.' }}</p>
+            <a class="text-link" href="{{ route('media') }}">{{ $sc['home.role4_link'] ?? 'See Media & Features' }} <span class="arrow-icon">→</span></a>
+        </article>
     </div>
 </section>
 
