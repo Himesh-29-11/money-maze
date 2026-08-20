@@ -31,13 +31,13 @@
 
 <section class="container insi-sec">
     <div class="insi-head"><span></span><h2>{{ $c('insights.topics_title', 'TOPICS I WRITE ABOUT') }}</h2><span></span></div>
-    <div class="sec-body topics">@if(!empty($secs['insights.topics']['body'] ?? '')){!! $secs['insights.topics']['body'] !!}@else<ul class="insi-topics-list">
+    @if(!empty($sc['insights.topics_list'] ?? ''))<div class="sec-body topics">{!! $sc['insights.topics_list'] !!}</div>@else<div class="sec-body topics">@if(!empty($secs['insights.topics']['body'] ?? '')){!! $secs['insights.topics']['body'] !!}@else<ul class="insi-topics-list">
         <li>Retirement planning and retirement preparedness</li>
         <li>Investing and long-term wealth creation</li>
         <li>Tax planning and income tax-related topics</li>
         <li>Insurance, borrowing and other everyday financial decisions</li>
         <li>Personal finance concepts explained in simple, practical terms</li>
-    </ul>@endif</div>
+    </ul>@endif</div>@endif
 </section>
 
 <section class="container insi-sec" id="featured">
