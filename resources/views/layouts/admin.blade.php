@@ -38,6 +38,7 @@
         .stat b { display:block; font-size:22px; color:var(--forest); }
         .stat span { font-size:11px; color:var(--muted); letter-spacing:.06em; text-transform:uppercase; }
         table { width:100%; border-collapse:collapse; font-size:13px; }
+        td { overflow-wrap: anywhere; }
         th { text-align:left; font-size:10.5px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); padding:8px 10px; border-bottom:1px solid var(--line); }
         td { padding:10px; border-bottom:1px solid #efeadd; vertical-align:top; }
         .pill { display:inline-block; border-radius:999px; padding:3px 10px; font-size:10.5px; font-weight:700; background:#eef1e9; color:var(--forest); }
