@@ -76,7 +76,7 @@
         <div class="ab-col-copy">
             <h2 class="ab-h2">{{ $c('about.writing_title', 'Writing, Media & Authorship') }}</h2>
             <p>{{ $c('about.writing_p1', 'I also write on personal finance for publications, appear across television and other media platforms, and am the author of The Second Half of Zindagi!, a book on retirement planning.') }}</p>
-            <p>{!! $c('about.writing_p2', 'You can find more on <a href="'.route('insights').'">Insights</a>, <a href="'.route('media').'">Media &amp; Features</a> and <a href="'.route('books').'">Books</a>.') !!}</p>
+            <p>{!! \App\Support\ContentText::toHtml($c('about.writing_p2', 'You can find more on <a href="'.route('insights').'">Insights</a>, <a href="'.route('media').'">Media &amp; Features</a> and <a href="'.route('books').'">Books</a>.') ) !!}</p>
         </div>
     </div>
     <div class="ab-matters">

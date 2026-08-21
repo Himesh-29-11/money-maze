@@ -13,7 +13,7 @@
         <tr>
             <td><b>{{ $a->title }}</b>@if($a->featured) <span class="pill">Featured</span>@endif</td>
             <td>{{ $a->topic }}</td><td>{{ $a->publication }}</td><td>{{ $a->published_at?->format('d M Y') }}</td>
-            <td><div class="row-acts">
+            <td class="actions"><div class="row-acts">
                 <a class="btn btn-line" href="{{ route('admin.articles.edit', $a) }}">Edit</a>
                 <form method="POST" action="{{ route('admin.articles.destroy', $a) }}">@csrf @method('DELETE')<button class="btn btn-danger">Delete</button></form>
             </div></td>

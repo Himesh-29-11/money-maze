@@ -11,7 +11,7 @@
         <tr><th>Quote</th><th>Author</th><th>Rating</th><th></th></tr>
         @foreach ($testimonials as $t)
         <tr><td>{{ \Illuminate\Support\Str::limit($t->quote, 90) }}</td><td>{{ $t->author }}<br><small>{{ $t->role }}</small></td><td>{{ str_repeat('★', $t->rating) }}</td>
-        <td><div class="row-acts"><a class="btn btn-line" href="{{ route('admin.testimonials.edit', $t) }}">Edit</a>
+        <td class="actions"><div class="row-acts"><a class="btn btn-line" href="{{ route('admin.testimonials.edit', $t) }}">Edit</a>
         <form method="POST" action="{{ route('admin.testimonials.destroy', $t) }}">@csrf @method('DELETE')<button class="btn btn-danger">Delete</button></form></div></td></tr>
         @endforeach
     </table>

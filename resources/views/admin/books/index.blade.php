@@ -11,7 +11,7 @@
         <tr><th>Book</th><th>Subtitle</th><th></th></tr>
         @foreach ($books as $b)
         <tr><td><b>{{ $b->title }}</b> @if($b->featured)<span class="pill">Featured</span>@endif</td><td>{{ $b->subtitle }}</td>
-        <td><div class="row-acts"><a class="btn btn-line" href="{{ route('admin.books.edit', $b) }}">Edit</a>
+        <td class="actions"><div class="row-acts"><a class="btn btn-line" href="{{ route('admin.books.edit', $b) }}">Edit</a>
         <form method="POST" action="{{ route('admin.books.destroy', $b) }}">@csrf @method('DELETE')<button class="btn btn-danger">Delete</button></form></div></td></tr>
         @endforeach
     </table>

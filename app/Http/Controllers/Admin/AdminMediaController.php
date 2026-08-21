@@ -48,7 +48,7 @@ class AdminMediaController extends Controller
 
     private function validated(Request $request): array
     {
-        return $request->validate([
+        $data = $request->validate([
             'type' => ['required', 'string', 'in:interview,video,podcast,feature'],
             'label' => ['nullable', 'string', 'max:120'],
             'title' => ['required', 'string', 'max:255'],
@@ -60,5 +60,10 @@ class AdminMediaController extends Controller
             'url' => ['nullable', 'string', 'max:255'],
             'sort' => ['nullable', 'integer'],
         ]);
+        if (($data['image'] ?? null) === '') {
+            $data['image'] = null;
+        }
+
+        return $data;
     }
 }

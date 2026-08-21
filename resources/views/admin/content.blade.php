@@ -13,14 +13,13 @@
         @foreach ($sections as $section => $items)
         <div class="card">
             <h2>{{ $section }}</h2>
-            <p class="sub">Module: {{ $page }} / {{ $section }}</p>
             <form method="POST" action="{{ route('admin.content.update') }}">
                 @csrf
                 <input type="hidden" name="page" value="{{ $page }}">
                 @foreach ($items as $item)
                     @if ($item->type === 'image')
                         <div class="img-field">
-                            <span class="img-label">{{ $item->label }} <small>{{ $page }}.{{ $item->key }}</small></span>
+                            <span class="img-label">{{ $item->label }}</span>
                             <input type="hidden" name="values[{{ $item->key }}]" value="{{ $item->value }}">
                             <div class="img-preview-box">
                                 @if ($item->value)
@@ -31,16 +30,18 @@
                             </div>
                             <div class="img-actions">
                                 <button type="button" class="btn btn-green img-upload-btn">Upload new image</button>
+                                <button type="button" class="btn btn-line img-remove-btn">Remove image</button>
                                 <input type="file" accept="image/jpeg,image/png,image/webp,image/gif" class="img-file" hidden>
                             </div>
-                            <span class="img-path">{{ $item->value ?: 'using default image' }}</span>
+                            <span class="img-path">{{ $item->value ? 'Custom image saved' : 'Using default image' }}</span>
                         </div>
                     @else
-                        <label>{{ $item->label }} <small>{{ $page }}.{{ $item->key }}</small>
+                        <label>{{ $item->label }}
                             @if ($item->type === 'textarea')
-                                <textarea name="values[{{ $item->key }}]">{{ $item->value }}</textarea>
+                                <textarea name="values[{{ $item->key }}]">{{ \App\Support\ContentText::toPlainText($item->value) }}</textarea>
+                                <small class="field-hint">Plain text only — start a line with “- ” to make a bullet list.</small>
                             @else
-                                <input type="text" name="values[{{ $item->key }}]" value="{{ $item->value }}">
+                                <input type="text" name="values[{{ $item->key }}]" value="{{ \App\Support\ContentText::toPlainText($item->value) }}">
                             @endif
                         </label>
                     @endif
@@ -57,6 +58,14 @@
 document.addEventListener('click', (e) => {
     const btn = e.target.closest('.img-upload-btn');
     if (btn) btn.closest('.img-field').querySelector('.img-file').click();
+});
+document.addEventListener('click', (e) => {
+    const btn = e.target.closest('.img-remove-btn');
+    if (!btn) return;
+    const field = btn.closest('.img-field');
+    field.querySelector('input[name^="values"]').value = '';
+    field.querySelector('.img-preview-box').innerHTML = '<span class="img-none">No image yet</span>';
+    field.querySelector('.img-path').textContent = 'Using default image — press Save.';
 });
 document.addEventListener('change', async (e) => {
     const input = e.target.closest('.img-file');
@@ -79,7 +88,7 @@ document.addEventListener('change', async (e) => {
         let img = field.querySelector('.img-preview-box img');
         if (!img) { field.querySelector('.img-preview-box').innerHTML = '<img alt="">'; img = field.querySelector('.img-preview-box img'); }
         img.src = data.url;
-        field.querySelector('.img-path').textContent = data.path + ' (saved when you press Save)';
+        field.querySelector('.img-path').textContent = 'New image ready — press Save';
     } finally {
         btn.disabled = false;
         btn.textContent = 'Upload new image';

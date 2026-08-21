@@ -48,7 +48,7 @@ class AdminBookController extends Controller
 
     private function validated(Request $request): array
     {
-        return $request->validate([
+        $data = $request->validate([
             'key' => ['required', 'string', 'max:60'],
             'title' => ['required', 'string', 'max:255'],
             'subtitle' => ['nullable', 'string', 'max:255'],
@@ -57,5 +57,10 @@ class AdminBookController extends Controller
             'featured' => ['nullable', 'boolean'],
             'sort' => ['nullable', 'integer'],
         ]);
+        if (($data['cover'] ?? null) === '') {
+            $data['cover'] = null;
+        }
+
+        return $data;
     }
 }

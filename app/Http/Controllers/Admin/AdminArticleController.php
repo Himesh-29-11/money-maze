@@ -51,7 +51,7 @@ class AdminArticleController extends Controller
 
     private function validated(Request $request): array
     {
-        return $request->validate([
+        $data = $request->validate([
             'title' => ['required', 'string', 'max:255'],
             'topic' => ['nullable', 'string', 'max:120'],
             'publication' => ['nullable', 'string', 'max:120'],
@@ -62,5 +62,10 @@ class AdminArticleController extends Controller
             'gujarati_url' => ['nullable', 'string', 'max:255'],
             'featured' => ['nullable', 'boolean'],
         ]);
+        if (($data['image'] ?? null) === '') {
+            $data['image'] = null;
+        }
+
+        return $data;
     }
 }
