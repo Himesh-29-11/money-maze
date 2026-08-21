@@ -79,6 +79,7 @@
         .img-preview-box img { max-width:240px; max-height:160px; border-radius:8px; border:1px solid var(--line); display:block; }
         .img-none { color:var(--muted); font-size:12px; }
         .img-path { display:block; margin-top:6px; font-size:11px; color:var(--muted); }
+        .field-hint { display:block; margin:4px 0 10px; font-size:11px; font-weight:400; color:var(--muted); }
     </style>
 </head>
 <body>

@@ -25,13 +25,13 @@
         <div class="insi-head"><span></span><h2>{{ $c('insights.find_title', 'WHAT YOU’LL FIND HERE') }}</h2><span></span></div>
         <p>{{ $c('insights.find_p1', 'My writing spans retirement planning, investing, taxation, borrowing, insurance, cash flow, financial habits and long-term money decisions.') }}</p>
         <p>{{ $c('insights.find_p2', 'Some pieces are written for newspapers and publications; others appear here in a website-friendly format for easier reading. This page is meant to be a single home for that written work.') }}</p>
-        <p>{!! $c('insights.find_p3', 'My articles and columns regularly appear in publications such as <strong>Mumbai Samachar, Capital World and Business Guardian.</strong>') !!}</p>
+        <p>{!! \App\Support\ContentText::toHtml($c('insights.find_p3', 'My articles and columns regularly appear in publications such as <strong>Mumbai Samachar, Capital World and Business Guardian.</strong>') ) !!}</p>
     </div>
 </section>
 
 <section class="container insi-sec">
     <div class="insi-head"><span></span><h2>{{ $c('insights.topics_title', 'TOPICS I WRITE ABOUT') }}</h2><span></span></div>
-    @if(!empty($sc['insights.topics_list'] ?? ''))<div class="sec-body topics">{!! $sc['insights.topics_list'] !!}</div>@else<div class="sec-body topics">@if(!empty($secs['insights.topics']['body'] ?? '')){!! $secs['insights.topics']['body'] !!}@else<ul class="insi-topics-list">
+    @if(!empty($sc['insights.topics_list'] ?? ''))<div class="sec-body topics">{!! \App\Support\ContentText::toHtml($sc['insights.topics_list'] ?? '') !!}</div>@else<div class="sec-body topics">@if(!empty($secs['insights.topics']['body'] ?? '')){!! $secs['insights.topics']['body'] !!}@else<ul class="insi-topics-list">
         <li>Retirement planning and retirement preparedness</li>
         <li>Investing and long-term wealth creation</li>
         <li>Tax planning and income tax-related topics</li>

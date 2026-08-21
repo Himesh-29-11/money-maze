@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\SiteContent;
+use App\Support\ContentText;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
@@ -116,8 +117,16 @@ class AdminContentController extends Controller
         $page = $request->input('page');
         $values = $request->input('values', []);
 
+        $types = SiteContent::query()->where('page', $page)->pluck('type', 'key');
+
         foreach ($values as $key => $value) {
-            SiteContent::query()->where('page', $page)->where('key', $key)->update(['value' => $value]);
+            // Image fields keep their stored path; text fields are kept as the
+            // plain text the admin typed (the site converts it to HTML).
+            $clean = ($types[$key] ?? '') === 'image'
+                ? $value
+                : ContentText::toPlainText((string) $value);
+
+            SiteContent::query()->where('page', $page)->where('key', $key)->update(['value' => $clean]);
         }
 
         return back()->with('status', ucfirst($page).' content saved.');
