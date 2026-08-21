@@ -7329,3 +7329,9 @@ body::-webkit-scrollbar-track { background: var(--ivory); }
 .sec-body.pillar ol li::before { display: none; }
 @media (max-width: 900px) { .sec-body.cards ul { grid-template-columns: 1fr 1fr; } .sec-body.topics ul { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 580px) { .sec-body.cards ul, .sec-body.topics ul { grid-template-columns: 1fr; } }
+
+/* Phone fix: .hero-home .hero-grid is more specific than the generic .hero-grid
+   collapse rules, so the home hero never stacked on small screens. */
+@media (max-width: 991px) {
+  .hero-home .hero-grid { grid-template-columns: 1fr; }
+}
