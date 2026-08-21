@@ -7202,7 +7202,7 @@ p {
 
 /* Services steps: connecting line + arrow between steps (mockup style) */
 .svch-step:not(:last-child)::before { content: ''; position: absolute; top: 27px; left: calc(50% + 38px); right: calc(-50% + 38px); height: 1px; background: #d9d2c4; }
-.svch-step:not(:last-child)::after { top: 19px; right: calc(-50% + 30px); font-size: 15px; }
+.svch-step:not(:last-child)::after { top: 0px; right: calc(-50% + 30px); font-size: 30px; }
 @media (max-width: 1120px) { .svch-step:not(:last-child)::before { left: calc(50% + 34px); right: calc(-50% + 34px); } }
 @media (max-width: 900px) { .svch-step:not(:last-child)::before, .svch-step:not(:last-child)::after { display: none; } }
 
