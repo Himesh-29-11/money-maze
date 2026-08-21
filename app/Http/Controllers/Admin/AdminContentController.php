@@ -66,6 +66,7 @@ class AdminContentController extends Controller
             'Hero',
             'QR Companion',
             'What You Will Find',
+            'Downloads & Tool Links',
             'Note',
             'Closing CTA',
         ],
