@@ -34,15 +34,43 @@
     <div class="insi-cards">@foreach ($articles as $i => $a)<article class="insi-card"><div class="insi-card-img"><img loading="lazy" decoding="async" src="{{ $a['image'] ?? asset('assets/crops/insights2-'.($i % 6 + 1).'.jpg') }}" alt="{{ $a['title'] }}"></div><div class="insi-card-body"><p class="insi-topic tc-{{ $i % 6 }}">{{ $a['topic'] }}</p><h3>{{ $a['title'] }}</h3><p class="insi-meta">{{ $a['publication'] }}</p><p class="insi-meta"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4"/><path d="M16 3v4"/><path d="M3 10h18"/></svg> {{ $a['date'] }}</p><a class="text-link insi-link" href="{{ $a['english_url'] ?? '#' }}">Read English Version <span class="arrow-icon">→</span></a><a class="text-link insi-link" href="{{ $a['gujarati_url'] ?? '#' }}">View Gujarati Publication <span class="arrow-icon">→</span></a></div></article>@endforeach</div>
 </section>
 
-<section class="container insi-sec">
+<section class="container insi-sec" id="topics">
     <div class="insi-head"><span></span><h2>{{ $c('insights.topics_title', 'TOPICS I WRITE ABOUT') }}</h2><span></span></div>
-    @if(!empty($sc['insights.topics_list'] ?? ''))<div class="sec-body topics">{!! \App\Support\ContentText::toHtml($sc['insights.topics_list'] ?? '') !!}</div>@else<div class="sec-body topics">@if(!empty($secs['insights.topics']['body'] ?? '')){!! $secs['insights.topics']['body'] !!}@else<ul class="insi-topics-list">
-        <li>Retirement planning and retirement preparedness</li>
-        <li>Investing and long-term wealth creation</li>
-        <li>Tax planning and income tax-related topics</li>
-        <li>Insurance, borrowing and other everyday financial decisions</li>
-        <li>Personal finance concepts explained in simple, practical terms</li>
-    </ul>@endif</div>@endif
+    <div class="topic-tiles">
+        <button type="button" class="insi-chip topic-tile" data-filter="retirement planning">
+            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h12"/><path d="M6 22h12"/><path d="M8 2v2.5L12 10l4-5.5V2"/><path d="M8 22v-2.5L12 14l4 5.5V22"/></svg>
+            <span>Retirement<br>Planning</span>
+        </button>
+        <button type="button" class="insi-chip topic-tile" data-filter="personal finance">
+            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 7H5a2 2 0 0 1 0-4h13v4"/><path d="M20 7a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5"/><circle cx="16.5" cy="13.5" r="1"/></svg>
+            <span>Personal<br>Finance</span>
+        </button>
+        <button type="button" class="insi-chip topic-tile" data-filter="taxation">
+            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/></svg>
+            <span>Taxation &amp;<br>Compliance</span>
+        </button>
+        <button type="button" class="insi-chip topic-tile" data-filter="investing">
+            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+            <span>Investing &amp;<br>Financial Products</span>
+        </button>
+        <button type="button" class="insi-chip topic-tile" data-filter="ipos &amp; offerings">
+            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.28-.02-3.02a2.2 2.2 0 0 0-2.98.02z"/><path d="M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg>
+            <span>IPOs &amp; New<br>Offerings</span>
+        </button>
+        <button type="button" class="insi-chip topic-tile" data-filter="insurance">
+            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 11.5l2 2 4-4"/></svg>
+            <span>Insurance</span>
+        </button>
+        <button type="button" class="insi-chip topic-tile" data-filter="children &amp; money">
+            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22v-10"/><path d="M12 12c0-4 3-7 7-7 0 4-3 7-7 7z"/><path d="M12 15c0-3-2.5-5-5.5-5 0 3 2.5 5 5.5 5z"/></svg>
+            <span>Children &amp;<br>Money</span>
+        </button>
+        <button type="button" class="insi-chip topic-tile" data-filter="special topics">
+            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a13.8 13.8 0 0 1 0 18 13.8 13.8 0 0 1 0-18z"/></svg>
+            <span>Special Topics:<br>NRI / GIFT City</span>
+        </button>
+    </div>
+    <p class="topic-tiles-hint">Tap one or more topics to filter the articles below — tap again to remove.</p>
 </section>
 
 <section class="container insi-sec" id="archive">

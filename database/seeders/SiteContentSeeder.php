@@ -235,6 +235,7 @@ class SiteContentSeeder extends Seeder
             ['home', 'pillar2_title'], ['home', 'pillar2_text'],
             ['home', 'pillar3_title'], ['home', 'pillar3_text'],
             ['resources', 'body'],
+            ['insights', 'topics_list'],
         ];
 
         foreach ($deprecated as [$page, $key]) {
