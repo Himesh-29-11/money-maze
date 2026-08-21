@@ -19,7 +19,7 @@
                         <td><b>{{ $s->key }}</b></td>
                         <td>{{ $s->title ?? '—' }}</td>
                         <td>{{ $s->visible ? '✅' : '🚫' }}</td>
-                        <td>
+                        <td class="actions">
                             <div class="row-acts">
                                 <a class="btn btn-line" href="{{ route('admin.sections.edit', $s) }}">Edit</a>
                                 <form method="POST" action="{{ route('admin.sections.destroy', $s) }}" onsubmit="return confirm('Delete this section? The page will fall back to default text.')">@csrf @method('DELETE')<button class="btn btn-danger">Delete</button></form>
