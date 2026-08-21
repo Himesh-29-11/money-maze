@@ -14,7 +14,7 @@
             <td><input type="text" name="url" value="{{ $l->url }}"></td>
             <td><input type="number" name="sort" value="{{ $l->sort }}" style="width:70px;"></td>
             <td><input type="hidden" name="active" value="0"><input type="checkbox" name="active" value="1" style="width:auto;" {{ $l->active ? 'checked' : '' }}></td>
-            <td><div class="row-acts"><button class="btn btn-green">Save</button>
+            <td class="actions"><div class="row-acts"><button class="btn btn-green">Save</button>
             </form>
             <form method="POST" action="{{ route('admin.links.destroy', $l) }}">@csrf @method('DELETE')<button class="btn btn-danger">Delete</button></form></div></td>
         </tr>

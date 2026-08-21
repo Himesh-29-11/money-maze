@@ -13,7 +13,7 @@
 <div class="card">
     <h2>Recent messages</h2>
     <p class="sub">Latest enquiries from the contact form. Long messages scroll inside their box.</p>
-    <table>
+    <table class="msg-table">
         <tr><th>Name</th><th>Category</th><th>Message</th><th>Received</th></tr>
         @forelse ($messages as $m)
             <tr>
