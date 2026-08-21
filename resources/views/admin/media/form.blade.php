@@ -19,7 +19,8 @@
         <div class="up-preview"></div>
         <span class="up-hint">Drag &amp; drop an image here, or click to browse (max 5 MB)</span>
     </div>
-    <input type="text" id="media_image" name="image" value="{{ old('image', $entry?->image) }}" placeholder="or paste a path, e.g. assets/crops/media2-v1.jpg">
+    <input type="hidden" id="media_image" name="image" value="{{ old('image', $entry?->image) }}">
+    <span class="up-hint up-status">{{ old('image', $entry?->image) ? 'Custom image saved — upload a new one to replace it.' : 'No image yet — upload one above.' }}</span>
 </label>
     <label>Link URL<input type="url" name="url" value="{{ old('url', $entry?->url) }}"></label>
 </div>

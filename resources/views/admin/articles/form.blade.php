@@ -20,7 +20,8 @@
         <div class="up-preview"></div>
         <span class="up-hint">Drag &amp; drop an image here, or click to browse (max 5 MB)</span>
     </div>
-    <input type="text" id="article_image" name="image" value="{{ old('image', $article?->image) }}" placeholder="or paste a path, e.g. uploads/2026-08-14-photo.jpg">
+    <input type="hidden" id="article_image" name="image" value="{{ old('image', $article?->image) }}">
+    <span class="up-hint up-status">{{ old('image', $article?->image) ? 'Custom image saved — upload a new one to replace it.' : 'No image yet — upload one above.' }}</span>
 </label>
 <label>Excerpt<textarea name="excerpt">{{ old('excerpt', $article?->excerpt) }}</textarea></label>
 <label style="display:flex;gap:8px;align-items:center;"><input type="hidden" name="featured" value="0"><input type="checkbox" name="featured" value="1" style="width:auto;" {{ old('featured', $article?->featured) ? 'checked' : '' }}> Feature this article on the Insights page</label>

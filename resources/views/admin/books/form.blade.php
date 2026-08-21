@@ -16,7 +16,8 @@
         <div class="up-preview"></div>
         <span class="up-hint">Drag &amp; drop an image here, or click to browse (max 5 MB)</span>
     </div>
-    <input type="text" id="book_cover" name="cover" value="{{ old('cover', $book?->cover) }}" placeholder="or paste a path, e.g. assets/crops/books2-cover.jpg">
+    <input type="hidden" id="book_cover" name="cover" value="{{ old('cover', $book?->cover) }}">
+    <span class="up-hint up-status">{{ old('cover', $book?->cover) ? 'Custom image saved — upload a new one to replace it.' : 'No image yet — upload one above.' }}</span>
 </label>
     <label>Sort order<input type="number" name="sort" value="{{ old('sort', $book?->sort ?? 0) }}"></label>
     <label style="align-self:end;display:flex;gap:8px;align-items:center;"><input type="hidden" name="featured" value="0"><input type="checkbox" name="featured" value="1" style="width:auto;" {{ old('featured', $book?->featured) ? 'checked' : '' }}> Featured book</label>
