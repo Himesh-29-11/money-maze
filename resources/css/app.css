@@ -6771,7 +6771,7 @@ p {
 .svch-title::after { content: ''; position: absolute; left: 50%; transform: translateX(-50%); bottom: 0; width: 44px; height: 2px; background: var(--gold); }
 .svch-steps { display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px; }
 .svch-step { position: relative; text-align: center; padding: 0 8px; }
-.svch-step:not(:last-child)::after { content: '›'; position: absolute; right: -14px; top: 22px; color: var(--gold-dark); font-size: 18px; }
+.svch-step:not(:last-child)::after { content: '›'; position: absolute; right: calc(-50% + 30px); top: 0px; color: var(--gold-dark); font-size: 30px; }
 .svch-step-icon { width: 56px; height: 56px; margin: 0 auto 14px; border: 1px solid #ddd6c8; border-radius: 50%; background: #fff; display: grid; place-items: center; }
 .c-green { color: #55703f; }
 .c-gold { color: #b8862f; }
@@ -7329,3 +7329,17 @@ body::-webkit-scrollbar-track { background: var(--ivory); }
 .sec-body.pillar ol li::before { display: none; }
 @media (max-width: 900px) { .sec-body.cards ul { grid-template-columns: 1fr 1fr; } .sec-body.topics ul { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 580px) { .sec-body.cards ul, .sec-body.topics ul { grid-template-columns: 1fr; } }
+
+/* Phone fix: .hero-home .hero-grid is more specific than the generic .hero-grid
+   collapse rules, so the home hero never stacked on small screens. */
+@media (max-width: 991px) {
+  .hero-home .hero-grid { grid-template-columns: 1fr; }
+}
+
+/* Phone polish: generic h1 clamp bottoms out at 42px which is too large on
+   small screens; text links get taller tap targets. */
+@media (max-width: 580px) {
+  h1 { font-size: clamp(30px, 8.6vw, 42px); }
+  .ab-hero-copy h1 { font-size: clamp(30px, 8.6vw, 42px); }
+  .text-link { display: inline-block; padding: 6px 0; }
+}
