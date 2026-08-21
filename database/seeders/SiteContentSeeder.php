@@ -206,7 +206,7 @@ class SiteContentSeeder extends Seeder
             ['settings', 'Contact & Social', 'linkedin', 'LinkedIn URL', 'text', 'https://www.linkedin.com/', 4],
             ['settings', 'Contact & Social', 'youtube', 'YouTube URL', 'text', 'https://www.youtube.com/', 5],
             ['settings', 'Contact & Social', 'footer_tagline', 'Footer tagline', 'text', 'Clarity today. Freedom tomorrow.', 6],
-            ['settings', 'Branding', 'nav_logo', 'Top menu logo', 'image', 'assets/money-maze-logo-brown.png', 1],
+            ['settings', 'Branding', 'nav_logo', 'Top menu logo', 'image', 'assets/money-maze-logo-footer.png', 1],
             ['settings', 'Branding', 'footer_logo', 'Footer logo', 'image', 'assets/mm-logo.png', 2],
         ];
 
