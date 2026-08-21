@@ -1,4 +1,4 @@
-@props(['regulatoryNote' => null])
+@props(['regulatoryNote' => null, 'navLinks' => [], 'sc' => []])
 <footer class="site-footer">
     <div class="container footer-grid">
         <div class="footer-brand">

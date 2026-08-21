@@ -1,3 +1,4 @@
+@props(['navLinks' => [], 'sc' => []])
 @php
     $defaultLinks = [
         ['label' => 'Home', 'href' => route('home')],
