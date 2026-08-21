@@ -29,6 +29,11 @@
     </div>
 </section>
 
+<section class="container insi-sec" id="featured">
+    <div class="insi-head"><span></span><h2>FEATURED INSIGHTS</h2><span></span></div>
+    <div class="insi-cards">@foreach ($articles as $i => $a)<article class="insi-card"><div class="insi-card-img"><img loading="lazy" decoding="async" src="{{ $a['image'] ?? asset('assets/crops/insights2-'.($i % 6 + 1).'.jpg') }}" alt="{{ $a['title'] }}"></div><div class="insi-card-body"><p class="insi-topic tc-{{ $i % 6 }}">{{ $a['topic'] }}</p><h3>{{ $a['title'] }}</h3><p class="insi-meta">{{ $a['publication'] }}</p><p class="insi-meta"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4"/><path d="M16 3v4"/><path d="M3 10h18"/></svg> {{ $a['date'] }}</p><a class="text-link insi-link" href="{{ $a['english_url'] ?? '#' }}">Read English Version <span class="arrow-icon">→</span></a><a class="text-link insi-link" href="{{ $a['gujarati_url'] ?? '#' }}">View Gujarati Publication <span class="arrow-icon">→</span></a></div></article>@endforeach</div>
+</section>
+
 <section class="container insi-sec">
     <div class="insi-head"><span></span><h2>{{ $c('insights.topics_title', 'TOPICS I WRITE ABOUT') }}</h2><span></span></div>
     @if(!empty($sc['insights.topics_list'] ?? ''))<div class="sec-body topics">{!! \App\Support\ContentText::toHtml($sc['insights.topics_list'] ?? '') !!}</div>@else<div class="sec-body topics">@if(!empty($secs['insights.topics']['body'] ?? '')){!! $secs['insights.topics']['body'] !!}@else<ul class="insi-topics-list">
@@ -38,11 +43,6 @@
         <li>Insurance, borrowing and other everyday financial decisions</li>
         <li>Personal finance concepts explained in simple, practical terms</li>
     </ul>@endif</div>@endif
-</section>
-
-<section class="container insi-sec" id="featured">
-    <div class="insi-head"><span></span><h2>FEATURED INSIGHTS</h2><span></span></div>
-    <div class="insi-cards">@foreach ($articles as $i => $a)<article class="insi-card"><div class="insi-card-img"><img loading="lazy" decoding="async" src="{{ $a['image'] ?? asset('assets/crops/insights2-'.($i % 6 + 1).'.jpg') }}" alt="{{ $a['title'] }}"></div><div class="insi-card-body"><p class="insi-topic tc-{{ $i % 6 }}">{{ $a['topic'] }}</p><h3>{{ $a['title'] }}</h3><p class="insi-meta">{{ $a['publication'] }}</p><p class="insi-meta"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4"/><path d="M16 3v4"/><path d="M3 10h18"/></svg> {{ $a['date'] }}</p><a class="text-link insi-link" href="{{ $a['english_url'] ?? '#' }}">Read English Version <span class="arrow-icon">→</span></a><a class="text-link insi-link" href="{{ $a['gujarati_url'] ?? '#' }}">View Gujarati Publication <span class="arrow-icon">→</span></a></div></article>@endforeach</div>
 </section>
 
 <section class="container insi-sec" id="archive">
