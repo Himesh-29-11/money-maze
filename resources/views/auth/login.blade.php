@@ -5,7 +5,8 @@
 <title>Admin Login — Money Maze</title>
 <style>
 body{margin:0;min-height:100vh;display:grid;place-items:center;background:#133d34;font-family:'Segoe UI',Arial,sans-serif;}
-.box{width:min(400px,92vw);background:#fdfcf9;border-radius:12px;padding:34px;}
+*,*::before,*::after{box-sizing:border-box;}
+.box{width:min(400px,92vw);max-width:100%;background:#fdfcf9;border-radius:12px;padding:34px;}
 .box img{height:44px;margin-bottom:18px;}
 h1{font-size:18px;margin:0 0 4px;color:#133d34;} p{margin:0 0 20px;color:#6e6e68;font-size:12px;}
 label{display:block;font-size:12px;font-weight:700;color:#133d34;margin-bottom:12px;}
