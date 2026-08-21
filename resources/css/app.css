@@ -7335,3 +7335,11 @@ body::-webkit-scrollbar-track { background: var(--ivory); }
 @media (max-width: 991px) {
   .hero-home .hero-grid { grid-template-columns: 1fr; }
 }
+
+/* Phone polish: generic h1 clamp bottoms out at 42px which is too large on
+   small screens; text links get taller tap targets. */
+@media (max-width: 580px) {
+  h1 { font-size: clamp(30px, 8.6vw, 42px); }
+  .ab-hero-copy h1 { font-size: clamp(30px, 8.6vw, 42px); }
+  .text-link { display: inline-block; padding: 6px 0; }
+}
