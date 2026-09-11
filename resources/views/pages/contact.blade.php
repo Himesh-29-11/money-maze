@@ -18,12 +18,17 @@
         'Other',
     ];
 @endphp
-<section class="simple-page-hero">
-    <div class="container narrow-content">
-        <p class="eyebrow">Get in touch</p>
-        <h1>{{ $c('contact.title', 'Get in touch about investments, taxation, financial organisation, media enquiries or other professional matters.') }}</h1>
-        <div class="gold-rule"></div>
-        <p>{{ $c('contact.lead', 'Whether you are reaching out for a service-related query, a writing or a media request, or a general professional enquiry, you can use the form below or the contact details on this page.') }}</p>
+<section class="page-hero contact-page-hero">
+    <div class="container page-hero-grid">
+        <div class="page-hero-copy">
+            <p class="eyebrow">Get in touch</p>
+            <h1>{{ $c('contact.title', 'Get in touch about investments, taxation, financial organisation, media enquiries or other professional matters.') }}</h1>
+            <div class="gold-rule"></div>
+            <p>{{ $c('contact.lead', 'Whether you are reaching out for a service-related query, a writing or a media request, or a general professional enquiry, you can use the form below or the contact details on this page.') }}</p>
+        </div>
+        <div class="page-hero-image">
+            <img loading="eager" fetchpriority="high" decoding="async" src="{{ asset($c('contact.hero_image', 'assets/mitali-profile-glasses.png')) }}" alt="Mitali Mehta">
+        </div>
     </div>
 </section>
 
@@ -65,13 +70,15 @@
                 <p>{{ $c('settings.email', 'hello@moneymaze.in') }}</p>
             </div>
         </div>
+        @if (trim($c('settings.phone', '')) !== '')
         <div class="contact-detail">
             <span class="line-icon">✆</span>
             <div>
                 <p class="eyebrow">Phone</p>
-                <p>{{ $c('settings.phone', '') ?: ' ' }}</p>
+                <p><a href="tel:{{ preg_replace('/\s+/', '', $c('settings.phone', '')) }}">{{ $c('settings.phone', '') }}</a></p>
             </div>
         </div>
+        @endif
         <div class="contact-detail">
             <span class="line-icon">⌖</span>
             <div>

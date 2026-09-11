@@ -39,6 +39,7 @@ class PageDataService
                     'slug' => $a->slug,
                     'title' => $a->title,
                     'topic' => $a->topic,
+                    'topic_key' => $this->articleTopicKey($a->topic),
                     'publication' => $a->publication,
                     'date' => $a->published_at?->format('d M Y'),
                     'excerpt' => $a->excerpt,
@@ -53,6 +54,7 @@ class PageDataService
         }
 
         return collect($this->articles())->map(fn ($a, $i) => $a + [
+            'topic_key' => $this->articleTopicKey($a['topic']),
             'image' => asset('assets/crops/insights2-'.($i % 6 + 1).'.jpg'),
             'iso' => date('Y-m-d', strtotime($a['date'])),
         ])->all();
@@ -128,6 +130,94 @@ class PageDataService
             ['title' => 'Insurance Review Checklist', 'file' => 'insurance-review-checklist.docx', 'description' => 'Review your protection needs, covers and key policy details methodically.'],
             ['title' => 'Retirement Readiness Checklist', 'file' => 'retirement-readiness-checklist.docx', 'description' => 'Work through the financial and practical questions that shape retirement readiness.'],
         ];
+    }
+
+    public function calculatorGroups(): array
+    {
+        return [
+            [
+                'icon' => 'plant',
+                'label' => 'Investment & Goal Calculators',
+                'items' => [
+                    ['title' => 'SIP Calculator', 'description' => 'See how regular investing can grow over time.', 'url' => route('calculators.show', 'sip')],
+                    ['title' => 'Lumpsum Growth Calculator', 'description' => 'Estimate how a one-time investment may grow.', 'url' => '#'],
+                    ['title' => 'Goal Planning Calculator', 'description' => 'Work backwards from your goal and plan better.', 'url' => '#'],
+                    ['title' => 'Inflation Impact Calculator', 'description' => 'Understand how inflation affects future costs.', 'url' => '#'],
+                ],
+            ],
+            [
+                'icon' => 'chair',
+                'label' => 'Retirement Calculators',
+                'items' => [
+                    ['title' => 'Retirement Corpus Calculator', 'description' => 'Estimate the corpus needed for your retirement.', 'url' => route('calculators.show', 'retirement')],
+                    ['title' => 'Retirement Income / Withdrawal Calculator', 'description' => 'Model withdrawals and see how long your corpus may last.', 'url' => route('calculators.show', 'swp')],
+                    ['title' => 'Retirement Expense Inflation Calculator', 'description' => 'Project how expenses may evolve by retirement.', 'url' => '#'],
+                ],
+            ],
+            [
+                'icon' => 'shield',
+                'label' => 'Cash Flow & Protection Tools',
+                'items' => [
+                    ['title' => 'Emergency Fund Calculator', 'description' => 'Estimate the right emergency reserve for you.', 'url' => '#'],
+                    ['title' => 'Insurance Need Snapshot', 'description' => 'Get a broad view of protection needs and gaps.', 'url' => route('calculators.show', 'life-insurance')],
+                ],
+            ],
+            [
+                'icon' => 'home',
+                'label' => 'Borrowing & Liability Tools',
+                'items' => [
+                    ['title' => 'Loan EMI Calculator', 'description' => 'Compare EMIs across loan amount, rate and tenure.', 'url' => '#'],
+                    ['title' => 'Loan Prepayment Calculator', 'description' => 'See how prepayments can reduce interest and tenure.', 'url' => '#'],
+                ],
+            ],
+        ];
+    }
+
+    public function checklistGroups(): array
+    {
+        return [
+            [
+                'label' => 'Planning Worksheets',
+                'items' => [
+                    ['title' => 'Monthly Cash Flow Worksheet', 'description' => 'Track income, expenses and savings monthly.', 'file' => 'monthly-cash-flow-worksheet.docx'],
+                    ['title' => 'Net Worth Worksheet', 'description' => 'List assets, liabilities and calculate your net worth.', 'file' => 'net-worth-worksheet.docx'],
+                    ['title' => 'Goal Mapping Worksheet', 'description' => 'Map goals, timelines, future costs and savings.', 'file' => 'goal-mapping-worksheet.docx'],
+                    ['title' => 'Annual Money Review Worksheet', 'description' => 'Review progress, rebalance and plan your actions.', 'file' => 'annual-money-review-worksheet.docx'],
+                ],
+            ],
+            [
+                'label' => 'Retirement & Family Preparedness Checklists',
+                'items' => [
+                    ['title' => 'Retirement Readiness Checklist', 'description' => 'A complete checklist for financial & practical readiness.', 'file' => 'retirement-readiness-checklist.docx'],
+                    ['title' => 'Estate Planning Checklist', 'description' => 'Plan documents, nominations and family preparedness.', 'file' => 'estate-planning-checklist.docx'],
+                    ['title' => 'Important Documents Master List', 'description' => 'Record key details and keep everything organised.', 'file' => 'important-documents-master-list.docx'],
+                ],
+            ],
+            [
+                'label' => 'Tax & Compliance Checklists',
+                'items' => [
+                    ['title' => 'Income Tax Return Documents Checklist', 'description' => 'Checklist of documents needed for ITR filing.', 'file' => 'income-tax-return-documents-checklist.docx'],
+                    ['title' => 'GST Registration / Compliance Checklist', 'description' => 'Understand basic documents for GST compliance.', 'file' => 'gst-registration-compliance-checklist.docx'],
+                    ['title' => 'Financial Document Checklist', 'description' => 'Keep important financial records and account information in one place.', 'file' => 'financial-document-checklist.docx'],
+                ],
+            ],
+        ];
+    }
+
+    private function articleTopicKey(string $topic): string
+    {
+        $normalized = strtolower(trim($topic));
+
+        return match (true) {
+            str_contains($normalized, 'retirement') => 'retirement',
+            str_contains($normalized, 'tax') => 'taxation',
+            str_contains($normalized, 'invest') => 'investing',
+            str_contains($normalized, 'ipo') => 'ipo',
+            str_contains($normalized, 'insurance') => 'insurance',
+            str_contains($normalized, 'child') || str_contains($normalized, 'pocket') => 'children',
+            str_contains($normalized, 'nri') || str_contains($normalized, 'gift') => 'special',
+            default => 'finance',
+        };
     }
 
     private function sectionsMap(): array

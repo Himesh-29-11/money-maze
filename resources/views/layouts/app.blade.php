@@ -9,6 +9,12 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title', 'Money Maze — Paving Your Financial Path')</title>
     <meta name="description" content="Personal finance, investments, taxation and financial organisation with Mitali Mehta, CA, CFP® and Lawyer.">
+    @php($ogImage = asset(($sc ?? [])['settings.og_image'] ?? 'assets/mitali-profile-brand-1.png'))
+    <meta property="og:title" content="@yield('title', 'Money Maze — Paving Your Financial Path')">
+    <meta property="og:description" content="Personal finance, investments, taxation and financial organisation with Mitali Mehta, CA, CFP® and Lawyer.">
+    <meta property="og:image" content="{{ $ogImage }}">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="{{ $ogImage }}">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @stack('head')
 </head>

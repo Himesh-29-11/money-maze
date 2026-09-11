@@ -169,16 +169,23 @@ function initSip() {
 
 function initLifeInsurance() {
     const form = document.getElementById('life-form');
+    const results = document.getElementById('life-results');
     if (!form) return;
     const value = (id) => number(document.getElementById(id)?.value);
+    const clearResults = () => {
+        ['life-liabilities', 'life-goals', 'life-corpus', 'life-required', 'life-resources', 'life-additional'].forEach((id) => setText(id, '—'));
+        results?.classList.add('calc-results-pending');
+        document.getElementById('life-result-note')?.classList.add('is-hidden');
+        document.getElementById('life-result-disclaimer')?.classList.add('is-hidden');
+    };
     const calculate = () => {
         const liabilities = ['home', 'vehicle', 'personal', 'education', 'other-liability'].reduce((sum, id) => sum + value(`life-${id}`), 0);
-        const goals = ['higher', 'school', 'parents', 'other-goal'].reduce((sum, id) => sum + value(`life-${id}`), 0);
+        const goals = ['higher', 'school', 'parents', 'house-purchase', 'other-goal'].reduce((sum, id) => sum + value(`life-${id}`), 0);
         const expenses = (value('life-household') + value('life-lifestyle')) * (1 - value('life-reduction') / 100);
         const years = Math.max(0, value('life-years'));
         const inflation = value('life-inflation') / 100;
-        const returnRate = value('life-return') / 100;
-        const realRate = ((1 + returnRate) / (1 + inflation)) - 1;
+        const taxAdjustedReturn = (value('life-return') / 100) * (1 - value('life-tax') / 100);
+        const realRate = ((1 + taxAdjustedReturn) / (1 + inflation)) - 1;
         const corpus = annuityDue(expenses, realRate, years);
         const resources = ['existing-insurance', 'assets', 'spouse'].reduce((sum, id) => sum + value(`life-${id}`), 0);
         const required = liabilities + goals + corpus;
@@ -189,10 +196,13 @@ function initLifeInsurance() {
         setText('life-required', formatted(required));
         setText('life-resources', `− ${formatted(resources)}`);
         setText('life-additional', formatted(additional));
+        results?.classList.remove('calc-results-pending');
+        document.getElementById('life-result-note')?.classList.remove('is-hidden');
+        document.getElementById('life-result-disclaimer')?.classList.remove('is-hidden');
     };
     form.addEventListener('submit', (event) => { event.preventDefault(); calculate(); });
-    form.addEventListener('reset', () => setTimeout(calculate, 0));
-    calculate();
+    form.addEventListener('reset', () => setTimeout(clearResults, 0));
+    clearResults();
 }
 
 function initRetirement() {

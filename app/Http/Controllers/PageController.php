@@ -62,6 +62,8 @@ class PageController extends Controller
             ...$this->pages->shared(),
             'calculators' => $this->pages->calculators(),
             'checklists' => $this->pages->checklists(),
+            'calculatorGroups' => $this->pages->calculatorGroups(),
+            'checklistGroups' => $this->pages->checklistGroups(),
         ]);
     }
 

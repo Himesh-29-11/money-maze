@@ -55,7 +55,7 @@ class SiteContentSeeder extends Seeder
             // ---------------- ABOUT ----------------
             ['about', 'Hero', 'title', 'Heading', 'text', 'About', 1],
             ['about', 'Hero', 'name', 'Name line', 'text', 'Mitali Mehta', 2],
-            ['about', 'Hero', 'hero_image', 'Main photo', 'image', 'assets/crops/about-hero.jpg', 3],
+            ['about', 'Hero', 'hero_image', 'Main photo', 'image', 'assets/mitali-profile.png', 3],
             ['about', 'Hero', 'side_image', 'Side photo (plant & books)', 'image', 'assets/crops/about-little.jpg', 4],
             ['about', 'My Professional Journey', 'journey_title', 'Section title', 'text', 'My Professional Journey', 1],
             ['about', 'My Professional Journey', 'journey_p1', 'Paragraph 1', 'textarea', 'My background spans three disciplines that shape how I work today: finance, taxation and law.', 2],
@@ -128,13 +128,16 @@ class SiteContentSeeder extends Seeder
             ['books', 'Hero', 'lead', 'Lead paragraph', 'textarea', 'Long-form financial writing designed to make retirement planning more practical, relatable and easier to navigate.', 1],
             ['books', 'Hero', 'body', 'Intro paragraph', 'textarea', 'This page brings together my long-form writing in personal finance and retirement planning, beginning with my first book — The Second Half of Zindagi! The book reflects the same philosophy that shapes my work across articles, media and client conversations: making financial decisions easier to understand, more grounded in real life, and more meaningful over the long term.', 2],
             ['books', 'Hero', 'hero_image', 'Hero photo', 'image', 'assets/crops/books2-hero.jpg', 3],
+            ['books', 'Author', 'author_image', 'Author photo', 'image', 'assets/mitali-profile-black.png', 1],
+            ['books', 'Author', 'author_title', 'Author heading', 'text', 'Mitali Mehta', 2],
+            ['books', 'Author', 'author_p1', 'Author bio', 'textarea', 'Mitali Mehta is a Chartered Accountant, Certified Financial Planner and Lawyer based in Ahmedabad. She is the author of The Second Half of Zindagi!, a practical guide to retirement planning that looks at money, life and the transition into the second half with equal seriousness.', 3],
             ['books', 'Featured Book', 'featured_title', 'Featured title', 'text', 'The Second Half of Zindagi!', 1],
             ['books', 'Featured Book', 'featured_subtitle', 'Featured subtitle', 'text', 'Your Guide to Financial Freedom, Purpose & Well-being in Your Retirement', 2],
             ['books', 'Featured Book', 'feat_p1', 'Paragraph 1', 'textarea', 'Retirement is often reduced to a number — a corpus target, a calculator output, or a rough estimate of “how much is enough.” But the reality is far more layered than that.', 3],
             ['books', 'Featured Book', 'feat_p2', 'Paragraph 2', 'textarea', 'The Second Half of Zindagi! is a practical and relatable guide to retirement planning that looks beyond formulas and asks the deeper questions retirement really brings with it — financial independence, cash flow, healthcare, longevity, lifestyle, purpose, family dynamics and the emotional shift from earning to living off accumulated wealth.', 4],
             ['books', 'Featured Book', 'feat_p3', 'Paragraph 3', 'textarea', 'Written in an accessible, story-led style, the book combines financial planning with real-life retirement realities to help readers approach this phase of life with greater clarity, confidence and perspective.', 5],
-            ['books', 'Featured Book', 'buy_link', 'Buy the Book — link (URL)', 'text', '', 6],
-            ['books', 'Featured Book', 'sample_link', 'Read Sample Chapter — link (URL)', 'text', '', 7],
+            ['books', 'Featured Book', 'buy_link', 'Buy the Book — link (URL)', 'text', '/contact', 6],
+            ['books', 'Featured Book', 'sample_link', 'Read Sample Chapter — link (URL)', 'text', '/books#inside', 7],
             ['books', 'What the Book Covers', 'cover1_title', 'Card 1 title', 'text', 'Building the Financial Foundation', 1],
             ['books', 'What the Book Covers', 'cover1_text', 'Card 1 text', 'textarea', 'Retirement readiness, setting realistic expectations and beginning with the right groundwork.', 2],
             ['books', 'What the Book Covers', 'cover2_title', 'Card 2 title', 'text', 'Designing Your Ideal Retirement', 3],
@@ -194,6 +197,7 @@ class SiteContentSeeder extends Seeder
             // ---------------- CONTACT ----------------
             ['contact', 'Hero', 'title', 'Headline', 'textarea', 'Get in touch about investments, taxation, financial organisation, media enquiries or other professional matters.', 1],
             ['contact', 'Hero', 'lead', 'Intro paragraph', 'textarea', 'Whether you are reaching out for a service-related query, a writing or a media request, or a general professional enquiry, you can use the form below or the contact details on this page.', 2],
+            ['contact', 'Hero', 'hero_image', 'Hero photo', 'image', 'assets/mitali-profile-glasses.png', 3],
             ['contact', 'Office', 'office', 'Office location', 'text', 'Ahmedabad, Gujarat, India', 1],
             ['contact', 'Closing', 'closing', 'Closing note', 'textarea', 'Thank you for visiting. If your query relates to the work I do, I’ll do my best to respond as soon as possible.', 1],
             ['contact', 'Closing', 'btn_services', 'Button 1 label', 'text', 'Explore Services', 2],
@@ -208,6 +212,7 @@ class SiteContentSeeder extends Seeder
             ['settings', 'Contact & Social', 'footer_tagline', 'Footer tagline', 'text', 'Clarity today. Freedom tomorrow.', 6],
             ['settings', 'Branding', 'nav_logo', 'Top menu logo', 'image', 'assets/money-maze-logo.png', 1],
             ['settings', 'Branding', 'footer_logo', 'Footer logo', 'image', 'assets/mm-logo.png', 2],
+            ['settings', 'Branding', 'og_image', 'Social share image', 'image', 'assets/mitali-profile-brand-1.png', 3],
         ];
 
         foreach ($rows as [$page, $section, $key, $label, $type, $value, $sort]) {

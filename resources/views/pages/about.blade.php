@@ -13,7 +13,7 @@
             <h1>{{ $c('about.title', 'About') }} <em>{{ $c('about.name', 'Mitali Mehta') }}</em></h1>
         </div>
         <div class="ab-hero-photo">
-            <img loading="lazy" decoding="async" src="{{ asset($sc['about.hero_image'] ?? 'assets/crops/about-hero.jpg') }}" alt="Mitali Mehta, founder of Money Maze">
+            <img loading="eager" fetchpriority="high" decoding="async" src="{{ asset($sc['about.hero_image'] ?? 'assets/mitali-profile.png') }}" alt="Mitali Mehta, founder of Money Maze">
         </div>
     </div>
     <div class="ab-hero-right">
