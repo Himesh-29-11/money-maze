@@ -1,5 +1,16 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminArticleController;
+use App\Http\Controllers\Admin\AdminAuthController;
+use App\Http\Controllers\Admin\AdminBookController;
+use App\Http\Controllers\Admin\AdminContentController;
+use App\Http\Controllers\Admin\AdminDashboardController;
+use App\Http\Controllers\Admin\AdminLinkController;
+use App\Http\Controllers\Admin\AdminMediaController;
+use App\Http\Controllers\Admin\AdminMessageController;
+use App\Http\Controllers\Admin\AdminSectionController;
+use App\Http\Controllers\Admin\AdminTestimonialController;
+use App\Http\Controllers\Admin\AdminUploadController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\PageController;
 use Illuminate\Support\Facades\Route;
@@ -16,18 +27,6 @@ Route::get('/testimonials', [PageController::class, 'testimonials'])->name('test
 Route::get('/contact', [PageController::class, 'contact'])->name('contact');
 Route::get('/calculators/{slug}', [PageController::class, 'calculator'])->name('calculators.show');
 Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
-
-use App\Http\Controllers\Admin\AdminAuthController;
-use App\Http\Controllers\Admin\AdminDashboardController;
-use App\Http\Controllers\Admin\AdminContentController;
-use App\Http\Controllers\Admin\AdminArticleController;
-use App\Http\Controllers\Admin\AdminTestimonialController;
-use App\Http\Controllers\Admin\AdminMediaController;
-use App\Http\Controllers\Admin\AdminBookController;
-use App\Http\Controllers\Admin\AdminLinkController;
-use App\Http\Controllers\Admin\AdminMessageController;
-use App\Http\Controllers\Admin\AdminUploadController;
-use App\Http\Controllers\Admin\AdminSectionController;
 
 Route::get('/login', fn () => redirect()->route('admin.login'))->name('login');
 Route::get('/admin/login', [AdminAuthController::class, 'show'])->name('admin.login');

@@ -1,0 +1,68 @@
+MONEY MAZE — Hostinger Cloud Hosting upload guide
+Domain: lightsteelblue-quail-672789.hostingersite.com
+
+FILES INCLUDED
+==============
+1. money-maze-hostinger.zip   — full website (upload & extract)
+2. money-maze-mysql.sql       — database (import in phpMyAdmin)
+3. env.hostinger.txt          — copy to .env after upload
+
+STEP 1 — CREATE MYSQL DATABASE (hPanel)
+=======================================
+hPanel → Databases → MySQL Databases
+- Create database
+- Create user + password
+- Assign user to database (All privileges)
+Write down: DB name, username, password
+
+STEP 2 — IMPORT DATABASE
+========================
+hPanel → Databases → phpMyAdmin
+- Select your database
+- Import → Choose money-maze-mysql.sql → Go
+
+STEP 3 — UPLOAD WEBSITE ZIP
+===========================
+hPanel → File Manager
+- Go to /home/YOUR_USERNAME/
+- Upload money-maze-hostinger.zip
+- Extract → folder: money-maze/
+
+STEP 4 — LINK public_html
+=========================
+If you have SSH:
+  cd ~/domains/lightsteelblue-quail-672789.hostingersite.com
+  mv public_html public_html_backup
+  ln -s ~/money-maze/public public_html
+
+Without SSH (split layout):
+  - Copy everything from money-maze/public/ into public_html/
+  - Replace public_html/index.php with deploy/public_html-index.php.example
+    (paths point to ../money-maze/)
+
+STEP 5 — CONFIGURE .env
+=======================
+In money-maze/ folder:
+  - Copy deploy/env.hostinger.txt → .env
+  - Edit .env: set DB_DATABASE, DB_USERNAME, DB_PASSWORD
+  - Change ADMIN_PASSWORD to something strong
+
+STEP 6 — PERMISSIONS (SSH if available)
+=======================================
+  cd ~/money-maze
+  mkdir -p storage/framework/{cache/data,sessions,views} storage/logs bootstrap/cache
+  chmod -R 775 storage bootstrap/cache
+
+STEP 7 — PHP VERSION
+====================
+hPanel → Advanced → PHP Configuration → PHP 8.2 or 8.3
+
+STEP 8 — SSL
+============
+hPanel → Security → SSL → install free certificate
+
+OPEN YOUR SITE
+==============
+  https://lightsteelblue-quail-672789.hostingersite.com
+  Admin: https://lightsteelblue-quail-672789.hostingersite.com/admin
+  Login: admin@moneymaze.in / your ADMIN_PASSWORD

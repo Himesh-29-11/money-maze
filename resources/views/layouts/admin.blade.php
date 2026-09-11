@@ -113,6 +113,7 @@
         <nav class="adm-nav">
             <a href="{{ route('admin.dashboard') }}" class="{{ request()->routeIs('admin.dashboard') ? 'on' : '' }}"><span class="dot"></span> Dashboard</a>
             <a href="{{ route('admin.content') }}" class="{{ request()->routeIs('admin.content') ? 'on' : '' }}"><span class="dot"></span> Page Content</a>
+            <a href="{{ route('admin.sections.index') }}" class="{{ request()->routeIs('admin.sections.*') ? 'on' : '' }}"><span class="dot"></span> Page Sections</a>
             <a href="{{ route('admin.articles.index') }}" class="{{ request()->routeIs('admin.articles.*') ? 'on' : '' }}"><span class="dot"></span> Articles</a>
             <a href="{{ route('admin.media.index') }}" class="{{ request()->routeIs('admin.media.*') ? 'on' : '' }}"><span class="dot"></span> Media &amp; Features</a>
             <a href="{{ route('admin.books.index') }}" class="{{ request()->routeIs('admin.books.*') ? 'on' : '' }}"><span class="dot"></span> Books</a>

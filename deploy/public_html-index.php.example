@@ -1,0 +1,23 @@
+<?php
+
+/**
+ * Use this file as public_html/index.php when Laravel lives in ../money-maze/
+ * (split layout for Hostinger shared hosting without symlinks).
+ *
+ * Copy to: /home/YOUR_USERNAME/public_html/index.php
+ * Adjust $laravelRoot if your project folder has a different name/path.
+ */
+
+use Illuminate\Foundation\Application;
+use Illuminate\Http\Request;
+
+define('LARAVEL_START', microtime(true));
+
+$laravelRoot = dirname(__DIR__).'/money-maze';
+
+require $laravelRoot.'/vendor/autoload.php';
+
+/** @var Application $app */
+$app = require_once $laravelRoot.'/bootstrap/app.php';
+
+$app->handleRequest(Request::capture());

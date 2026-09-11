@@ -47,6 +47,17 @@ img {
   max-width: 100%;
   display: block;
 }
+
+.hero-photo img,
+.bok-hero-photo img,
+.insi-hero-photo img,
+.medi-hero-photo img,
+.res2-hero-photo img,
+.ab-hero-photo img,
+.mm-logo-img {
+  image-rendering: auto;
+}
+
 button,
 input,
 select,
@@ -7334,4 +7345,34 @@ body::-webkit-scrollbar-track { background: var(--ivory); }
    collapse rules, so the home hero never stacked on small screens. */
 @media (max-width: 991px) {
   .hero-home .hero-grid { grid-template-columns: 1fr; }
+}
+
+/* Narrow-phone polish */
+@media (max-width: 580px) {
+  .mm-logo-lockup {
+    min-width: 0;
+    max-width: 150px;
+  }
+  .mm-logo-lockup .mm-logo-img {
+    max-height: 42px;
+    width: auto;
+  }
+  .nav-toggle {
+    min-width: 44px;
+    min-height: 44px;
+    padding: 10px;
+  }
+  .nav-shell {
+    gap: 12px;
+  }
+  .archive-row {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+  .archive-row > span:nth-child(4),
+  .archive-row > span:nth-child(5) {
+    display: block;
+    font-size: 12px;
+    color: var(--muted);
+  }
 }
