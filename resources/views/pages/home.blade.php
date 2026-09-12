@@ -33,44 +33,201 @@
     </div>
 </section>
 
-<!-- Services Pillar Section -->
+@include('partials.credentials-strip')
 
 <!-- What I Do Section -->
-<section class="container whatido-sec">
-    <div class="insi-head"><span></span><h2>{{ $sc['home.whatido_title'] ?? 'WHAT I DO' }}</h2><span></span></div>
-    <div class="whatido-grid">
-        <article class="whatido-card">
-            <span class="whatido-icon"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2"/><path d="M3 12h18"/></svg></span>
-            <h3>{{ $sc['home.role1_title'] ?? 'Financial Professional' }}</h3>
-            <p>{{ $sc['home.role1_text'] ?? 'Investment execution, taxation and financial organisation.' }}</p>
-            <a class="text-link" href="{{ route('services') }}">{{ $sc['home.role1_link'] ?? 'See Services' }} <span class="arrow-icon">→</span></a>
-        </article>
-        <article class="whatido-card">
-            <span class="whatido-icon"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg></span>
-            <h3>{{ $sc['home.role2_title'] ?? 'Writer' }}</h3>
-            <p>{{ $sc['home.role2_text'] ?? 'Articles and educational content on personal finance.' }}</p>
-            <a class="text-link" href="{{ route('insights') }}">{{ $sc['home.role2_link'] ?? 'See Insights' }} <span class="arrow-icon">→</span></a>
-        </article>
-        <article class="whatido-card">
-            <span class="whatido-icon"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6c-2-1.8-4.5-2.5-8-2.5v14c3.5 0 6 .7 8 2.5 2-1.8 4.5-2.5 8-2.5v-14c-3.5 0-6 .7-8 2.5z"/><path d="M12 6v14"/></svg></span>
-            <h3>{{ $sc['home.role3_title'] ?? 'Author' }}</h3>
-            <p>{{ $sc['home.role3_text'] ?? 'The Second Half of Zindagi!, a retirement planning book.' }}</p>
-            <a class="text-link" href="{{ route('books') }}">{{ $sc['home.role3_link'] ?? 'See Books' }} <span class="arrow-icon">→</span></a>
-        </article>
-        <article class="whatido-card">
-            <span class="whatido-icon"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10a7 7 0 0 0 14 0"/><path d="M12 17v4"/><path d="M8 21h8"/></svg></span>
-            <h3>{{ $sc['home.role4_title'] ?? 'Educator' }}</h3>
-            <p>{{ $sc['home.role4_text'] ?? 'Television appearances, interviews and financial awareness initiatives.' }}</p>
-            <a class="text-link" href="{{ route('media') }}">{{ $sc['home.role4_link'] ?? 'See Media & Features' }} <span class="arrow-icon">→</span></a>
-        </article>
+<section class="home-whatido">
+    <img class="home-whatido__watermark" src="{{ asset('assets/crops/about-maze.jpg') }}" alt="" aria-hidden="true" loading="lazy" decoding="async">
+    <img class="home-whatido__leaf-img" src="{{ asset('assets/crops/about-sprout.jpg') }}" alt="" aria-hidden="true" loading="lazy" decoding="async">
+    <div class="container home-whatido__grid">
+        <div class="home-whatido__intro">
+            <p class="home-whatido__eyebrow">
+                <span>{{ $sc['home.whatido_title'] ?? 'WHAT I DO' }}</span>
+                <span class="home-whatido__eyebrow-line" aria-hidden="true"></span>
+            </p>
+            <h2><span class="home-whatido__hl-mark">Different</span> roles. One purpose.</h2>
+            <p>{{ $sc['home.whatido_lead'] ?? 'To make finance more accessible, more understandable and more useful in everyday life.' }}</p>
+            <a class="home-whatido__explore" href="{{ route('services') }}">{{ $sc['home.whatido_explore'] ?? 'Explore All Services' }} <span aria-hidden="true">→</span></a>
+        </div>
+        <div class="home-whatido__cards">
+            <article class="home-whatido-card">
+                <div class="home-whatido-card__media">
+                    <img src="{{ asset($sc['home.role1_image'] ?? 'assets/crops/whatido-role1.jpg') }}" alt="" loading="lazy" decoding="async">
+                    <span class="home-whatido-card__icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h16"/><path d="M7 16v-5"/><path d="M12 16V8"/><path d="M17 16v-3"/><path d="M6 10l4.5-4.5 3 3L19 3"/></svg>
+                    </span>
+                </div>
+                <div class="home-whatido-card__body">
+                    <h3><span class="home-whatido-card__title-mark">Financial</span> Professional</h3>
+                    <span class="home-whatido-card__rule" aria-hidden="true"></span>
+                    <p>{{ $sc['home.role1_text'] ?? 'Investment execution, taxation and financial organisation.' }}</p>
+                    <a class="home-whatido-card__link" href="{{ route('services') }}">{{ $sc['home.role1_link'] ?? 'See Services' }} <span aria-hidden="true">→</span></a>
+                </div>
+            </article>
+            <article class="home-whatido-card">
+                <div class="home-whatido-card__media">
+                    <img src="{{ asset($sc['home.role2_image'] ?? 'assets/crops/whatido-role2.jpg') }}" alt="" loading="lazy" decoding="async">
+                    <span class="home-whatido-card__icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg>
+                    </span>
+                </div>
+                <div class="home-whatido-card__body">
+                    <h3><span class="home-whatido-card__title-mark">Writer</span></h3>
+                    <span class="home-whatido-card__rule" aria-hidden="true"></span>
+                    <p>{{ $sc['home.role2_text'] ?? 'Articles and educational content on personal finance.' }}</p>
+                    <a class="home-whatido-card__link" href="{{ route('insights') }}">{{ $sc['home.role2_link'] ?? 'See Insights' }} <span aria-hidden="true">→</span></a>
+                </div>
+            </article>
+            <article class="home-whatido-card">
+                <div class="home-whatido-card__media">
+                    <img src="{{ asset($sc['home.role3_image'] ?? 'assets/crops/whatido-role3.jpg') }}" alt="" loading="lazy" decoding="async">
+                    <span class="home-whatido-card__icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6c-2-1.8-4.5-2.5-8-2.5v14c3.5 0 6 .7 8 2.5 2-1.8 4.5-2.5 8-2.5v-14c-3.5 0-6 .7-8 2.5z"/><path d="M12 6v14"/></svg>
+                    </span>
+                </div>
+                <div class="home-whatido-card__body">
+                    <h3><span class="home-whatido-card__title-mark">Author</span></h3>
+                    <span class="home-whatido-card__rule" aria-hidden="true"></span>
+                    <p>{{ $sc['home.role3_text'] ?? 'The Second Half of Zindagi!, a retirement planning book.' }}</p>
+                    <a class="home-whatido-card__link" href="{{ route('books') }}">{{ $sc['home.role3_link'] ?? 'See Books' }} <span aria-hidden="true">→</span></a>
+                </div>
+            </article>
+            <article class="home-whatido-card">
+                <div class="home-whatido-card__media">
+                    <img src="{{ asset($sc['home.role4_image'] ?? 'assets/crops/whatido-role4.jpg') }}" alt="" loading="lazy" decoding="async">
+                    <span class="home-whatido-card__icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="2.6"/><circle cx="16" cy="9" r="2.2"/><path d="M3.5 19c.7-2.8 2.8-4.2 5.5-4.2s4.8 1.4 5.5 4.2"/><path d="M14.2 14.8c2 .3 3.7 1.6 4.3 4.2"/></svg>
+                    </span>
+                </div>
+                <div class="home-whatido-card__body">
+                    <h3><span class="home-whatido-card__title-mark">Educator</span></h3>
+                    <span class="home-whatido-card__rule" aria-hidden="true"></span>
+                    <p>{{ $sc['home.role4_text'] ?? 'Television appearances, interviews and financial awareness initiatives.' }}</p>
+                    <a class="home-whatido-card__link" href="{{ route('media') }}">{{ $sc['home.role4_link'] ?? 'See Media & Features' }} <span aria-hidden="true">→</span></a>
+                </div>
+            </article>
+        </div>
     </div>
 </section>
 
 <!-- Who I Work With Section -->
-<section class="who-band">
-    <div class="container">
-        <div class="section-title-divider"><span class="divider-line"></span><h2>{{ $sc['home.who_title'] ?? 'WHO I WORK WITH' }}</h2><span class="divider-line"></span></div>
-        <p class="who-band-text">{{ $sc['home.who_text'] ?? 'My work is built primarily around individuals, salaried professionals, self-employed professionals and families — and is growing to serve small business owners who need dependable support with tax, compliance and broader financial matters.' }}</p>
+<section class="home-who-v4" id="who">
+    <div class="home-who-v4__hero">
+        <div class="home-who-v4__hero-inner">
+            <div class="home-who-v4__intro">
+                <p class="home-who-v4__eyebrow">
+                    <span class="home-who-v4__eyebrow-line" aria-hidden="true"></span>
+                    <span>WHO I WORK WITH</span>
+                </p>
+                <h2>
+                    <span class="home-who-v4__hl-dark">People at Different Stages.</span>
+                    <span class="home-who-v4__hl-dark">Goals for a</span>
+                    <span class="home-who-v4__hl-gold">Brighter Tomorrow.</span>
+                </h2>
+                <p class="home-who-v4__text">My work is built around individuals, salaried professionals, self-employed professionals and families — and is growing to serve small business owners who need dependable support with tax, compliance and broader financial matters.</p>
+                <div class="home-who-v4__actions">
+                    <a class="home-who-v4__btn" href="{{ route('services') }}">
+                        <span>Explore All Services</span>
+                        <span class="home-who-v4__btn-icon" aria-hidden="true">→</span>
+                    </a>
+                    <p class="home-who-v4__tagline">Clarity today. Freedom tomorrow.</p>
+                </div>
+            </div>
+            <div class="home-who-v4__cards">
+                <article class="home-who-v4__card">
+                    <span class="home-who-v4__card-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.2"/><path d="M5.5 19.5c.8-3.4 3.3-5.2 6.5-5.2s5.7 1.8 6.5 5.2"/></svg>
+                    </span>
+                    <h3>Individuals</h3>
+                    <p>Build confidence in your financial journey.</p>
+                    <a href="{{ route('services') }}">Learn More <span aria-hidden="true">→</span></a>
+                    <div class="home-who-v4__card-img">
+                        <img src="{{ asset('assets/crops/who-card-individuals.jpg') }}" alt="" loading="lazy" decoding="async">
+                    </div>
+                </article>
+                <article class="home-who-v4__card">
+                    <span class="home-who-v4__card-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2"/><path d="M3 12h18"/></svg>
+                    </span>
+                    <h3>Salaried Professionals</h3>
+                    <p>Plan better. Achieve more.</p>
+                    <a href="{{ route('services') }}">Learn More <span aria-hidden="true">→</span></a>
+                    <div class="home-who-v4__card-img">
+                        <img src="{{ asset('assets/crops/who-card-salaried.jpg') }}" alt="" loading="lazy" decoding="async">
+                    </div>
+                </article>
+                <article class="home-who-v4__card">
+                    <span class="home-who-v4__card-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="12" rx="2"/><path d="M2 20h20"/><path d="M8 20v-2"/></svg>
+                    </span>
+                    <h3>Self-Employed Professionals</h3>
+                    <p>Simplify taxes. Focus on growth.</p>
+                    <a href="{{ route('services') }}">Learn More <span aria-hidden="true">→</span></a>
+                    <div class="home-who-v4__card-img">
+                        <img src="{{ asset('assets/crops/who-card-self-employed.jpg') }}" alt="" loading="lazy" decoding="async">
+                    </div>
+                </article>
+                <article class="home-who-v4__card">
+                    <span class="home-who-v4__card-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="2.4"/><circle cx="16" cy="9" r="2"/><path d="M3.5 19c.7-2.8 2.8-4.2 5.5-4.2s4.8 1.4 5.5 4.2"/><path d="M14.2 14.8c2 .3 3.7 1.6 4.3 4.2"/></svg>
+                    </span>
+                    <h3>Families</h3>
+                    <p>Secure today for their tomorrow.</p>
+                    <a href="{{ route('services') }}">Learn More <span aria-hidden="true">→</span></a>
+                    <div class="home-who-v4__card-img">
+                        <img src="{{ asset('assets/crops/who-card-families.jpg') }}" alt="" loading="lazy" decoding="async">
+                    </div>
+                </article>
+                <article class="home-who-v4__card">
+                    <span class="home-who-v4__card-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h16v10H4z"/><path d="M8 10V7a2 2 0 0 1 2-2h1"/><path d="M12 5h4v5"/></svg>
+                    </span>
+                    <h3>Small Business Owners</h3>
+                    <p>A trusted partner for sustainable growth.</p>
+                    <a href="{{ route('services') }}">Learn More <span aria-hidden="true">→</span></a>
+                    <div class="home-who-v4__card-img">
+                        <img src="{{ asset('assets/crops/who-card-business.jpg') }}" alt="" loading="lazy" decoding="async">
+                    </div>
+                </article>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Quote Strip -->
+<section class="home-quote-strip">
+    <div class="home-quote-strip__quote">
+        <span class="home-quote-strip__mark" aria-hidden="true">“</span>
+        <blockquote>{{ $sc['home.quote_text'] ?? "Finance is not just about numbers, it's about people, goals and a brighter tomorrow." }}</blockquote>
+        <p class="home-quote-strip__author">{{ $sc['home.quote_author'] ?? '— Mitali Mehta' }}</p>
+    </div>
+    <div class="home-quote-strip__visual">
+        <img src="{{ asset($sc['home.quote_image'] ?? 'assets/crops/home-quote-path.jpg') }}" alt="" loading="lazy" decoding="async">
+        <ul class="home-quote-strip__words" aria-label="Financial pillars">
+            <li>PLAN</li>
+            <li>INVEST</li>
+            <li>ORGANISE</li>
+            <li>GROW</li>
+        </ul>
+    </div>
+</section>
+
+<!-- Featured Book -->
+<section class="home-featured-book">
+    <img class="home-featured-book__leaf" src="{{ asset('assets/crops/home-book-leaf.jpg') }}" alt="" aria-hidden="true" loading="lazy" decoding="async">
+    <div class="home-featured-book__grid">
+        <div class="home-featured-book__cover">
+            <img src="{{ asset('assets/crops/home-featured-book.png') }}" alt="The Second Half of Zindagi! book" loading="lazy" decoding="async">
+        </div>
+        <div class="home-featured-book__copy">
+            <p class="home-featured-book__eyebrow">FEATURED BOOK</p>
+            <h2>The Second Half of Zindagi!</h2>
+            <p>A practical guide to retirement planning, written to help you think about the next phase of life with clarity and confidence.</p>
+            <a class="home-featured-book__btn" href="{{ route('books') }}">
+                <span>Explore the Book</span>
+                <span aria-hidden="true">→</span>
+            </a>
+        </div>
     </div>
 </section>
 
@@ -153,45 +310,6 @@
     </div>
 </section>
 
-<!-- Credentials Section -->
-<section class="container credentials-section section-pad-sm">
-    <div class="credentials-box">
-        <h3 class="credentials-title">{{ $sc['home.credentials_title'] ?? 'PROFESSIONAL CREDENTIALS' }}</h3>
-        <div class="credential-flex-row">
-            <div class="credential-badge-item">
-                <span class="badge-round">CA<sup>®</sup></span>
-                <span class="badge-label">Chartered<br>Accountant</span>
-            </div>
-            <div class="credential-badge-item">
-                <span class="badge-round">CFP<sup>®</sup></span>
-                <span class="badge-label">Certified Financial<br>Planner</span>
-            </div>
-            <div class="credential-badge-item">
-                <span class="badge-round">QPFP</span>
-                <span class="badge-label">Qualified Personal<br>Finance Professional</span>
-            </div>
-            <div class="credential-badge-item">
-                <span class="badge-round">LLB</span>
-            </div>
-            <div class="credential-badge-item">
-                <span class="badge-square">SE
-BI</span>
-                <span class="badge-label">SEBI-registered<br>Mutual Fund<br>Distributor</span>
-            </div>
-            <div class="credential-badge-item">
-                <span class="badge-round">
-                    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.4">
-                        <circle cx="12" cy="12" r="9"/>
-                        <path d="M3 12h18"/>
-                        <path d="M12 3a13.8 13.8 0 0 1 0 18 13.8 13.8 0 0 1 0-18z"/>
-                    </svg>
-                </span>
-                <span class="badge-label">NRI Investment Course<br>Certification</span>
-            </div>
-        </div>
-    </div>
-</section>
-
 <!-- Triple Grid Section -->
 <section class="container triple-feature section-pad">
     <!-- Insights & Articles -->
@@ -243,13 +361,69 @@ BI</span>
     </article>
 </section>
 
-<!-- Let's Start a Conversation Section -->
-<section class="conversation-section">
-    <div class="conversation-banner-card">
-        <div class="banner-content">
+<!-- Closing CTA (mockup v2) -->
+<section class="home-closing-cta">
+    <div class="home-closing-cta__scene" aria-hidden="true">
+        <img loading="lazy" decoding="async" src="{{ asset($sc['home.cta_image'] ?? 'assets/crops/home-cta-hero.jpg') }}" alt="">
+    </div>
+    <div class="home-closing-cta__inner">
+        <div class="home-closing-cta__copy">
+            <p class="home-closing-cta__eyebrow">{{ $sc['home.cta_eyebrow'] ?? '— YOUR FINANCIAL CLARITY PARTNER —' }}</p>
             <h2>{{ $sc['home.cta_title'] ?? 'Looking to get your finances better organised?' }}</h2>
-            <p>{{ $sc['home.cta_text'] ?? 'Explore the services on offer, or get in touch directly with what you need.' }}</p>
-            <a href="{{ route('contact') }}" class="button button-primary banner-cta-btn">Let's Connect <span class="arrow-icon">→</span></a>
+            <p class="home-closing-cta__lead">{{ $sc['home.cta_text'] ?? 'Explore the services we offer, or get in touch directly with what you need. We’re here to simplify your financial journey.' }}</p>
+            <a href="{{ route('contact') }}" class="home-closing-cta__btn">Let's Connect <span aria-hidden="true">→</span></a>
+            <div class="home-closing-cta__trust" aria-label="Why connect">
+                <div class="home-closing-cta__trust-item">
+                    <span class="home-closing-cta__trust-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 11l2 2 4-4"/></svg>
+                    </span>
+                    <span>{{ $sc['home.cta_trust_1'] ?? 'Trusted Guidance' }}</span>
+                </div>
+                <div class="home-closing-cta__trust-item">
+                    <span class="home-closing-cta__trust-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 20h16"/><path d="M7 16v-4"/><path d="M12 16V8"/><path d="M17 16v-6"/></svg>
+                    </span>
+                    <span>{{ $sc['home.cta_trust_2'] ?? 'Personalised Solutions' }}</span>
+                </div>
+                <div class="home-closing-cta__trust-item">
+                    <span class="home-closing-cta__trust-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="9" cy="8" r="3"/><path d="M3.5 19c.7-3 2.8-4.5 5.5-4.5s4.8 1.5 5.5 4.5"/><circle cx="17" cy="9" r="2.4"/><path d="M15.5 14.7c2.3.2 4.2 1.6 4.9 4.3"/></svg>
+                    </span>
+                    <span>{{ $sc['home.cta_trust_3'] ?? 'Support at Every Step' }}</span>
+                </div>
+            </div>
+        </div>
+        <div class="home-closing-cta__cards">
+            <a class="home-closing-cta__card" href="{{ route('insights') }}">
+                <span class="home-closing-cta__card-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 6c-2-1.8-4.5-2.5-8-2.5v14c3.5 0 6 .7 8 2.5 2-1.8 4.5-2.5 8-2.5v-14c-3.5 0-6 .7-8 2.5z"/><path d="M12 6v14"/></svg>
+                </span>
+                <span class="home-closing-cta__card-copy">
+                    <b>Explore Insights</b>
+                    <small>{{ $sc['home.insights_text'] ?? 'Thoughtful articles and practical insights on personal finance, taxation and investments.' }}</small>
+                </span>
+                <span class="home-closing-cta__card-go" aria-hidden="true">→</span>
+            </a>
+            <a class="home-closing-cta__card" href="{{ route('media') }}">
+                <span class="home-closing-cta__card-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="12" rx="2"/><path d="M10 9l4 2.5-4 2.5z"/></svg>
+                </span>
+                <span class="home-closing-cta__card-copy">
+                    <b>View All Features</b>
+                    <small>{{ $sc['home.featured_text'] ?? 'Television appearances, publication features and professional speaking engagements.' }}</small>
+                </span>
+                <span class="home-closing-cta__card-go" aria-hidden="true">→</span>
+            </a>
+            <a class="home-closing-cta__card" href="{{ route('testimonials') }}">
+                <span class="home-closing-cta__card-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+                </span>
+                <span class="home-closing-cta__card-copy">
+                    <b>Read All Testimonials</b>
+                    <small>{{ $sc['home.cta_testimonials_text'] ?? 'Hear from clients and professionals about working together on financial clarity and long-term goals.' }}</small>
+                </span>
+                <span class="home-closing-cta__card-go" aria-hidden="true">→</span>
+            </a>
         </div>
     </div>
 </section>

@@ -26,17 +26,110 @@ const setText = (id, value) => {
 };
 
 function initNavigation() {
+    const header = document.querySelector('.header-v2');
     const button = document.querySelector('.nav-toggle');
     const navigation = document.querySelector('.primary-nav');
-    if (!button || !navigation) return;
-    button.addEventListener('click', () => {
-        const isOpen = navigation.classList.toggle('is-open');
-        button.setAttribute('aria-expanded', String(isOpen));
-    });
-    navigation.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => {
+    const headerMain = document.querySelector('.header-v2 .header-main');
+    const megaTrigger = document.querySelector('[data-mega-trigger]');
+    const searchBtn = document.querySelector('.nav-search-btn');
+    const searchPanel = document.getElementById('header-search-panel');
+    const searchInput = document.getElementById('header-search-input');
+    const desktopQuery = window.matchMedia('(min-width: 1101px)');
+
+    const closeMobileNav = () => {
+        if (!navigation || !button) return;
         navigation.classList.remove('is-open');
         button.setAttribute('aria-expanded', 'false');
-    }));
+    };
+
+    const closeMega = () => {
+        headerMain?.classList.remove('mega-open');
+        megaTrigger?.setAttribute('aria-expanded', 'false');
+    };
+
+    const closeSearch = () => {
+        if (!searchPanel || !searchBtn) return;
+        searchPanel.hidden = true;
+        searchBtn.setAttribute('aria-expanded', 'false');
+    };
+
+    if (button && navigation) {
+        button.addEventListener('click', () => {
+            const isOpen = navigation.classList.toggle('is-open');
+            button.setAttribute('aria-expanded', String(isOpen));
+            if (isOpen) {
+                closeSearch();
+            } else {
+                closeMega();
+            }
+        });
+
+        navigation.querySelectorAll('a:not([data-mega-trigger])').forEach((link) => link.addEventListener('click', () => {
+            closeMobileNav();
+            closeMega();
+            closeSearch();
+        }));
+    }
+
+    document.querySelectorAll('.services-mega-menu a, .header-utility-cta, .nav-connect-btn').forEach((link) => {
+        link.addEventListener('click', () => {
+            closeMobileNav();
+            closeMega();
+            closeSearch();
+        });
+    });
+
+    if (megaTrigger && headerMain) {
+        megaTrigger.addEventListener('click', (event) => {
+            if (desktopQuery.matches) return;
+            event.preventDefault();
+            const isOpen = headerMain.classList.toggle('mega-open');
+            megaTrigger.setAttribute('aria-expanded', String(isOpen));
+        });
+
+        headerMain.addEventListener('mouseenter', () => {
+            if (!desktopQuery.matches) return;
+            megaTrigger.setAttribute('aria-expanded', 'true');
+        });
+        headerMain.addEventListener('mouseleave', () => {
+            if (!desktopQuery.matches) return;
+            closeMega();
+        });
+    }
+
+    if (searchBtn && searchPanel) {
+        searchBtn.addEventListener('click', () => {
+            const willOpen = searchPanel.hidden;
+            closeMobileNav();
+            closeMega();
+            searchPanel.hidden = !willOpen;
+            searchBtn.setAttribute('aria-expanded', String(willOpen));
+            if (willOpen) {
+                searchInput?.focus();
+            }
+        });
+    }
+
+    document.addEventListener('click', (event) => {
+        if (!header) return;
+        if (!header.contains(event.target)) {
+            closeMega();
+            closeSearch();
+        }
+    });
+
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') {
+            closeMega();
+            closeSearch();
+            closeMobileNav();
+        }
+    });
+
+    desktopQuery.addEventListener('change', () => {
+        closeMega();
+        closeMobileNav();
+    });
 }
 
 function initInsightFilters() {
